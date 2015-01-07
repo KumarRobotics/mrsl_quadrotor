@@ -1,0 +1,27 @@
+
+# Linux
+*~
+
+# OSX
+.DS_Store
+
+# Vim
+.*.sw[a-z]
+
+# C++
+*.o
+*.so
+*.dylib
+
+# ROS
+*.avi
+*.pyc
+_*.py
+*.glc
+build
+bin
+lib
+msg_gen
+srv_gen
+ROS_NOBUILD
+*.bag

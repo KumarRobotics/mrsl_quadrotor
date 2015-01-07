@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(mrsl_quadrotor_simulator)
+
+find_package(catkin REQUIRED COMPONENTS 
+  roscpp 
+  gazebo_ros 
+  )
+
+# Depend on system install of Gazebo
+find_package(gazebo REQUIRED)
+
+link_directories(${GAZEBO_LIBRARY_DIRS})
+include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+
+
+find_package(cmake_modules REQUIRED)
+find_package(Eigen3 REQUIRED)
+include_directories(${EIGEN3_INCLUDE_DIR})
+ 
+include_directories(include)
+
+
+
+add_library(mrsl_quadrotor_propulsion SHARED src/quadrotor_propulsion.cpp
+  src/Quadrotor.cpp
+  src/QuadrotorSO3AttitudeControl.cpp)
+target_link_libraries(mrsl_quadrotor_propulsion ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
+catkin_package(
+  DEPENDS 
+  roscpp 
+  gazebo_ros 
+  )
+
+
