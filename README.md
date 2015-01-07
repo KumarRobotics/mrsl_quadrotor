@@ -1,4 +1,4 @@
-l_quadrotor
+mrsl_quadrotor
 ==========    
 package of simulation for mrsl UAV
 ### Requirements
