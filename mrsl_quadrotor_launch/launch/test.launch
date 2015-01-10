@@ -1,6 +1,8 @@
 <launch>
   <arg name="robot" default="quadrotor"/>
-  <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/quadrotor.gazebo.xacro"/>
+  <!--arg name="robot_type" default="hummingbird"/-->
+  <arg name="robot_type" default="pelican"/>
+  <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg robot_type)/$(arg robot_type).gazebo.xacro"/>
 
   <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
 
