@@ -2,10 +2,10 @@
 
 <robot name="quadrotor" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="pi" value="3.1415926535897931" />
-  <xacro:property name="mass" value="1.815" />
-  <xacro:property name="ixx" value="0.012" />
-  <xacro:property name="iyy" value="0.012" />
-  <xacro:property name="izz" value="0.024" />
+  <xacro:property name="mass" value="0.5" />
+  <xacro:property name="ixx" value="0.00264" />
+  <xacro:property name="iyy" value="0.00264" />
+  <xacro:property name="izz" value="0.00496" />
 
   <!-- Main quadrotor link -->
   <xacro:macro name="quadrotor_base_macro">
@@ -20,14 +20,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://mrsl_models/models/pelican/pelican.dae"/>
+          <mesh filename="package://mrsl_models/models/hummingbird/hummingbird.dae"/>
         </geometry>
       </visual>
 
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://mrsl_models/models/pelican/pelican.stl"/>
+          <mesh filename="package://mrsl_models/models/hummingbird/hummingbird.stl"/>
         </geometry>
       </collision>
     </link>
