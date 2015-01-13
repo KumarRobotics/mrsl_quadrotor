@@ -21,6 +21,9 @@ namespace mrsl_quadrotor_simulator
 
     curr_motor_rpm_ = Quadrotor::MotorState::Zero();
   }
+  Quadrotor::~Quadrotor()
+  {
+  }
 
   Quadrotor::Wrench Quadrotor::update(Quadrotor::MotorState des_motor_rpm, double dt)
   {

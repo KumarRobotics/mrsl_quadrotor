@@ -20,6 +20,7 @@ namespace mrsl_quadrotor_simulator
     };
 
     Quadrotor();
+    ~Quadrotor();
 
     const Quadrotor::MotorState &getMotorState(void) const;
     const Eigen::Matrix3d &getInertia(void) const;

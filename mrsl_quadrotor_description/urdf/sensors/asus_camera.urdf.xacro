@@ -19,13 +19,14 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://mrsl_models/models/sensors/asus_camera/asus_camera_simple.dae"/>
+            <mesh filename="package://mrsl_models/models/sensors/kinect/kinect.dae"/>
           </geometry>
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <box size="0.035 0.185 0.025"/>
+            <!--<box size="0.035 0.185 0.025"/>-->
+            <mesh filename="package://mrsl_models/models/sensors/kinect/kinect.stl"/>
           </geometry>
         </collision>
       </link>

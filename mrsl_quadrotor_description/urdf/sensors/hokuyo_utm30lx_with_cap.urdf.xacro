@@ -9,6 +9,12 @@
         <parent link="${parent}"/>
         <child link="${name}_frame"/>
       </joint>
+      <joint name="${name}_cap_joint" type="fixed">
+        <xacro:insert_block name="origin" />
+        <parent link="${parent}"/>
+        <child link="${name}_cap"/>
+      </joint>
+
 
       <link name="${name}_frame">
         <inertial>
@@ -29,6 +35,24 @@
             <mesh filename="package://mrsl_models/models/sensors/hokuyo_utm_30lx/utm_30lx.stl"/>
         </geometry>
         </collision>
+      </link>
+ 
+
+      <link name="${name}_cap">
+        <visual>
+          <origin xyz="-0.01 0 0.027" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://mrsl_models/models/sensors/laser_cap/laser_cap.dae"/>
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="-0.01 0 0.027" rpy="0 0 0" />
+          <geometry>
+            <!--<box size="0.058 0.058 0.087" />-->
+            <mesh filename="package://mrsl_models/models/sensors/laser_cap/laser_cap.stl"/>
+          </geometry>
+        </collision>
+
       </link>
 
 

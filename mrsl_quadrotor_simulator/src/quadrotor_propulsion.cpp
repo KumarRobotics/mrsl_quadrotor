@@ -21,6 +21,11 @@ namespace mrsl_quadrotor_simulator
     {
     }
 
+    ~QuadrotorPropulsion()
+    {
+      node_handle_->shutdown();
+      delete node_handle_;
+    }
     void Load(gazebo::physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
       // Make sure the ROS node for Gazebo has already been initialized
@@ -62,10 +67,11 @@ namespace mrsl_quadrotor_simulator
       else
         ROS_ERROR("command_topic has not been set up correctly, use either 'so3_cmd' or 'trpy_cmd'");
 
-      this->updateConnection = gazebo::event::Events::ConnectWorldUpdateBegin(
+      updateConnection = gazebo::event::Events::ConnectWorldUpdateBegin(
         boost::bind(&QuadrotorPropulsion::OnUpdate, this, _1));
     }
  
+
 
     void OnUpdate(const gazebo::common::UpdateInfo &_info)
     {
@@ -97,8 +103,8 @@ namespace mrsl_quadrotor_simulator
       Quadrotor::MotorState des_rpm = quad_attitude_control.getControl(quad_state);
       Quadrotor::Wrench wrench = quad.update(des_rpm, dt);
 
-      this->link->AddRelativeForce(gazebo::math::Vector3(0, 0, wrench(0)));
-      this->link->AddRelativeTorque(gazebo::math::Vector3(wrench(1), wrench(2), wrench(3)));
+      link->AddRelativeForce(gazebo::math::Vector3(0, 0, wrench(0)));
+      link->AddRelativeTorque(gazebo::math::Vector3(wrench(1), wrench(2), wrench(3)));
     }
  
    private:
