@@ -23,7 +23,6 @@
           <mesh filename="package://mrsl_models/models/pelican/pelican.dae"/>
         </geometry>
       </visual>
-
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
