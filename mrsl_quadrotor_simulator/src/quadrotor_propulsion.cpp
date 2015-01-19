@@ -90,7 +90,7 @@ namespace mrsl_quadrotor_simulator
 
       gazebo::math::Pose pose = link->GetWorldPose();
       gazebo::math::Matrix3 R = pose.rot.GetAsMatrix3();
-      gazebo::math::Vector3 angular_velocity = link->GetWorldAngularVel();
+      gazebo::math::Vector3 angular_velocity = link->GetRelativeAngularVel();
 
       Quadrotor::State quad_state;
       quad_state.omega(0) = angular_velocity.x;

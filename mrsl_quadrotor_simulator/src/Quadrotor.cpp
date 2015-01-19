@@ -9,7 +9,7 @@ namespace mrsl_quadrotor_simulator
     J_ = Eigen::Vector3d(Ixx, Iyy, Izz).asDiagonal();
 
     kf_ = 5.55e-8;
-    // km_ = 2.5e-9; // from Nate
+    //km_ = 2.5e-9; // from Nate
     // km = (Cq/Ct)*Dia*kf
     // Cq/Ct for 8 inch props from UIUC prop db ~ 0.07
     km_ = 0.07 * ( 2 * prop_radius_) * kf_;
@@ -21,6 +21,7 @@ namespace mrsl_quadrotor_simulator
 
     curr_motor_rpm_ = Quadrotor::MotorState::Zero();
   }
+
   Quadrotor::~Quadrotor()
   {
   }
@@ -34,7 +35,7 @@ namespace mrsl_quadrotor_simulator
       else if(des_motor_rpm(i) < min_rpm_)
         des_motor_rpm(i) = min_rpm_;
     }
-    Quadrotor::MotorState motor_rpm_dot = (des_motor_rpm - curr_motor_rpm_)/motor_time_constant_;
+    Quadrotor::MotorState motor_rpm_dot = (des_motor_rpm - curr_motor_rpm_) / motor_time_constant_;
     curr_motor_rpm_ += dt * motor_rpm_dot;
     Quadrotor::MotorState motor_rpm_sq = curr_motor_rpm_.square();
 
