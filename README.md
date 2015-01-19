@@ -13,11 +13,12 @@ the package for launch demo
 $cd ./launch  
 $roslaunch gazebo.launch
 $roslaunch test.launch
+$roslaunch controller.launch
+$rosrun mrsl_quadrotor_launch start_motor_waypoints.sh
+$rosrun mrsl_quadrotor_launch send_waypoints.sh
 ```           
               
 ### Todo's    
  - add Aerodynamics model
  - add TRPY control plugin
-
-
 
