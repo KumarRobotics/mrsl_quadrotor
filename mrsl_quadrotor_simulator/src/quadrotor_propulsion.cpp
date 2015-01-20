@@ -103,7 +103,9 @@ namespace mrsl_quadrotor_simulator
       Quadrotor::MotorState des_rpm = quad_attitude_control.getControl(quad_state);
       Quadrotor::Wrench wrench = quad.update(des_rpm, dt);
 
+
       link->AddRelativeForce(gazebo::math::Vector3(0, 0, wrench(0)));
+
       link->AddRelativeTorque(gazebo::math::Vector3(wrench(1), wrench(2), wrench(3)));
     }
  

@@ -40,6 +40,8 @@
 
       <link name="${name}_cap">
         <visual>
+          <mass value="0.000" />
+          <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
           <origin xyz="-0.01 0 0.027" rpy="0 0 0" />
           <geometry>
             <mesh filename="package://mrsl_models/models/sensors/laser_cap/laser_cap.dae"/>

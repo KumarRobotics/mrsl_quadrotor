@@ -1,7 +1,7 @@
 <launch>
   <env name="GAZEBO_MODEL_PATH" value="$(find mrsl_models)/models:$(optenv GAZEBO_MODEL_PATH)"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find mrsl_quadrotor_description)/worlds/sim.world"/>
+    <arg name="world_name" value="$(find mrsl_quadrotor_description)/worlds/levine.world"/>
     <arg name="debug" value="false" />
     <arg name="gui" value="true" />
     <arg name="paused" value="false"/>
