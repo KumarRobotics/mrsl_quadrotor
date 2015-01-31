@@ -60,8 +60,8 @@
         <updateRate>100.0</updateRate>
         <bodyName>base_link</bodyName>
         <topicName>raw_imu</topicName>
-        <rpyOffsets>0 0 0</rpyOffsets> <!-- deprecated -->
-        <gaussianNoise>0</gaussianNoise>  <!-- deprecated -->
+        <rpyOffsets>0 0 0</rpyOffsets> 
+        <gaussianNoise>0</gaussianNoise> 
         <accelDrift>0.5 0.5 0.5</accelDrift>
         <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
         <rateDrift>0.1 0.1 0.1</rateDrift>
