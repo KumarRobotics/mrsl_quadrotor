@@ -1,6 +1,6 @@
 <launch>
   <arg name="odom" default="ground_truth/odom"/>
-  <arg name="use_line_tracker" default="true"/>
+  <arg name="use_line_tracker" default="false"/>
 
   <node pkg="nodelet"
     type="nodelet"
@@ -20,6 +20,9 @@
     <remap from="~rc" to="output_data"/>
     <rosparam file="$(find so3_control)/config/gains.yaml"/>
     <param name="is_sim" value="true"/>
+    <param name="auto_v" value="0.5"/>
+    <param name="auto_w" value="1.0"/>
+    <param name="track_yaw" value="true"/>
   </node>
 
   <node  if="$(arg use_line_tracker)"
