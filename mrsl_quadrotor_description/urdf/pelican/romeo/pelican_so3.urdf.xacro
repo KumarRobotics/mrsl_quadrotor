@@ -42,7 +42,7 @@
 
       <!-- Quad Dynamics Plugin -->
       <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
-        <robot_name>juliett</robot_name>
+        <robot_name>romeo</robot_name>
         <command_topic>so3_cmd</command_topic>
         <odom_topic>ground_truth/odom</odom_topic>
       </plugin>

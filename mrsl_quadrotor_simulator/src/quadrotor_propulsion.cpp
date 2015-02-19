@@ -19,6 +19,7 @@ namespace mrsl_quadrotor_simulator
     QuadrotorPropulsion() :
         initialized_(false)
     {
+      robot_name_ = std::string("");
     }
 
     ~QuadrotorPropulsion()
@@ -26,6 +27,7 @@ namespace mrsl_quadrotor_simulator
       node_handle_->shutdown();
       delete node_handle_;
     }
+    
     void Load(gazebo::physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
       // Make sure the ROS node for Gazebo has already been initialized
@@ -36,7 +38,10 @@ namespace mrsl_quadrotor_simulator
         return;
       }
 
-      node_handle_ = new ros::NodeHandle("");                                                 
+      if (_sdf->HasElement("robot_name"))
+        robot_name_ = _sdf->GetElement("robot_name")->Get<std::string>();
+ 
+      node_handle_ = new ros::NodeHandle(robot_name_);        
       link = _parent->GetLink();
 
       gazebo::physics::InertialPtr I = link->GetInertial();
@@ -54,14 +59,13 @@ namespace mrsl_quadrotor_simulator
       quad_attitude_control.init(quad, Im);
 
       if (_sdf->HasElement("command_topic"))
+      {
         command_topic_ = _sdf->GetElement("command_topic")->Get<std::string>();
 
-      if (command_topic_.compare("so3_cmd") == 0)
-      {
         ros::SubscribeOptions ops;
         ops.callback_queue = &callback_queue_;
-        ops.init<QuadrotorSO3AttitudeControl::CmdMsg>(command_topic_, 1, 
-              boost::bind(&QuadrotorSO3AttitudeControl::cmdCallback, &quad_attitude_control, _1));
+        ops.init<QuadrotorSO3AttitudeControl::CmdMsg>(command_topic_, 10, 
+                                                      boost::bind(&QuadrotorSO3AttitudeControl::cmdCallback, &quad_attitude_control, _1));
         command_sub_ = node_handle_->subscribe(ops);
       }
       else
@@ -70,7 +74,7 @@ namespace mrsl_quadrotor_simulator
       updateConnection = gazebo::event::Events::ConnectWorldUpdateBegin(
         boost::bind(&QuadrotorPropulsion::OnUpdate, this, _1));
     }
- 
+
 
 
     void OnUpdate(const gazebo::common::UpdateInfo &_info)
@@ -115,6 +119,7 @@ namespace mrsl_quadrotor_simulator
     gazebo::physics::LinkPtr link; // Link for robot
     gazebo::common::Time last_time_;
     bool initialized_; // initialize time stamp
+    std::string robot_name_; 
     std::string command_topic_; // command that robot subscribe to
 
     ros::NodeHandle* node_handle_;

@@ -1,55 +1,52 @@
 <launch>
+  <arg name="robot" default="juliett"/>
   <arg name="odom" default="ground_truth/odom"/>
   <arg name="use_line_tracker" default="false"/>
 
-  <node pkg="nodelet"
-    type="nodelet"
-    name="standalone_nodelet"
-    args="manager"
-    output="screen"/>
+  <group ns="$(arg robot)">
+    <node unless="$(arg use_line_tracker)"
+      pkg="nodelet"
+      type="nodelet"
+      name="trajectory_generator"
+      args="standalone trajectory_generator/LineTracker"
+      output="screen">
+      <remap from="~waypoints" to="waypoints"/>
+      <remap from="~position_cmd" to="position_cmd"/>
+      <remap from="~odom" to="$(arg odom)"/>
+      <remap from="~rc" to="output_data"/>
+      <rosparam file="$(find so3_control)/config/gains.yaml"/>
+      <param name="is_sim" value="true"/>
+      <param name="auto_v" value="0.5"/>
+      <param name="auto_w" value="1.0"/>
+      <param name="track_yaw" value="false"/>
+    </node>
 
-  <node unless="$(arg use_line_tracker)"
-    pkg="nodelet"
-    type="nodelet"
-    name="trajectory_generator"
-    args="load trajectory_generator/LineTracker standalone_nodelet"
-    output="screen">
-    <remap from="~waypoints" to="waypoints"/>
-    <remap from="~position_cmd" to="position_cmd"/>
-    <remap from="~odom" to="$(arg odom)"/>
-    <remap from="~rc" to="output_data"/>
-    <rosparam file="$(find so3_control)/config/gains.yaml"/>
-    <param name="is_sim" value="true"/>
-    <param name="auto_v" value="0.5"/>
-    <param name="auto_w" value="1.0"/>
-    <param name="track_yaw" value="true"/>
-  </node>
+    <node if="$(arg use_line_tracker)"
+      pkg="nodelet"
+      type="nodelet"
+      name="controllers_manager"
+      args="standalone controllers_manager/ControllersManager"
+      output="screen">
+      <rosparam file="$(find controllers_manager)/config/controllers.yaml"/>
+      <rosparam file="$(find so3_control)/config/gains.yaml"/>
+      <param name="line_tracker/default_v_des" value="0.5"/>
+      <param name="line_tracker/default_a_des" value="1.0"/>
+      <remap from="~odom" to="$(arg odom)"/>
+      <remap from="~cmd" to="position_cmd"/>
+    </node>
 
-  <node  if="$(arg use_line_tracker)"
-    pkg="nodelet"
-    type="nodelet"
-    name="controllers_manager"
-    args="load controllers_manager/ControllersManager standalone_nodelet"
-    output="screen">
-    <rosparam file="$(find controllers_manager)/config/controllers.yaml"/>
-    <rosparam file="$(find so3_control)/config/gains.yaml"/>
-    <param name="line_tracker/default_v_des" value="2.0"/>
-    <param name="line_tracker/default_a_des" value="1.0"/>
-    <remap from="~odom" to="ground_truth/odom"/>
-    <remap from="~cmd" to="position_cmd"/>
-  </node>
-
-  <node pkg="nodelet"
-    type="nodelet"
-    args="load so3_control/SO3ControlNodelet standalone_nodelet"
-    name="so3_control"
-    required="true"
-    output="screen">
-    <rosparam file="$(find so3_control)/config/gains.yaml"/>
-    <param name="mass" value="0.5"/>
-    <remap from="~odom" to="$(arg odom)"/>
-    <remap from="~position_cmd" to="position_cmd"/>
-    <remap from="~so3_cmd" to="so3_cmd"/>
-    <remap from="~motors" to="motors"/>
-  </node>
+    <node pkg="nodelet"
+      type="nodelet"
+      args="standalone so3_control/SO3ControlNodelet"
+      name="so3_control"
+      required="true"
+      output="screen">
+      <rosparam file="$(find so3_control)/config/gains.yaml"/>
+      <param name="mass" value="0.5"/>
+      <remap from="~odom" to="$(arg odom)"/>
+      <remap from="~position_cmd" to="position_cmd"/>
+      <remap from="~so3_cmd" to="so3_cmd"/>
+      <remap from="~motors" to="motors"/>
+    </node>
+  </group>
 </launch>
