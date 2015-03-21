@@ -1,3 +1,5 @@
-rostopic pub -1 juliett/waypoints nav_msgs/Path  "poses: [
-{pose: {position: {x: -1, y: -14.2, z: 1.5}, orientation: {w: 1.0, x: 0.0, y: 0.0, z: 0.0}}}
-]"
+rostopic pub -1 juliett/goals nav_msgs/Path  "
+{header: {seq: 0, stamp: 0, frame_id: map},
+poses: [
+{pose: {position: {x: 5.0, y: 3.5, z: 1.0}, orientation: {w: 1.0, x: 0.0, y: 0.0, z: 0.0}}}
+]}"

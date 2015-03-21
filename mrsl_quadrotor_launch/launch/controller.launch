@@ -2,6 +2,7 @@
   <arg name="robot" default="juliett"/>
   <arg name="odom" default="ground_truth/odom"/>
   <arg name="use_line_tracker" default="false"/>
+  <arg name="robot_radius" default="0.5"/>
 
   <group ns="$(arg robot)">
     <node unless="$(arg use_line_tracker)"
@@ -14,11 +15,18 @@
       <remap from="~position_cmd" to="position_cmd"/>
       <remap from="~odom" to="$(arg odom)"/>
       <remap from="~rc" to="output_data"/>
+      <remap from="~status" to="status"/>
+      <remap from="~rgbd_in" to="cloud_pair_rgbd"/>
       <rosparam file="$(find so3_control)/config/gains.yaml"/>
       <param name="is_sim" value="true"/>
+      <param name="use_check" value="true"/>
+      <param name="expand_z" value="true"/>
+      <param name="expand_dim" value="1.0"/>
+      <param name="rgbd_res" value="0.10"/>
+      <param name="track_yaw" value="false"/>
       <param name="auto_v" value="0.5"/>
       <param name="auto_w" value="1.0"/>
-      <param name="track_yaw" value="false"/>
+      <param name="robot_radius" value="$(arg robot_radius)"/>
     </node>
 
     <node if="$(arg use_line_tracker)"
