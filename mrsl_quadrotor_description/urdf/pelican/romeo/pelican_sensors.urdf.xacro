@@ -6,6 +6,7 @@
     <origin xyz="0.0 0.0 0.09" rpy="0 0 ${M_PI/4}"/>
   </xacro:hokuyo_utm30lx>
 
+  <!--
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/left_camera.urdf.xacro" />
   <xacro:camera_left name="camera_left" parent="base_link">
     <origin xyz="-0.07777 0.07777 0.145" rpy="0 0 ${M_PI/4}"/>
@@ -15,6 +16,11 @@
   <xacro:camera_right name="camera_right" parent="base_link">
     <origin xyz="0.07777 -0.07777 0.145" rpy="0 0 ${M_PI/4}"/>
   </xacro:camera_right>
+-->
+ <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/stereo_camera.urdf.xacro" />
+ <xacro:stereo_camera name="stereo" parent="base_link">
+   <origin xyz="0.0 0.0 0.14" rpy="0 0 ${M_PI/4}"/>
+ </xacro:stereo_camera>
 
 
 </robot>
