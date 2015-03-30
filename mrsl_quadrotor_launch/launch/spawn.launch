@@ -1,5 +1,5 @@
 <launch>
-  <arg name="robot" default="romeo"/>
+  <arg name="robot" default="juliett"/>
   <!--arg name="robot_type" default="hummingbird"/-->
   <arg name="robot_type" default="pelican"/>
 
