@@ -4,8 +4,9 @@
   <xacro:property name="image_height" value="480" />
   <xacro:property name="image_width" value="640" />
   <xacro:property name="image_format" value="R8G8B8" />
-  <xacro:property name="hfov" value="${M_PI/3}" />
+  <xacro:property name="hfov" value="${M_PI/2}" />
   <xacro:property name="frame_id" value="camera" />
+  <xacro:property name="focal_length" value="320" />
   <xacro:property name="hack_baseline" value="0.11" />
 
   <xacro:macro name="stereo_camera" params="name parent *origin">
@@ -24,7 +25,7 @@
       <visual>
         <origin xyz="0.0 -0.0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.1 0.05 0.025"/>
+          <box size="0.025 0.15 0.025"/>
         </geometry>
       </visual>
       <collision>
@@ -72,12 +73,12 @@
           <imageTopicName>image</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>${frame_id}</frameName>
-          <hackBaseline>${hack_baseline}</hackBaseline>
+          <hackBaseline>${2 * hack_baseline}</hackBaseline>
           <CxPrime>${(image_width+1)/2}</CxPrime>
           <Cx>${(image_width+1)/2}</Cx>
           <Cy>${(image_height+1)/2}</Cy>
-          <!--calLength>${focal_length}</focalLength--> 
-<!-- image_width / (2*tan(hfov_radian /2)) -->
+          <!--<focalLength>${focal_length}</focalLength>-->
+          <!-- image_width / (2*tan(hfov_radian /2)) -->
           <distortionK1>0.0</distortionK1>
           <distortionK2>0.0</distortionK2>
           <distortionK3>0.0</distortionK3>

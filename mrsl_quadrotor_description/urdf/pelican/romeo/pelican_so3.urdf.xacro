@@ -63,12 +63,12 @@
         <topicName>raw_imu</topicName>
         <rpyOffsets>0 0 0</rpyOffsets> 
         <gaussianNoise>0</gaussianNoise> 
-        <accelDrift>0.5 0.5 0.5</accelDrift>
-        <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
-        <rateDrift>0.1 0.1 0.1</rateDrift>
-        <rateGaussianNoise>0.05 0.05 0.015</rateGaussianNoise>
-        <headingDrift>0.1</headingDrift>
-        <headingGaussianNoise>0.05</headingGaussianNoise>
+        <accelDrift>0.01 0.01 0.01</accelDrift>
+        <accelGaussianNoise>0.01 0.01 0.01</accelGaussianNoise>
+        <rateDrift>0.01 0.01 0.01</rateDrift>
+        <rateGaussianNoise>0.001 0.001 0.001</rateGaussianNoise>
+        <headingDrift>0.01</headingDrift>
+        <headingGaussianNoise>0.01</headingGaussianNoise>
       </plugin>
     </gazebo>
 

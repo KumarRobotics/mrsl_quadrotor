@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="world">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <model name="house">
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <pose>1.0 1.0 0.0 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://house/house.dae</uri></mesh>
+          </geometry>
+        </visual>
+     </link>
+    </model>
+ 
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>0.0 0.0 15.0 0.0 1.57 1.57</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+    <light type="directional" name="sun1">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>100</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.5 0.5 -0.9</direction>
+    </light>
+
+    <model name="House 2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <pose>5.0 5.0 0.0 0.0 0 -0.75</pose>
+          <geometry>
+            <mesh>
+              <uri>model://house_2/meshes/house_2.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <pose>5.0 5.0 0.0 0.0 0 -0.75</pose>
+          <geometry>
+            <mesh>
+              <uri>model://house_2/meshes/house_2.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://house_2/materials/scripts</uri>
+              <uri>model://house_2/materials/textures</uri>
+              <uri>model://house_1/materials/textures</uri>
+              <name>House_2/Diffuse</name>
+            </script>
+
+            <shader type="normal_map_object_space">
+              <normal_map>model://house_1/materials/textures/House_1_Normal.png</normal_map>
+            </shader>
+          </material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>
+

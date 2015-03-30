@@ -49,7 +49,8 @@
       name="so3_control"
       required="true"
       output="screen">
-      <rosparam file="$(find so3_control)/config/gains.yaml"/>
+      <!--<rosparam file="$(find so3_control)/config/gains.yaml"/>-->
+      <rosparam file="$(find mrsl_quadrotor_launch)/config/gains.yaml"/>
       <param name="mass" value="0.5"/>
       <remap from="~odom" to="$(arg odom)"/>
       <remap from="~position_cmd" to="position_cmd"/>
