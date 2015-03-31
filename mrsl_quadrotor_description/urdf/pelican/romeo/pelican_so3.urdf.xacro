@@ -6,13 +6,6 @@
   <xacro:property name="ixx" value="0.00264" />
   <xacro:property name="iyy" value="0.00264" />
   <xacro:property name="izz" value="0.00496" />
-  <!--
-  <xacro:property name="mass" value="1.8" />
-  <xacro:property name="ixx" value="0.012" />
-  <xacro:property name="iyy" value="0.012" />
-  <xacro:property name="izz" value="0.024" />
--->
-
   <!-- Main quadrotor link -->
   <xacro:macro name="quadrotor_base_macro">
     <link name="base_link">
@@ -21,16 +14,17 @@
         <origin xyz="0 0 0" />
         <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
       </inertial>
-
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
+          <!--<box size="0.15 0.15 0.025"/>-->
           <mesh filename="package://mrsl_models/models/pelican/pelican.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
+          <!--<box size="0.15 0.15 0.025"/>-->
           <mesh filename="package://mrsl_models/models/pelican/pelican.stl"/>
         </geometry>
       </collision>

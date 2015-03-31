@@ -13,7 +13,7 @@
       -urdf
       -x 0
       -y 0
-      -z 0.15
+      -z 0.0
       -model $(arg robot)"
       respawn="false" output="screen"/>
   </group>

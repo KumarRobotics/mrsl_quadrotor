@@ -8,6 +8,7 @@
   <xacro:property name="frame_id" value="camera" />
   <xacro:property name="focal_length" value="320" />
   <xacro:property name="hack_baseline" value="0.11" />
+  <xacro:property name="frame_rate" value="25" />
 
   <xacro:macro name="stereo_camera" params="name parent *origin">
     <joint name="${name}_joint" type="fixed">
@@ -28,18 +29,12 @@
           <box size="0.025 0.15 0.025"/>
         </geometry>
       </visual>
-      <collision>
-        <origin xyz="0 0.0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://mrsl_models/models/sensors/stereo_camera/stereo_camera.stl"/>
-        </geometry>
-      </collision>
     </link>
 
     <!-- camera -->
     <gazebo reference="${name}_link">
       <sensor type="multicamera" name="gazebo_${name}_camera">
-        <update_rate>30.0</update_rate>
+        <update_rate>${frame_rate}</update_rate>
         <camera name="left">
           <pose>0 ${hack_baseline} 0 0 0 0</pose>
           <horizontal_fov>${hfov}</horizontal_fov>
@@ -50,7 +45,7 @@
           </image>
           <clip>
             <near>0.01</near>
-            <far>100</far>
+            <far>20</far>
           </clip>
         </camera>
         <camera name="right">
@@ -63,12 +58,12 @@
           </image>
           <clip>
             <near>0.01</near>
-            <far>100</far>
+            <far>20</far>
           </clip>
         </camera>
         <plugin name="${name}_controller" filename="libgazebo_ros_multicamera.so">
           <alwaysOn>true</alwaysOn>
-          <updateRate>30.0</updateRate>
+          <updateRate>${frame_rate}</updateRate>
           <cameraName>${name}</cameraName>
           <imageTopicName>image</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
