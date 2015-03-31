@@ -1,5 +1,5 @@
 <launch>
-  <env name="GAZEBO_MODEL_PATH" value="$(find mrsl_models)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <env name="GAZEBO_MODEL_PATH" value="$(find mrsl_models)/models:$(find mrsl_models)/models/StateFarmModels:$(optenv GAZEBO_MODEL_PATH)"/>
   <arg name="world" default="levine"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find mrsl_quadrotor_description)/worlds/$(arg world).world"/>

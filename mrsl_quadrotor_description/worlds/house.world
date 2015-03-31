@@ -4,21 +4,27 @@
     <include>
       <uri>model://ground_plane</uri>
     </include>
-  
+
     <model name="floor">
       <static>true</static>
       <link name="body">
         <visual name="visual">
-          <pose>0.0 6.0 0.0 0 0 0</pose>
+          <pose>0.0 5.5 0.0 0 0 0</pose>
           <geometry>
             <mesh><uri>model://floor/floor.dae</uri></mesh>
           </geometry>
         </visual>
-     </link>
+        <!--
+        <collision name="collision">
+          <pose>-5 5.5 -0.1 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://floor/floor.stl</uri></mesh>
+          </geometry>
+        </collision> 
+-->
+      </link>
     </model>
  
-
-
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose>0.0 0.0 15.0 0.0 1.57 1.57</pose>
@@ -106,7 +112,48 @@
             <mesh><uri>model://house/house.stl</uri></mesh>
           </geometry>
         </collision> 
-     </link>
+      </link>
+    </model>
+
+
+
+    <model name='3DTree'>
+      <static>1</static>
+      <link name='3dtree'>
+        <pose>0 0 0 1.57 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://3DTree/meshes/3DTree.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://3DTree/meshes/3DTree.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>0 1 0 0 -0 0</pose>
     </model>
 
 

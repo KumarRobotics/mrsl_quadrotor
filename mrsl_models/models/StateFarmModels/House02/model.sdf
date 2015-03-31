@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<sdf version='1.0'>
+  <model name="House02">
+    <static>true</static>
+    <link name='house'>
+      <pose>0 0 0 0 0 0</pose>
+    <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>model://House02/meshes/House02.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>model://House02/meshes/House02.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </model>
+  </sdf>

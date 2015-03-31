@@ -13,6 +13,7 @@ include_directories(${EIGEN_INCLUDE_DIRS})
 catkin_simple()
  
 cs_add_executable(change_header src/change_header.cpp)
+cs_add_executable(laser_combiner src/laser_combiner.cpp)
  
 cs_install()
  

@@ -1,0 +1,11 @@
+<launch>
+  <env name="GAZEBO_MODEL_PATH" value="$(find mrsl_models)/models:$(find mrsl_models)/models/StateFarmModels:$(optenv GAZEBO_MODEL_PATH)"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find mrsl_models)/models/StateFarmModels/worlds/StateFarmProject.world"/>
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+</launch>

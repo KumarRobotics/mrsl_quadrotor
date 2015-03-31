@@ -2,12 +2,17 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/hokuyo_utm30lx.urdf.xacro" />
-  <xacro:hokuyo_utm30lx name="laser" parent="base_link" ros_topic="laser/scan" update_rate="10" ray_count="1081" min_angle="-135" max_angle="135">
+  <xacro:hokuyo_utm30lx name="laser" parent="base_link" ros_topic="laser/scan" update_rate="20" ray_count="1081" min_angle="-135" max_angle="135">
     <origin xyz="0.0 0.0 0.09" rpy="0 0 ${M_PI/4}"/>
   </xacro:hokuyo_utm30lx>
 
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/laser_beam.urdf.xacro" />
+  <xacro:laser_beam name="laser_beam" parent="base_link" ros_topic="laser/beam" update_rate="20" ray_count="10" min_angle="-1.25" max_angle="1.25">
+    <origin xyz="-0.05 0.05 0.09" rpy="0 ${M_PI/2} -${M_PI/4}"/>
+  </xacro:laser_beam>
+
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/stereo_camera.urdf.xacro" />
   <xacro:stereo_camera name="stereo" parent="base_link">
-    <origin xyz="0.0 0.0 0.3" rpy="0 0 ${M_PI/4}"/>
+    <origin xyz="0.0 0.0 0.15" rpy="0 0 ${M_PI/4}"/>
   </xacro:stereo_camera>
 </robot>
