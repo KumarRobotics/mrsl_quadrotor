@@ -35,7 +35,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-13.2618 -18.7151 26.3656 0 0.741797 1.02202</pose>
+        <pose>-27.3109 -12.2316 24.7716 -3.44454e-17 0.633797 0.48602</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
@@ -160,22 +160,22 @@
       <pose>-4.42725 17.4645 0 0 -0 0</pose>
     </model>
     <state world_name='world'>
-      <sim_time>1239 352000000</sim_time>
-      <real_time>135 645609675</real_time>
-      <wall_time>1427837607 337950971</wall_time>
+      <sim_time>1297 562000000</sim_time>
+      <real_time>58 338397982</real_time>
+      <wall_time>1427906970 654206288</wall_time>
       <model name='3DTree_0'>
-        <pose>-5.42084 8 0 0 -0 0</pose>
+        <pose>-5.42084 3.59437 0 0 -0 0</pose>
         <link name='3dtree'>
-          <pose>-5.42084 8 0 1.57 -0 0</pose>
+          <pose>-5.42084 3.59437 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='3DTree_2'>
-        <pose>5 -2 0 0 -0 0</pose>
+        <pose>5 -4.71923 0 0 -0 0</pose>
         <link name='3dtree'>
-          <pose>5 -2 0 1.57 -0 0</pose>
+          <pose>5 -4.71923 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -184,7 +184,7 @@
       <model name='3DTree_3'>
         <pose>10 -2 0 0 -0 0</pose>
         <link name='3dtree'>
-          <pose>10 -2 0 1.57 -0 0</pose>
+          <pose>10 -2 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -221,7 +221,7 @@
     <model name='3DTree_0'>
       <static>1</static>
       <link name='3dtree'>
-        <pose>0 0 0 1.57 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <collision name='collision'>
           <geometry>
             <mesh>
@@ -259,7 +259,7 @@
     <model name='3DTree_2'>
       <static>1</static>
       <link name='3dtree'>
-        <pose>0 0 0 1.57 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <collision name='collision'>
           <geometry>
             <mesh>
@@ -297,7 +297,7 @@
     <model name='3DTree_3'>
       <static>1</static>
       <link name='3dtree'>
-        <pose>0 0 0 1.57 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <collision name='collision'>
           <geometry>
             <mesh>

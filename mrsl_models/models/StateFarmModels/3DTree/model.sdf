@@ -3,7 +3,7 @@
   <model name="3DTree">
     <static>true</static>
     <link name='3dtree'>
-      <pose>0 0 0 1.57 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
     <collision name='collision'>
         <geometry>
           <mesh>
