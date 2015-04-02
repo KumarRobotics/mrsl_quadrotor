@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="M_PI" value="3.1415926535897931" />
-
-  <xacro:macro name="camera_model" params="name parent *origin">
+  <xacro:macro name="monocular_camera" params="name parent *origin">
     <joint name="${name}_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
@@ -18,24 +17,18 @@
       <visual>
         <origin xyz="0.0 0.0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.1 0.05 0.025"/>
+          <box size="0.03 0.03 0.01"/>
           <!--mesh filename="package://mrsl_models/models/sensors/kinect/kinect.dae"/-->
         </geometry>
       </visual>
-      <collision>
-        <origin xyz="0 0.0 0" rpy="0 0 0" />
-        <geometry>
-          <box size="0.1 0.05 0.025"/>
-        </geometry>
-      </collision>
-    </link>
+   </link>
 
     <!-- camera -->
     <gazebo reference="${name}_link">
       <sensor type="camera" name="${name}">
-        <update_rate>30.0</update_rate>
+        <update_rate>5.0</update_rate>
         <camera name="head">
-          <horizontal_fov>${M_PI}/2</horizontal_fov>
+          <horizontal_fov>${M_PI/2}</horizontal_fov>
           <image>
             <width>640</width>
             <height>480</height>
@@ -52,10 +45,10 @@
           </noise>
         </camera>
 
-        <plugin name="${name}_camera_controller" filename="libgazebo_ros_camera.so">
+        <plugin name="${name}_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
-          <cameraName>camera1</cameraName>
+          <cameraName>camera</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>camera_link</frameName>

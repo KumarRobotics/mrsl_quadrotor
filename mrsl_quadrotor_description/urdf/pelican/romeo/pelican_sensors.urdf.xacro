@@ -15,4 +15,12 @@
   <xacro:stereo_camera name="stereo" parent="base_link">
     <origin xyz="0.0 0.0 0.15" rpy="0 0 ${M_PI/4}"/>
   </xacro:stereo_camera>
+
+
+
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/camera.urdf.xacro" />
+  <xacro:monocular_camera name="downward_camera" parent="base_link">
+    <origin xyz="0.1 -0.1 0.0" rpy="0 ${M_PI/2} 0"/>
+  </xacro:monocular_camera>
+
 </robot>
