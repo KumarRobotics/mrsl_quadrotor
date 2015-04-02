@@ -15,6 +15,7 @@
       <remap from="~position_cmd" to="position_cmd"/>
       <remap from="~odom" to="$(arg odom)"/>
       <remap from="~rc" to="output_data"/>
+      <remap from="~cmd_vel" to="cmd_vel"/>
       <remap from="~status" to="status"/>
       <remap from="~rgbd_in" to="cloud_pair_rgbd"/>
       <rosparam file="$(find so3_control)/config/gains.yaml"/>
