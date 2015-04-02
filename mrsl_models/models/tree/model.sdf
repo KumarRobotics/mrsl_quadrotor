@@ -1,22 +1,23 @@
 <?xml version='1.0'?>
 <sdf version='1.4'>
-  <model name="3DTree">
+  <model name="tree">
     <static>true</static>
-    <link name='3dtree'>
+    <link name='tree'>
       <pose>0 0 0 0 0 0</pose>
-    <collision name='collision'>
-        <geometry>
-          <mesh>
-            <uri>model://3DTree/meshes/3DTree.dae</uri>
-          </mesh>
-        </geometry>
-      </collision>
       <visual name='visual'>
         <geometry>
           <mesh>
-            <uri>model://3DTree/meshes/3DTree.dae</uri>
+            <uri>model://tree/meshes/tree.dae</uri>
           </mesh>
         </geometry>
       </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>model://tree/meshes/tree.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
     </model>
   </sdf>
+

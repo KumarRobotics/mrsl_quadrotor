@@ -35,7 +35,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-27.3109 -12.2316 24.7716 -3.44454e-17 0.633797 0.48602</pose>
+        <pose>-28.4282 -8.84956 21.1478 3.15894e-17 0.497797 0.61002</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
@@ -157,52 +157,52 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose>-4.42725 17.4645 0 0 -0 0</pose>
+      <pose>-4.5 17 0.2 0 -0 0</pose>
     </model>
     <state world_name='world'>
-      <sim_time>1297 562000000</sim_time>
-      <real_time>58 338397982</real_time>
-      <wall_time>1427906970 654206288</wall_time>
-      <model name='3DTree_0'>
-        <pose>-5.42084 3.59437 0 0 -0 0</pose>
-        <link name='3dtree'>
-          <pose>-5.42084 3.59437 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='3DTree_2'>
-        <pose>5 -4.71923 0 0 -0 0</pose>
-        <link name='3dtree'>
-          <pose>5 -4.71923 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='3DTree_3'>
-        <pose>10 -2 0 0 -0 0</pose>
-        <link name='3dtree'>
-          <pose>10 -2 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
+      <sim_time>1609 314000000</sim_time>
+      <real_time>63 784117866</real_time>
+      <wall_time>1427987793 489319388</wall_time>
       <model name='House05'>
-        <pose>14 5 0.150325 0 -0 0.991437</pose>
+        <pose>14 5 0.2 0 -0 1</pose>
         <link name='house'>
-          <pose>14 5 0.150325 0 -0 0.991437</pose>
+          <pose>14 5 0.2 0 -0 1</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='House08'>
-        <pose>-4.42725 17.4645 0 0 -0 0</pose>
+        <pose>-4.5 17 0.2 0 -0 0</pose>
         <link name='house'>
-          <pose>-4.42725 17.4645 0 0 -0 0</pose>
+          <pose>-4.5 17 0.2 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='floor'>
+        <pose>1 10 0 0 -0 0</pose>
+        <link name='floor'>
+          <pose>1 10 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='floor_0'>
+        <pose>1 -1 0 0 -0 0</pose>
+        <link name='floor'>
+          <pose>1 -1 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='floor_2'>
+        <pose>-8.00261 -3.7061 0 0 -0 1.57</pose>
+        <link name='floor'>
+          <pose>-8.00261 -3.7061 0 0 -0 1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -217,32 +217,69 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
+      <model name='house1'>
+        <pose>8.24842 -8.17194 0 0 -0 0</pose>
+        <link name='house1'>
+          <pose>8.24842 -8.17194 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tree'>
+        <pose>10 -2 0 0 -0 0</pose>
+        <link name='tree'>
+          <pose>10 -2 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tree_0'>
+        <pose>6 -2 0 0 -0 0</pose>
+        <link name='tree'>
+          <pose>6 -2 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tree_1'>
+        <pose>-3 8 0 0 -0 0</pose>
+        <link name='tree'>
+          <pose>-3 8 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tree_2'>
+        <pose>3 8 0 0 -0 0</pose>
+        <link name='tree'>
+          <pose>3 8 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tree_3'>
+        <pose>2 -2 0 0 -0 0</pose>
+        <link name='tree'>
+          <pose>2 -2 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
     </state>
-    <model name='3DTree_0'>
+    <model name='floor'>
       <static>1</static>
-      <link name='3dtree'>
+      <link name='floor'>
         <pose>0 0 0 0 -0 0</pose>
-        <collision name='collision'>
-          <geometry>
-            <mesh>
-              <uri>model://3DTree/meshes/3DTree.dae</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <bounce/>
-            <friction>
-              <ode/>
-            </friction>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://3DTree/meshes/3DTree.dae</uri>
+              <uri>model://floor/meshes/floor.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -254,33 +291,16 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose>-5.42084 8 0 0 -0 0</pose>
+      <pose>-6 4.57665 0 0 -0 0</pose>
     </model>
-    <model name='3DTree_2'>
+    <model name='floor_0'>
       <static>1</static>
-      <link name='3dtree'>
+      <link name='floor'>
         <pose>0 0 0 0 -0 0</pose>
-        <collision name='collision'>
-          <geometry>
-            <mesh>
-              <uri>model://3DTree/meshes/3DTree.dae</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <bounce/>
-            <friction>
-              <ode/>
-            </friction>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://3DTree/meshes/3DTree.dae</uri>
+              <uri>model://floor/meshes/floor.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -292,16 +312,44 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose>5 -2 0 0 -0 0</pose>
+      <pose>1 -1 0 0 -0 0</pose>
     </model>
-    <model name='3DTree_3'>
+    <model name='floor_2'>
       <static>1</static>
-      <link name='3dtree'>
+      <link name='floor'>
         <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://floor/meshes/floor.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-9 5 0 0 -0 0</pose>
+    </model>
+    <model name='tree'>
+      <static>1</static>
+      <link name='tree'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://3DTree/meshes/3DTree.dae</uri>
+              <uri>model://tree/meshes/tree.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -315,13 +363,6 @@
             </contact>
           </surface>
         </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://3DTree/meshes/3DTree.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
         <velocity_decay>
           <linear>0</linear>
           <angular>0</angular>
@@ -331,6 +372,196 @@
         <gravity>1</gravity>
       </link>
       <pose>10 -2 0 0 -0 0</pose>
+    </model>
+    <model name='tree_0'>
+      <static>1</static>
+      <link name='tree'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>6 -2 0 0 -0 0</pose>
+    </model>
+    <model name='tree_1'>
+      <static>1</static>
+      <link name='tree'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-3 8 0 0 -0 0</pose>
+    </model>
+    <model name='tree_2'>
+      <static>1</static>
+      <link name='tree'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>3 8 0 0 -0 0</pose>
+    </model>
+    <model name='tree_3'>
+      <static>1</static>
+      <link name='tree'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://tree/meshes/tree.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>2 -2 0 0 -0 0</pose>
+    </model>
+    <model name='house1'>
+      <static>1</static>
+      <link name='house1'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://house1/meshes/house1.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://house1/meshes/house1.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>9 -7 0 0 -0 0</pose>
     </model>
   </world>
 </sdf>
