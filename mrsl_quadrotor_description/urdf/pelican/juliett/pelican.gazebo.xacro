@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
- 
-<robot name="pelican" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/pelican/juliett/pelican_so3.urdf.xacro" />
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/pelican/pelican_sensors.urdf.xacro"/>
-</robot>
-

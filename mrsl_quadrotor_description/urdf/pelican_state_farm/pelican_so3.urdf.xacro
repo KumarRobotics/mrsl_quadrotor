@@ -6,13 +6,6 @@
   <xacro:property name="ixx" value="0.00264" />
   <xacro:property name="iyy" value="0.00264" />
   <xacro:property name="izz" value="0.00496" />
-  <!--
-  <xacro:property name="mass" value="1.8" />
-  <xacro:property name="ixx" value="0.012" />
-  <xacro:property name="iyy" value="0.012" />
-  <xacro:property name="izz" value="0.024" />
--->
-
   <!-- Main quadrotor link -->
   <xacro:macro name="quadrotor_base_macro">
     <link name="base_link">
@@ -21,16 +14,17 @@
         <origin xyz="0 0 0" />
         <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
       </inertial>
-
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
+          <!--<box size="0.15 0.15 0.025"/>-->
           <mesh filename="package://mrsl_models/models/pelican/pelican.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
+          <!--<box size="0.15 0.15 0.025"/>-->
           <mesh filename="package://mrsl_models/models/pelican/pelican.stl"/>
         </geometry>
       </collision>
@@ -42,7 +36,6 @@
 
       <!-- Quad Dynamics Plugin -->
       <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
-        <robot_name>juliett</robot_name>
         <command_topic>so3_cmd</command_topic>
         <odom_topic>ground_truth/odom</odom_topic>
       </plugin>
@@ -63,12 +56,12 @@
         <topicName>raw_imu</topicName>
         <rpyOffsets>0 0 0</rpyOffsets> 
         <gaussianNoise>0</gaussianNoise> 
-        <accelDrift>0.5 0.5 0.5</accelDrift>
-        <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
-        <rateDrift>0.1 0.1 0.1</rateDrift>
-        <rateGaussianNoise>0.05 0.05 0.015</rateGaussianNoise>
-        <headingDrift>0.1</headingDrift>
-        <headingGaussianNoise>0.05</headingGaussianNoise>
+        <accelDrift>0.01 0.01 0.01</accelDrift>
+        <accelGaussianNoise>0.01 0.01 0.01</accelGaussianNoise>
+        <rateDrift>0.01 0.01 0.01</rateDrift>
+        <rateGaussianNoise>0.001 0.001 0.001</rateGaussianNoise>
+        <headingDrift>0.01</headingDrift>
+        <headingGaussianNoise>0.01</headingGaussianNoise>
       </plugin>
     </gazebo>
 

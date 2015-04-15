@@ -1,13 +1,11 @@
 <launch>
   <arg name="robot" default="juliett"/>
-  <!--arg name="robot_type" default="hummingbird"/-->
-  <arg name="robot_type" default="pelican"/>
 
   <group ns="$(arg robot)">
-    <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg robot_type)/$(arg robot)/$(arg robot_type).gazebo.xacro"/>
-
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
-
+    <arg name="robot_type" default="pelican_laser_rgbd"/>
+  <!--arg name="robot_type" default="hummingbird"/-->
+    <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg robot_type)/$(arg robot_type).gazebo.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)' "/>
     <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
       args="-param robot_description
       -urdf

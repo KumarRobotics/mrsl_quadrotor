@@ -1,5 +1,5 @@
 <launch>
-  <arg name="robot" default="romeo"/>
+  <arg name="robot" default="juliett"/>
   <arg name="odom" default="ground_truth/odom"/>
   <arg name="use_line_tracker" default="false"/>
   <arg name="robot_radius" default="0.5"/>

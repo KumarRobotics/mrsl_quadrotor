@@ -38,9 +38,9 @@ namespace mrsl_quadrotor_simulator
         return;
       }
 
-      if (_sdf->HasElement("robot_name"))
-        robot_name_ = _sdf->GetElement("robot_name")->Get<std::string>();
- 
+      if (_sdf->HasElement("robotNamespace"))
+        robot_name_ = _sdf->GetElement("robotNamespace")->Get<std::string>();
+
       node_handle_ = new ros::NodeHandle(robot_name_);        
       link = _parent->GetLink();
 
