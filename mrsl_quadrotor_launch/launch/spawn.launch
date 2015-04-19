@@ -1,5 +1,8 @@
 <launch>
   <arg name="robot" default="juliett"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.1"/>
 
   <group ns="$(arg robot)">
     <arg name="robot_type" default="pelican_laser_rgbd"/>
@@ -9,9 +12,9 @@
     <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
       args="-param robot_description
       -urdf
-      -x 0
-      -y 0
-      -z 0.0
+      -x $(arg x)
+      -y $(arg y)
+      -z $(arg z)
       -model $(arg robot)"
       respawn="false" output="screen"/>
   </group>

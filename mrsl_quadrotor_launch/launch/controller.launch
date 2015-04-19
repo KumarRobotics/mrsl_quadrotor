@@ -1,8 +1,9 @@
 <launch>
   <arg name="robot" default="juliett"/>
   <arg name="odom" default="ground_truth/odom"/>
+  <arg name="odom_frame" default="odom"/>
   <arg name="use_line_tracker" default="false"/>
-  <arg name="robot_radius" default="0.5"/>
+  <arg name="robot_radius" default="0.3"/>
 
   <group ns="$(arg robot)">
     <node unless="$(arg use_line_tracker)"
@@ -17,7 +18,7 @@
       <remap from="~rc" to="output_data"/>
       <remap from="~cmd_vel" to="cmd_vel"/>
       <remap from="~status" to="status"/>
-      <remap from="~rgbd_in" to="cloud_pair_rgbd"/>
+      <remap from="~rgbd_in" to="cloud_rgbd"/>
       <rosparam file="$(find so3_control)/config/gains.yaml"/>
       <param name="is_sim" value="true"/>
       <param name="use_check" value="true"/>
@@ -28,6 +29,8 @@
       <param name="auto_v" value="0.5"/>
       <param name="auto_w" value="0.3"/>
       <param name="robot_radius" value="$(arg robot_radius)"/>
+      <param name="robot_frame" value="$(arg robot)"/>
+      <param name="odom_frame" value="$(arg odom_frame)"/>
     </node>
 
     <node if="$(arg use_line_tracker)"
@@ -50,7 +53,6 @@
       name="so3_control"
       required="true"
       output="screen">
-      <!--<rosparam file="$(find so3_control)/config/gains.yaml"/>-->
       <rosparam file="$(find mrsl_quadrotor_launch)/config/gains.yaml"/>
       <param name="mass" value="0.5"/>
       <remap from="~odom" to="$(arg odom)"/>

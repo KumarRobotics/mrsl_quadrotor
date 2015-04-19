@@ -1,13 +1,12 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
   <world name="world">
-    <!--
     <include>
       <uri>model://ground_plane</uri>
     </include>
--->
 
 
+    <!--
     <model name="ground_plane">
       <static>true</static>
       <link name="link">
@@ -36,13 +35,14 @@
         </visual>
       </link>
     </model>
+  -->
 
 
     <model name="levine">
       <static>true</static>
       <link name="body">
         <visual name="visual">
-          <pose>-2.0 -15 0.0 0 0 0</pose>
+          <pose>-2.0 -15 0.01 0 0 0</pose>
           <geometry>
             <mesh><uri>model://levine/levine.dae</uri></mesh>
           </geometry>
