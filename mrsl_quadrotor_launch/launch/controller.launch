@@ -1,6 +1,7 @@
 <launch>
   <arg name="robot" default="juliett"/>
   <arg name="odom" default="ground_truth/odom"/>
+  <arg name="path" default="waypoints"/>
   <arg name="odom_frame" default="odom"/>
   <arg name="use_line_tracker" default="false"/>
   <arg name="robot_radius" default="0.3"/>
@@ -12,7 +13,7 @@
       name="trajectory_generator"
       args="standalone trajectory_generator/LineTracker"
       output="screen">
-      <remap from="~waypoints" to="waypoints"/>
+      <remap from="~waypoints" to="$(arg path)"/>
       <remap from="~position_cmd" to="position_cmd"/>
       <remap from="~odom" to="$(arg odom)"/>
       <remap from="~rc" to="output_data"/>
