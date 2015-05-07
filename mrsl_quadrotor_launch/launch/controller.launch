@@ -5,6 +5,7 @@
   <arg name="odom_frame" default="odom"/>
   <arg name="use_line_tracker" default="false"/>
   <arg name="robot_radius" default="0.3"/>
+  <arg name="track_yaw" default="false"/>
 
   <group ns="$(arg robot)">
     <node unless="$(arg use_line_tracker)"
@@ -26,7 +27,7 @@
       <param name="expand_z" value="true"/>
       <param name="expand_dim" value="1.0"/>
       <param name="rgbd_res" value="0.10"/>
-      <param name="track_yaw" value="false"/>
+      <param name="track_yaw" value="$(arg track_yaw)"/>
       <param name="auto_v" value="0.5"/>
       <param name="auto_w" value="0.3"/>
       <param name="robot_radius" value="$(arg robot_radius)"/>
