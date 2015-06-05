@@ -82,7 +82,7 @@
             </image>
             <clip>
               <near>0.1</near>
-              <far>9</far>
+              <far>6</far>
             </clip>
           </camera>
           <plugin name="${name}_camera_controller" filename="libgazebo_ros_openni_kinect.so">
