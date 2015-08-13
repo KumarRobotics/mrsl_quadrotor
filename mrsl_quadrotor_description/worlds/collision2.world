@@ -37,7 +37,7 @@
       <static>1</static>
       <link name='body'>
         <visual name='visual'>
-          <pose>0 -1 0.01 0.0 0 0.787</pose>
+          <pose>0 -1 0.01 0 -0 0.787</pose>
           <geometry>
             <mesh>
               <uri>model://collision2/collision2.dae</uri>
@@ -45,7 +45,7 @@
           </geometry>
         </visual>
         <collision name='collision'>
-          <pose>0 -1 -0.01 0.0 0 0.787</pose>
+          <pose>0 -1 -0.01 0 -0 0.787</pose>
           <geometry>
             <mesh>
               <uri>model://collision2/collision2.stl</uri>
@@ -122,9 +122,9 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='world'>
-      <sim_time>40 334000000</sim_time>
-      <real_time>40 422214603</real_time>
-      <wall_time>1432922733 837166452</wall_time>
+      <sim_time>105 728000000</sim_time>
+      <real_time>32 95915383</real_time>
+      <wall_time>1439242598 803328973</wall_time>
       <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
         <link name='link'>

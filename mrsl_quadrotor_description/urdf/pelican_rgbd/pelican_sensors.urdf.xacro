@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/asus_camera.urdf.xacro" />
+  <xacro:asus_camera name="camera_left" parent="base_link">
+    <origin xyz="0.0 0.1 0.2" rpy="${M_PI} 0 ${M_PI/2}"/>
+  </xacro:asus_camera>
+
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/asus_camera.urdf.xacro" />
+  <xacro:asus_camera name="camera_right" parent="base_link">
+    <origin xyz="0.1 0.0 0.2" rpy="${M_PI} 0 0"/>
+  </xacro:asus_camera>
+
+
+</robot>

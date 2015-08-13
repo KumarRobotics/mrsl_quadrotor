@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/hokuyo_utm30lx_with_cap.urdf.xacro" />
+  <!--<xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/hokuyo_utm30lx_with_cap.urdf.xacro" />-->
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/hokuyo_utm30lx.urdf.xacro" />
   <xacro:hokuyo_utm30lx name="laser" parent="base_link" ros_topic="laser/scan" update_rate="40" ray_count="1081" min_angle="-135" max_angle="135">
-    <origin xyz="0.0 0.0 0.09" rpy="0 0 ${M_PI/4}"/>
+    <origin xyz="0.0 0.0 0.2" rpy="0 0 ${M_PI/4}"/>
   </xacro:hokuyo_utm30lx>
 
+  <!--
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/asus_camera.urdf.xacro" />
   <xacro:asus_camera name="camera" parent="base_link">
-    <origin xyz="-0.00 0.030 0.145" rpy="${M_PI} 0 ${M_PI/4}"/>
+    <origin xyz="0.0 0.0 0.145" rpy="${M_PI} 0 ${M_PI/4}"/>
   </xacro:asus_camera>
-
+-->
 </robot>
