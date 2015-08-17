@@ -6,10 +6,12 @@
   <xacro:property name="ixx" value="0.00264" />
   <xacro:property name="iyy" value="0.00264" />
   <xacro:property name="izz" value="0.00496" />
+
   <!-- Main quadrotor link -->
   <xacro:macro name="quadrotor_base_macro">
     <link name="base_link">
       <inertial>
+        <!--mass value="1.477" /-->
         <mass value="${mass}"/>
         <origin xyz="0 0 0" />
         <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
@@ -18,24 +20,26 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://mrsl_models/models/pelican/pelican.dae"/>
+          <mesh filename="package://mrsl_models/models/hummingbird/hummingbird.dae"/>
         </geometry>
       </visual>
+
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0.7854" />
         <geometry>
-          <mesh filename="package://mrsl_models/models/pelican/pelican.stl"/>
+          <!--mesh filename="package://mrsl_models/models/hummingbird/hummingbird.stl"/-->
+          <box size="0.3 0.3 0.2" />
         </geometry>
       </collision>
     </link>
 
-
     <!-- Plugins -->
     <gazebo>
+
       <!-- Quad Dynamics Plugin -->
-      <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
+      <plugin name="test" filename="libmrsl_quadrotor_propulsion.so">
         <command_topic>so3_cmd</command_topic>
-        <odom_topic>ground_truth/odom</odom_topic>
+        <!--<odom_topic>ground_truth/odom</odom_topic>-->
       </plugin>
 
       <!-- Quad Ground Truth Plugin -->
@@ -52,8 +56,8 @@
         <updateRate>100.0</updateRate>
         <bodyName>base_link</bodyName>
         <topicName>raw_imu</topicName>
-        <rpyOffsets>0 0 0</rpyOffsets> 
-        <gaussianNoise>0</gaussianNoise> 
+        <rpyOffsets>0 0 0</rpyOffsets> <!-- deprecated -->
+        <gaussianNoise>0</gaussianNoise>  <!-- deprecated -->
         <accelDrift>0.5 0.5 0.5</accelDrift>
         <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
         <rateDrift>0.1 0.1 0.1</rateDrift>
@@ -62,6 +66,7 @@
         <headingGaussianNoise>0.05</headingGaussianNoise>
       </plugin>
     </gazebo>
+
   </xacro:macro>
 
   <xacro:quadrotor_base_macro/>
