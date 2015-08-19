@@ -5,7 +5,6 @@
       <uri>model://ground_plane</uri>
     </include>
 
-
     <model name="skir">
       <static>true</static>
       <link name="body">

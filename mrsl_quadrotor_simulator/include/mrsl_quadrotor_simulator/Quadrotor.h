@@ -12,9 +12,10 @@ namespace mrsl_quadrotor_simulator
    public:
     typedef Eigen::Array4d MotorState;
     typedef Eigen::Array4d Wrench;
+
     struct State
     {
-      Eigen::Matrix3d R;
+      Eigen::Vector3d ypr;
       Eigen::Vector3d omega;
       EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
     };

@@ -18,7 +18,7 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0.0"/>
         <geometry>
           <mesh filename="package://mrsl_models/models/hummingbird/hummingbird.dae"/>
         </geometry>

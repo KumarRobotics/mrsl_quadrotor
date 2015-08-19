@@ -73,7 +73,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>7.33181 -4.13507 23.4275 0 1.3618 1.54183</pose>
+        <pose>0.928491 -1.34395 6.651 0 1.3618 1.54183</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
@@ -122,9 +122,9 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='world'>
-      <sim_time>1207 710000000</sim_time>
-      <real_time>27 478784772</real_time>
-      <wall_time>1439852664 547311350</wall_time>
+      <sim_time>1305 295000000</sim_time>
+      <real_time>97 875711044</real_time>
+      <wall_time>1439945645 908920497</wall_time>
       <model name='bookshelf'>
         <pose>5 0.499709 0 0 -0 0</pose>
         <link name='link'>
@@ -179,157 +179,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='juliett'>
-        <pose>-2.2e-05 -0.000124 0.099994 2.7e-05 -2.7e-05 -0.786525</pose>
-        <link name='base_link'>
-          <pose>-2.2e-05 -0.000124 0.099994 2.7e-05 -2.7e-05 -0.786525</pose>
-          <velocity>-0.007115 7e-06 -0.001923 -0.00011 -0.071149 1.4e-05</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
     </state>
-    <model name='juliett'>
-      <link name='base_link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <inertial>
-          <pose>3.99999e-08 3.99999e-08 3.19999e-07 0 -0 0</pose>
-          <mass>0.500001</mass>
-          <inertia>
-            <ixx>0.00294586</ixx>
-            <ixy>0.000274998</ixy>
-            <ixz>-3.19999e-09</ixz>
-            <iyy>0.00294586</iyy>
-            <iyz>-3.19999e-09</iyz>
-            <izz>0.00555083</izz>
-          </inertia>
-        </inertial>
-        <collision name='base_link_collision'>
-          <pose>0 0 0 0 -0 0.7854</pose>
-          <geometry>
-            <box>
-              <size>0.3 0.3 0.2</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <bounce/>
-            <friction>
-              <ode/>
-            </friction>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
-        <collision name='base_link_collision_camera_link'>
-          <pose>0.02 0.02 0.16 -3.14159 -0 0.785398</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/sikang/ros/catkin_ws/src/quadrotor_utils/mrsl_quadrotor/mrsl_models/models/sensors/asus_camera/asus_camera.stl</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <bounce/>
-            <friction>
-              <ode/>
-            </friction>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
-        <visual name='base_link_visual'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/sikang/ros/catkin_ws/src/quadrotor_utils/mrsl_quadrotor/mrsl_models/models/hummingbird/hummingbird.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <visual name='base_link_visual_camera_link'>
-          <pose>0.02 0.02 0.16 -3.14159 -0 0.785398</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/sikang/ros/catkin_ws/src/quadrotor_utils/mrsl_quadrotor/mrsl_models/models/sensors/asus_camera/asus_camera.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <gravity>1</gravity>
-        <velocity_decay>
-          <linear>0</linear>
-          <angular>0</angular>
-        </velocity_decay>
-        <self_collide>0</self_collide>
-        <sensor name='camera' type='depth'>
-          <update_rate>15</update_rate>
-          <camera name='__default__'>
-            <horizontal_fov>1.5708</horizontal_fov>
-            <image>
-              <format>R8G8B8</format>
-              <width>752</width>
-              <height>480</height>
-            </image>
-            <clip>
-              <near>0.1</near>
-              <far>6</far>
-            </clip>
-          </camera>
-          <plugin name='camera_camera_controller' filename='libgazebo_ros_openni_kinect.so'>
-            <alwaysOn>true</alwaysOn>
-            <updateRate>15</updateRate>
-            <imageTopicName>camera/rgb/image_raw</imageTopicName>
-            <cameraInfoTopicName>camera/rgb/camera_info</cameraInfoTopicName>
-            <depthImageTopicName>camera/depth/image_raw</depthImageTopicName>
-            <depthImageCameraInfoTopicName>camera/depth/camera_info</depthImageCameraInfoTopicName>
-            <pointCloudTopicName>camera/depth/points</pointCloudTopicName>
-            <frameName>camera_depth_optical_frame</frameName>
-            <distortion_k1>0.0</distortion_k1>
-            <distortion_k2>0.0</distortion_k2>
-            <distortion_k3>0.0</distortion_k3>
-            <distortion_t1>0.0</distortion_t1>
-            <distortion_t2>0.0</distortion_t2>
-            <pointCloudCutoff>0.1</pointCloudCutoff>
-            <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
-            <robotNamespace>/juliett/</robotNamespace>
-          </plugin>
-          <pose>0.0546482 -0.0146482 0.16 -3.14159 -0 0.785398</pose>
-        </sensor>
-        <kinematic>0</kinematic>
-      </link>
-      <static>0</static>
-      <plugin name='test' filename='libmrsl_quadrotor_propulsion.so'>
-        <command_topic>so3_cmd</command_topic>
-        <robotNamespace>/juliett/</robotNamespace>
-      </plugin>
-      <plugin name='quadrotor_groundtruth_sim' filename='libgazebo_ros_p3d.so'>
-        <updateRate>100.0</updateRate>
-        <bodyName>base_link</bodyName>
-        <topicName>ground_truth/odom</topicName>
-        <gaussianNoise>0.0</gaussianNoise>
-        <frameName>world</frameName>
-        <robotNamespace>/juliett/</robotNamespace>
-      </plugin>
-      <plugin name='quadrotor_imu_sim' filename='libhector_gazebo_ros_imu.so'>
-        <updateRate>100.0</updateRate>
-        <bodyName>base_link</bodyName>
-        <topicName>raw_imu</topicName>
-        <rpyOffsets>0 0 0</rpyOffsets>
-        <gaussianNoise>0</gaussianNoise>
-        <accelDrift>0.5 0.5 0.5</accelDrift>
-        <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
-        <rateDrift>0.1 0.1 0.1</rateDrift>
-        <rateGaussianNoise>0.05 0.05 0.015</rateGaussianNoise>
-        <headingDrift>0.1</headingDrift>
-        <headingGaussianNoise>0.05</headingGaussianNoise>
-        <robotNamespace>/juliett/</robotNamespace>
-      </plugin>
-      <pose>0 0 0.1 0 0 -0.787</pose>
-    </model>
     <model name='cabinet'>
       <static>1</static>
       <link name='cabinet_bottom_plate'>

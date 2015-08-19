@@ -92,21 +92,19 @@ namespace mrsl_quadrotor_simulator
 
       callback_queue_.callAvailable();
 
-      gazebo::math::Pose pose = link->GetWorldPose();
-      gazebo::math::Matrix3 R = pose.rot.GetAsMatrix3();
-      gazebo::math::Vector3 angular_velocity = link->GetRelativeAngularVel();
-
       Quadrotor::State quad_state;
+      gazebo::math::Pose pose = link->GetWorldPose();
+      gazebo::math::Vector3 angular_velocity = link->GetRelativeAngularVel();
       quad_state.omega(0) = angular_velocity.x;
       quad_state.omega(1) = angular_velocity.y;
       quad_state.omega(2) = angular_velocity.z;
-      for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-          quad_state.R(i, j) = R[i][j];
+      quad_state.ypr(0) = pose.rot.GetYaw();
+      quad_state.ypr(1) = pose.rot.GetPitch();
+      quad_state.ypr(2) = pose.rot.GetRoll();
+
 
       Quadrotor::MotorState des_rpm = quad_attitude_control.getControl(quad_state);
       Quadrotor::Wrench wrench = quad.update(des_rpm, dt);
-
 
       link->AddRelativeForce(gazebo::math::Vector3(0, 0, wrench(0)));
 

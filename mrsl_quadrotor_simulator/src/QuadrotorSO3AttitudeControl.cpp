@@ -9,79 +9,70 @@ namespace mrsl_quadrotor_simulator
       for(int j = 0; j < 3; j++)
         I_[i][j] = I[i][j];
     arm_length_ = quad.getArmLength();
-
-    cmd.force[0] = 0;                                                     
-    cmd.force[1] = 0;                                                      
-    cmd.force[2] = 0;                                                      
-    cmd.qw = 1.0;                                                      
-    cmd.qx = 0.0;                                                      
-    cmd.qy = 0.0;                                                      
-    cmd.qz = 0.0;                                                      
-    cmd.angvel_x = 0.0;                                           
-    cmd.angvel_y = 0.0;                                           
-    cmd.angvel_z = 0.0;                                           
-    cmd.kR[0] = 0.0;                                                           
-    cmd.kR[1] = 0.0;                                                           
-    cmd.kR[2] = 0.0;                                                           
-    cmd.kOm[0] = 0.0;                                                         
-    cmd.kOm[1] = 0.0;                                                         
-    cmd.kOm[2] = 0.0;                                                         
-    cmd.kf_correction = 0;                                       
-  }
+ }
 
 
   void QuadrotorSO3AttitudeControl::cmdCallback(const QuadrotorSO3AttitudeControl::CmdMsg::ConstPtr &msg)
   {
-    cmd.force[0] = msg->force.x;                                                      
-    cmd.force[1] = msg->force.y;                                                      
-    cmd.force[2] = msg->force.z;                                                      
-    cmd.qw = msg->orientation.w;                                                      
-    cmd.qx = msg->orientation.x;                                                      
-    cmd.qy = msg->orientation.y;                                                      
-    cmd.qz = msg->orientation.z;                                                      
-    cmd.angvel_x = msg->angular_velocity.x;                                           
-    cmd.angvel_y = msg->angular_velocity.y;                                           
-    cmd.angvel_z = msg->angular_velocity.z;                                           
-    cmd.kR[0] = msg->kR[0];                                                           
-    cmd.kR[1] = msg->kR[1];                                                           
-    cmd.kR[2] = msg->kR[2];                                                           
-    cmd.kOm[0] = msg->kOm[0];                                                         
-    cmd.kOm[1] = msg->kOm[1];                                                         
-    cmd.kOm[2] = msg->kOm[2];                                                         
-    cmd.kf_correction = msg->aux.kf_correction;                                       
+    cmd = *msg;
   }
 
   Quadrotor::MotorState QuadrotorSO3AttitudeControl::getControl(const Quadrotor::State &state)
   {
-    const float kf = kf_ - cmd.kf_correction;
+    Quadrotor::MotorState control;
+    if(!cmd)
+      return control;
+
+    const float kf = kf_ - cmd->aux.kf_correction;
     const float km = km_ / kf_ * kf;
-    const float R11 = state.R(0,0);
-    const float R12 = state.R(0,1);
-    const float R13 = state.R(0,2);
-    const float R21 = state.R(1,0);
-    const float R22 = state.R(1,1);
-    const float R23 = state.R(1,2);
-    const float R31 = state.R(2,0);
-    const float R32 = state.R(2,1);
-    const float R33 = state.R(2,2);
+
+    double yaw;
+    if(cmd->aux.use_external_yaw)
+      yaw = cmd->aux.current_yaw;
+    else
+      yaw = state.ypr(0);
+    Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitZ());
+    Eigen::AngleAxisd pitchAngle(state.ypr(1), Eigen::Vector3d::UnitY());
+    Eigen::AngleAxisd rollAngle(state.ypr(2), Eigen::Vector3d::UnitX());
+
+    Eigen::Quaterniond q = yawAngle * pitchAngle * rollAngle;
+    Eigen::Matrix3d R(q);
+
+    const float R11 = R(0,0);
+    const float R12 = R(0,1);
+    const float R13 = R(0,2);
+    const float R21 = R(1,0);
+    const float R22 = R(1,1);
+    const float R23 = R(1,2);
+    const float R31 = R(2,0);
+    const float R32 = R(2,1);
+    const float R33 = R(2,2);
 
     const float Om1 = state.omega(0);
     const float Om2 = state.omega(1);
     const float Om3 = state.omega(2);
 
-    const float Rd11 = cmd.qw*cmd.qw + cmd.qx*cmd.qx - cmd.qy*cmd.qy - cmd.qz*cmd.qz;
-    const float Rd12 = 2*(cmd.qx*cmd.qy - cmd.qw*cmd.qz);
-    const float Rd13 = 2*(cmd.qx*cmd.qz + cmd.qw*cmd.qy);
-    const float Rd21 = 2*(cmd.qx*cmd.qy + cmd.qw*cmd.qz);
-    const float Rd22 = cmd.qw*cmd.qw - cmd.qx*cmd.qx + cmd.qy*cmd.qy - cmd.qz*cmd.qz;
-    const float Rd23 = 2*(cmd.qy*cmd.qz - cmd.qw*cmd.qx);
-    const float Rd31 = 2*(cmd.qx*cmd.qz - cmd.qw*cmd.qy);
-    const float Rd32 = 2*(cmd.qy*cmd.qz + cmd.qw*cmd.qx);
-    const float Rd33 = cmd.qw*cmd.qw - cmd.qx*cmd.qx - cmd.qy*cmd.qy + cmd.qz*cmd.qz;
+    Eigen::Quaterniond q_des(cmd->orientation.w,
+                             cmd->orientation.x,
+                             cmd->orientation.y,
+                             cmd->orientation.z);
 
-    const float des_angvel_x = cmd.angvel_x;
-    const float des_angvel_y = cmd.angvel_y;
-    const float des_angvel_z = cmd.angvel_z;
+    Eigen::Matrix3d Rd(q_des);
+
+    const float Rd11 = Rd(0,0);
+    const float Rd12 = Rd(0,1);
+    const float Rd13 = Rd(0,2);
+    const float Rd21 = Rd(1,0);
+    const float Rd22 = Rd(1,1);
+    const float Rd23 = Rd(1,2);
+    const float Rd31 = Rd(2,0);
+    const float Rd32 = Rd(2,1);
+    const float Rd33 = Rd(2,2);
+
+   
+    const float des_angvel_x = cmd->angular_velocity.x;
+    const float des_angvel_y = cmd->angular_velocity.y;
+    const float des_angvel_z = cmd->angular_velocity.z;
 
 
     float Psi = 0.5f*(3.0f - (Rd11*R11 + Rd21*R21 + Rd31*R31 +
@@ -90,7 +81,7 @@ namespace mrsl_quadrotor_simulator
 
     float force = 0;
     if(Psi < 1.0f) // Position control stability guaranteed only when Psi < 1
-      force = cmd.force[0]*R13 + cmd.force[1]*R23 + cmd.force[2]*R33;
+      force = cmd->force.x * R13 + cmd->force.y * R23 + cmd->force.z * R33;
 
     float eR1 = 0.5f*(R12*Rd13 - R13*Rd12 + R22*Rd23 - R23*Rd22 + R32*Rd33 - R33*Rd32);
     float eR2 = 0.5f*(R13*Rd11 - R11*Rd13 - R21*Rd23 + R23*Rd21 - R31*Rd33 + R33*Rd31);
@@ -111,9 +102,9 @@ namespace mrsl_quadrotor_simulator
     float in2 = Om3*(I_[0][0]*Om1 + I_[0][1]*Om2 + I_[0][2]*Om3) - Om1*(I_[2][0]*Om1 + I_[2][1]*Om2 + I_[2][2]*Om3);
     float in3 = Om1*(I_[1][0]*Om1 + I_[1][1]*Om2 + I_[1][2]*Om3) - Om2*(I_[0][0]*Om1 + I_[0][1]*Om2 + I_[0][2]*Om3);
 
-    float M1 = -cmd.kR[0]*eR1 - cmd.kOm[0]*eOm1 + in1;
-    float M2 = -cmd.kR[1]*eR2 - cmd.kOm[1]*eOm2 + in2;
-    float M3 = -cmd.kR[2]*eR3 - cmd.kOm[2]*eOm3 + in3;
+    float M1 = -cmd->kR[0]*eR1 - cmd->kOm[0]*eOm1 + in1;
+    float M2 = -cmd->kR[1]*eR2 - cmd->kOm[1]*eOm2 + in2;
+    float M3 = -cmd->kR[2]*eR3 - cmd->kOm[2]*eOm3 + in3;
 
     float w_sq[4];
     w_sq[0] = force/(4*kf) - M2/(2*arm_length_*kf) + M3/(4*km);
@@ -121,7 +112,6 @@ namespace mrsl_quadrotor_simulator
     w_sq[2] = force/(4*kf) + M1/(2*arm_length_*kf) - M3/(4*km);
     w_sq[3] = force/(4*kf) - M1/(2*arm_length_*kf) - M3/(4*km);
 
-    Quadrotor::MotorState control;
     for(int i = 0; i < 4; i++)
     {
       if(w_sq[i] < 0)
