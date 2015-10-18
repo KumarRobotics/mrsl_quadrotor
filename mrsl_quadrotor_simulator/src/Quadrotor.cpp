@@ -17,7 +17,7 @@ namespace mrsl_quadrotor_simulator
     arm_length_ = 0.17;
     motor_time_constant_ = 1.0/20;
     min_rpm_ = 1500;
-    max_rpm_ = 7500;
+    max_rpm_ = 75000;
 
     curr_motor_rpm_ = Quadrotor::MotorState::Zero();
   }

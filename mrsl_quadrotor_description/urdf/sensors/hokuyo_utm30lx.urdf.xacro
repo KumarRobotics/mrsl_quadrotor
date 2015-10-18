@@ -65,7 +65,7 @@
             <alwaysOn>true</alwaysOn>
             <updateRate>${update_rate}</updateRate>
             <topicName>${ros_topic}</topicName>
-            <frameName>${name}_frame</frameName>
+            <frameName>${name}</frameName>
           </plugin>
         </sensor>
       </gazebo>

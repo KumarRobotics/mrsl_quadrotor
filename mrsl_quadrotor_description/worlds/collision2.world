@@ -3,7 +3,7 @@
     <model name='ground_plane'>
       <static>1</static>
       <link name='link'>
-        <collision name='collision'>
+        <collision name='collision_0'>
           <geometry>
             <plane>
               <normal>0 0 1</normal>
@@ -33,22 +33,22 @@
         <gravity>1</gravity>
       </link>
     </model>
-    <model name='levine'>
+    <model name='collision2'>
       <static>1</static>
       <link name='body'>
         <visual name='visual'>
-          <pose>0 -1 0.01 0 -0 0.787</pose>
+          <pose>0 -5 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
               <uri>model://collision2/collision2.dae</uri>
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision'>
-          <pose>0 -1 -0.01 0 -0 0.787</pose>
+        <collision name='collision2'>
+          <pose>0 -5 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://collision2/collision2.stl</uri>
+              <uri>model://collision2/collision2.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -73,7 +73,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-1.75196 0.005379 11.1882 -2.20134e-18 1.1658 -0.009974</pose>
+        <pose>16.2304 -9.6854 43.0747 0 1.3618 1.54183</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
@@ -122,21 +122,21 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='world'>
-      <sim_time>105 728000000</sim_time>
-      <real_time>32 95915383</real_time>
-      <wall_time>1439242598 803328973</wall_time>
-      <model name='ground_plane'>
+      <sim_time>1356 614000000</sim_time>
+      <real_time>51 439287892</real_time>
+      <wall_time>1442277478 18222350</wall_time>
+      <model name='collision2'>
         <pose>0 0 0 0 -0 0</pose>
-        <link name='link'>
+        <link name='body'>
           <pose>0 0 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='levine'>
+      <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
-        <link name='body'>
+        <link name='link'>
           <pose>0 0 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>

@@ -22,6 +22,8 @@ class TFListener
       transformStamped = tfBuffer.lookupTransform(ref_frame, frame, t, ros::Duration(0.1));
     }
     catch (tf2::TransformException &ex){
+      ROS_WARN_THROTTLE(1, "Fail to find transform from [%s] to [%s]",
+                        ref_frame.c_str(), frame.c_str());
       return false;
     }
 
