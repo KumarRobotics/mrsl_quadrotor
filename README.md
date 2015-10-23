@@ -7,21 +7,26 @@ General Requirements
  - `gazebo` (2.2)
  - `gazebo_ros` (2.2)
 
-For control robot
- - `so3_control`
- - `quadrotor_msgs`
+Robot types list
+ - `hummingbird`
+ - `hummingbird_rgbd`
+ - `pelican_laser_rgbd`
+ - `pelican_state_farm`
 
-For planning and mapping
-- `omnimapper_upenn`
+World models list
+- `empty`
+- `levine`
+- `skir`
+- `house`
+- `jungle*`
+- `corridor_*`
+- `collision*`
  
 ### mrsl_quadrotor_launch
 the package for launch demo
 ```           
 $cd ./launch
-$roslaunch gazebo.launch
-$roslaunch spawn.launch
+$roslaunch gazebo.launch world:=levine
+$roslaunch spawn.launch robot_type:=pelican_laser_rgbd
 ```
  
-### Todo's    
- - add Aerodynamics model
-
