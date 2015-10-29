@@ -9,6 +9,6 @@
 
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/asus_camera.urdf.xacro" />
   <xacro:asus_camera name="camera" parent="base_link">
-    <origin xyz="0.1 0.1 0.0" rpy="${M_PI} 0 ${M_PI/4}"/>
+    <origin xyz="0.11 0.11 0.0" rpy="${M_PI} 0 ${M_PI/4}"/>
   </xacro:asus_camera>
 </robot>

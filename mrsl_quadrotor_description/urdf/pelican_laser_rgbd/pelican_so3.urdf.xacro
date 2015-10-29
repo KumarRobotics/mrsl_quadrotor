@@ -18,7 +18,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://mrsl_models/models/pelican/pelican.dae"/>
+          <mesh filename="package://mrsl_models/models/pelican/pelican_without_frame.dae"/>
         </geometry>
       </visual>
       <collision>
