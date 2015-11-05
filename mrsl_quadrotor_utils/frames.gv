@@ -1,7 +1,0 @@
-digraph G {
-"qualisys" -> "juliett"[label="Broadcaster: /qualisys\nAverage rate: 100.184 Hz\nMost recent transform: 1440722760.349 ( 0.003 sec old)\nBuffer length: 4.991 sec\n"];
-edge [style=invis];
- subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1440722760.352"[ shape=plaintext ] ;
- }->"qualisys";
-}
