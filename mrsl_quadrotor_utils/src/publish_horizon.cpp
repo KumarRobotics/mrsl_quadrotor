@@ -6,7 +6,6 @@
 #include <mrsl_quadrotor_utils/general_util.h>
 
 std::string horizon_frame_;
-double shift_z_;
 double shift_yaw_;
 
 void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
@@ -19,10 +18,13 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
   transformStamped.transform.translation.x = msg->pose.pose.position.x;
   transformStamped.transform.translation.y = msg->pose.pose.position.y;
   transformStamped.transform.translation.z = msg->pose.pose.position.z;
+
+  double yaw = tf::getYaw(msg->pose.pose.orientation) + shift_yaw_;
+
+  transformStamped.transform.rotation.w = cos(yaw / 2);
   transformStamped.transform.rotation.x = 0.0;
   transformStamped.transform.rotation.y = 0.0;
-  transformStamped.transform.rotation.z = 0.0;
-  transformStamped.transform.rotation.w = 1.0;
+  transformStamped.transform.rotation.z = sin(yaw / 2);
 
   tf_pub.sendTransform(transformStamped);   
   ROS_WARN_ONCE("publish tf from [%s] to [%s]",
@@ -35,9 +37,8 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "publish_horizon");
   ros::NodeHandle nh("~");
-  nh.param("shift_z", shift_z_, 0.0);
-  nh.param("shift_yaw", shift_yaw_, 0.0);
   nh.param("horizon_frame", horizon_frame_, std::string(""));
+  nh.param("shift_yaw", shift_yaw_, 0.0);
   ros::Subscriber sub = nh.subscribe("odom", 10, odomCallback);
 
   ros::spin();
