@@ -17,10 +17,7 @@ World models list
 - `empty`
 - `levine`
 - `skir`
-- `house`
-- `jungle*`
-- `corridor_*`
-- `collision*`
+- `corridor`
  
 ### mrsl_quadrotor_launch
 the package for launch demo

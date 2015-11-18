@@ -37,18 +37,18 @@
       <static>1</static>
       <link name='body'>
         <visual name='visual'>
-          <pose>0 -2.5 -0.01 0 -0 0</pose>
+          <pose>0 -5 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
               <uri>model://corridor/corridor.dae</uri>
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision'>
-          <pose>0 -2.5 -0.01 0 -0 0</pose>
+        <collision name='corridor'>
+          <pose>0 -5 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://corridor/corridor.stl</uri>
+              <uri>model://corridor/corridor.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -73,13 +73,13 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>7.70154 0.389991 27.691 -3e-05 1.5698 1.574</pose>
+        <pose>20.7846 -10.4135 44.9584 0 1.2978 1.56583</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    <light name='sun_direct' type='directional'>
+    <light name='sun1' type='directional'>
       <cast_shadows>1</cast_shadows>
-      <pose>0 0 10 0 -0 0</pose>
+      <pose>1 0 3 0 -0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
@@ -90,18 +90,18 @@
       </attenuation>
       <direction>-0 0 -1</direction>
     </light>
-    <light name='sun_left' type='directional'>
+    <light name='sun2' type='point'>
       <cast_shadows>1</cast_shadows>
-      <pose>10 0 10 0 -0 0</pose>
+      <pose>20 0 5 0 -0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
-        <range>20</range>
+        <range>100</range>
         <constant>0.9</constant>
         <linear>0.01</linear>
         <quadratic>0.001</quadratic>
       </attenuation>
-      <direction>-1 0 -1</direction>
+      <direction>-0 0 -1</direction>
     </light>
     <physics type='ode'>
       <max_step_size>0.001</max_step_size>
@@ -122,9 +122,9 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='world'>
-      <sim_time>83 747000000</sim_time>
-      <real_time>35 697610342</real_time>
-      <wall_time>1446069906 477609993</wall_time>
+      <sim_time>1598 348000000</sim_time>
+      <real_time>133 532436494</real_time>
+      <wall_time>1447884550 574810860</wall_time>
       <model name='corridor'>
         <pose>0 0 0 0 -0 0</pose>
         <link name='body'>
