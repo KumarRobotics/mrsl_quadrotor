@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<robot name="mobile_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="pi" value="3.1415926535897931" />
+  <xacro:property name="h" value="3" />
+  <xacro:property name="mass" value="0.0001" />
+  <xacro:property name="ixx" value="0.0001" />
+  <xacro:property name="iyy" value="0.0001" />
+  <xacro:property name="izz" value="0.0001" />
+  <xacro:macro name="object_base_macro">
+    <link name="base_link">
+      <inertial>
+        <!--mass value="1.477" /-->
+        <mass value="${mass}"/>
+        <origin xyz="0 0 0" />
+        <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
+      </inertial>
+
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${h}" radius="0.2"/>
+        </geometry>
+        <material name="red">
+          <color rgba="0.9 0.9 0 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${h}" radius="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Plugins -->
+    <gazebo>
+      <!-- Quad Dynamics Plugin -->
+      <plugin name="test" filename="libmrsl_mobile_object.so">
+        <vy>1.0</vy>
+    </plugin>
+   </gazebo>
+
+  </xacro:macro>
+  <xacro:object_base_macro/>
+</robot>
+
