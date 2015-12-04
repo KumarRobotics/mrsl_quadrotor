@@ -11,19 +11,24 @@ Robot types list
  - `hummingbird`
  - `hummingbird_rgbd`
  - `pelican_laser_rgbd`
- - `pelican_state_farm`
+
+Mobile object list
+ - `mobile object`
+
+Sensor list
+ - `rgbd`
+ - `laser scanner`
 
 World models list
 - `empty`
 - `levine`
 - `skir`
 - `corridor`
- 
 ### mrsl_quadrotor_launch
 the package for launch demo
 ```           
 $cd ./launch
-$roslaunch gazebo.launch world:=levine
+$roslaunch gazebo.launch world:=corridor
 $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
 ```
  
