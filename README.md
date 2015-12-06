@@ -24,6 +24,8 @@ World models list
 - `levine`
 - `skir`
 - `corridor`
+- `warehouse`
+
 ### mrsl_quadrotor_launch
 the package for launch demo
 ```           
@@ -32,3 +34,10 @@ $roslaunch gazebo.launch world:=corridor
 $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
 ```
  
+### Samples
+- `hummingbird`
+- `hummingbird_rgbd`
+- `pelican_laser_rgbd`
+- `levine`
+- `corridor`
+- `warehouse`
