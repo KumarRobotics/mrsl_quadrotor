@@ -9,7 +9,7 @@ General Requirements
 
 ### List
   Robot Type         | Mobile object | Sensor | World    
-  ----------------- | ------------ | ----- | -------- 
+  :----------------- | :------------ | :----- | :------
   hummingbird        | mobile object | rgbd   | empty    
   hummingbird_rgbd   |               | laser  | levine   
   pelican_laser_rgbd |               |        | corridor 
@@ -24,12 +24,12 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
 ```
  
 ### Samples
-| hummingbird | hummingbird_rgbd | pelican_laser_rgbd |
-| :---------- | : -------------- | :----------------- |
-| ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
-| ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
-| ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
-|
+ hummingbird | hummingbird_rgbd | pelican_laser_rgbd 
+ :---------- | : -------------- | :----------------- 
+ ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)|
+ ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)|
+ ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
+
 - `levine`
 - `corridor`
 - `warehouse`
