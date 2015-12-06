@@ -7,24 +7,13 @@ General Requirements
  - `gazebo` (2.2)
  - `gazebo_ros` (2.2)
 
-Robot types list
- - `hummingbird`
- - `hummingbird_rgbd`
- - `pelican_laser_rgbd`
-
-Mobile object list
- - `mobile object`
-
-Sensor list
- - `rgbd`
- - `laser scanner`
-
-World models list
-- `empty`
-- `levine`
-- `skir`
-- `corridor`
-- `warehouse`
+### List
+ | Robot Type         | Mobile object | Sensor | World     |
+ | :----------------- | :------------ | :----- | :-------- |
+ | hummingbird        | mobile object | rgbd   | empty     |
+ | hummingbird_rgbd   |               | laser  | levine    |
+ | pelican_laser_rgbd |               |        | corridor  |
+ |                    |               |        | warehouse |
 
 ### mrsl_quadrotor_launch
 the package for launch demo
@@ -35,9 +24,12 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
 ```
  
 ### Samples
-- `hummingbird`
-- `hummingbird_rgbd`
-- `pelican_laser_rgbd`
+| hummingbird | hummingbird_rgbd | pelican_laser_rgbd |
+| :---------- | : -------------- | :----------------- |
+| ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
+| ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
+| ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
+|
 - `levine`
 - `corridor`
 - `warehouse`
