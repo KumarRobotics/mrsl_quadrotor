@@ -8,12 +8,12 @@ General Requirements
  - `gazebo_ros` (2.2)
 
 ### List
-  Robot Type         | Mobile object | Sensor | World    
-  :----------------- | :------------ | :----- | :------
-  hummingbird        | mobile object | rgbd   | empty    
-  hummingbird_rgbd   |               | laser  | levine   
-  pelican_laser_rgbd |               |        | corridor 
-                     |               |        | warehouse
+  Robot Type           | Mobile object | Sensor | World    
+  :------------------- | :------------ | :----- | :------
+  hummingbird          | mobile object | rgbd   | empty    
+  hummingbird_rgbd     |               | laser  | levine   
+  pelican_laser_rgbd   |               | stereo | corridor 
+  pelican_laser_stereo |               |        | warehouse
 
 ### mrsl_quadrotor_launch
 the package for launch demo
@@ -25,7 +25,7 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
  
 ### Samples
   hummingbird | hummingbird_rgbd | pelican_laser_rgbd | mobile object
-  :---------- | :-------------- | :----------------- | :-----------
+  :---------- | :-------------- | :------------------ | :-----------
   <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
 
   levine | corridor | warehouse 
