@@ -24,9 +24,16 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
 ```
  
 ### Samples
-  hummingbird | hummingbird_rgbd | pelican_laser_rgbd 
+  Robot Type  |                 |                    | Mobile object
+  :---------- | :-------------- | :----------------- | :-----------
+  hummingbird | hummingbird_rgbd | pelican_laser_rgbd | mobile object
+  <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
+
+  World  |                 |                    
   :---------- | :-------------- | :----------------- 
-  <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96">
+  levine | corridor | warehouse 
+  <img src="./mrsl_models/samples/levine.jpg" width="128"> | <img src="./mrsl_models/samples/corridor.jpg" width="128"> | <img src="./mrsl_models/samples/warehouse.jpg" width="128">
+
 
 
 ### TODO
