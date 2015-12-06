@@ -10,26 +10,7 @@
               <size>100 100</size>
             </plane>
           </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
-              </ode>
-            </friction>
-            <bounce/>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-          <max_contacts>10</max_contacts>
         </collision>
-        <velocity_decay>
-          <linear>0</linear>
-          <angular>0</angular>
-        </velocity_decay>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
     </model>
@@ -37,7 +18,7 @@
       <static>1</static>
       <link name='body'>
         <visual name='visual'>
-          <pose>0 0 -0.001 0 -0 0</pose>
+          <pose>0 0 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
               <uri>model://warehouse/warehouse.dae</uri>
@@ -45,7 +26,7 @@
           </geometry>
         </visual>
         <collision name='warehouse'>
-          <pose>0 0 -0.001 0 -0 0</pose>
+          <pose>0 0 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
               <uri>model://warehouse/warehouse.dae</uri>
@@ -73,11 +54,12 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>20.7846 -10.4135 44.9584 0 1.2978 1.56583</pose>
+        <pose>19.9576 -13.3298 55.445 0 1.2978 1.56583</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    <light name='sun1' type='directional'>
+
+     <light name='sun1' type='directional'>
       <cast_shadows>1</cast_shadows>
       <pose>1 0 3 0 -0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
@@ -90,6 +72,8 @@
       </attenuation>
       <direction>-0 0 -1</direction>
     </light>
+ 
+
     <light name='sun2' type='point'>
       <cast_shadows>1</cast_shadows>
       <pose>20 0 5 0 -0 0</pose>
@@ -122,21 +106,21 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='world'>
-      <sim_time>1598 348000000</sim_time>
-      <real_time>133 532436494</real_time>
-      <wall_time>1447884550 574810860</wall_time>
-      <model name='warehouse'>
+      <sim_time>1812 386000000</sim_time>
+      <real_time>77 204344624</real_time>
+      <wall_time>1449383199 249030159</wall_time>
+      <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
-        <link name='body'>
+        <link name='link'>
           <pose>0 0 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='ground_plane'>
+      <model name='warehouse'>
         <pose>0 0 0 0 -0 0</pose>
-        <link name='link'>
+        <link name='body'>
           <pose>0 0 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>

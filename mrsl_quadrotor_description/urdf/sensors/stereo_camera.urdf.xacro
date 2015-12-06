@@ -7,8 +7,8 @@
   <xacro:property name="hfov" value="${M_PI/2}" />
   <xacro:property name="frame_id" value="camera" />
   <xacro:property name="focal_length" value="320" />
-  <xacro:property name="hack_baseline" value="0.11" />
-  <xacro:property name="frame_rate" value="25" />
+  <xacro:property name="hack_baseline" value="0.10" />
+  <xacro:property name="frame_rate" value="15" />
 
   <xacro:macro name="stereo_camera" params="name parent *origin">
     <joint name="${name}_joint" type="fixed">
@@ -44,7 +44,7 @@
             <format>${image_format}</format>
           </image>
           <clip>
-            <near>0.01</near>
+            <near>0.1</near>
             <far>20</far>
           </clip>
         </camera>
@@ -57,7 +57,7 @@
             <format>${image_format}</format>
           </image>
           <clip>
-            <near>0.01</near>
+            <near>0.1</near>
             <far>20</far>
           </clip>
         </camera>
@@ -65,7 +65,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>${frame_rate}</updateRate>
           <cameraName>${name}</cameraName>
-          <imageTopicName>image</imageTopicName>
+          <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>${frame_id}</frameName>
           <hackBaseline>${2 * hack_baseline}</hackBaseline>

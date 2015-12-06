@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <robot name="pelican" xmlns:xacro="http://ros.org/wiki/xacro">
-  <!--xacro:include filename="$(find mrsl_quadrotor_description)/urdf/pelican_rgbd/pelican_so3.urdf.xacro" /-->
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/hummingbird_rgbd/hummingbird_so3.urdf.xacro" />
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/hummingbird_rgbd/hummingbird_sensors.urdf.xacro"/>
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/hummingbird/hummingbird_so3.urdf.xacro" />
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/hummingbird_rgbd/sensors.urdf.xacro"/>
 </robot>
