@@ -25,12 +25,11 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
  
 ### Samples
   hummingbird | hummingbird_rgbd | pelican_laser_rgbd 
-  :---------- | : -------------- | :----------------- 
-  test1       |  test2           | test3
+  :---------- | :-------------- | :----------------- 
+  test1       |  test2           | ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
 
 
 ### TODO
 - `levine`
 - `corridor`
 - `warehouse`
- ![Visualization](https://github.com/sikang/mrsl_quadrotor/blob/master/mrsl_models/samples/corridor.jpg)
