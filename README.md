@@ -8,12 +8,12 @@ General Requirements
  - `gazebo_ros` (2.2)
 
 ### List
- | Robot Type         | Mobile object | Sensor | World     |
- | :----------------- | :------------ | :----- | :-------- |
- | hummingbird        | mobile object | rgbd   | empty     |
- | hummingbird_rgbd   |               | laser  | levine    |
- | pelican_laser_rgbd |               |        | corridor  |
- |                    |               |        | warehouse |
+  Robot Type         | Mobile object | Sensor | World    
+  ----------------- | ------------ | ----- | -------- 
+  hummingbird        | mobile object | rgbd   | empty    
+  hummingbird_rgbd   |               | laser  | levine   
+  pelican_laser_rgbd |               |        | corridor 
+                     |               |        | warehouse
 
 ### mrsl_quadrotor_launch
 the package for launch demo
