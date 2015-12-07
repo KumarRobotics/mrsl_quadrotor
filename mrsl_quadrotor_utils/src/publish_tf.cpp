@@ -8,7 +8,7 @@ void publishTF()
   Eigen::Affine3d sensor_to_body = Eigen::Translation3d(0, 0, 0) 
     *Eigen::AngleAxisd(-M_PI/2, Eigen::Vector3d::UnitX())             
     *Eigen::AngleAxisd(M_PI/4, Eigen::Vector3d::UnitY())              
-    *Eigen::AngleAxisd(M_PI, Eigen::Vector3d::UnitZ());
+    *Eigen::AngleAxisd(0, Eigen::Vector3d::UnitZ());
 
   tf::Pose tf_pose;                                                   
   tf::poseEigenToTF(sensor_to_body, tf_pose);

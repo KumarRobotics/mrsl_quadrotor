@@ -18,10 +18,6 @@ cs_add_executable(change_odom src/change_odom.cpp)
 cs_add_executable(msg_to_tf src/msg_to_tf.cpp)
 cs_add_executable(publish_tf src/publish_tf.cpp)
 cs_add_executable(publish_horizon src/publish_horizon.cpp)
-#cs_add_library(global_odom src/global_odom.cpp)
-#cs_add_executable(transform_odom src/transform_odom.cpp)
-#cs_add_executable(image_flip src/image_flip.cpp)
-#cs_add_executable(play_tf_static src/play_tf_static.cpp)
  
 cs_install()
  
