@@ -34,7 +34,8 @@
     <gazebo>
       <!-- Quad Dynamics Plugin -->
       <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
-        <command_topic>so3_cmd</command_topic>
+        <!--<command_topic>so3_cmd</command_topic>-->
+        <command_topic>safe_so3_cmd</command_topic>
         <odom_topic>ground_truth/odom</odom_topic>
       </plugin>
 

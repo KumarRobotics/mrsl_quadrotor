@@ -9,8 +9,7 @@ namespace mrsl_quadrotor_simulator
       for(int j = 0; j < 3; j++)
         I_[i][j] = I[i][j];
     arm_length_ = quad.getArmLength();
- }
-
+  }
 
   void QuadrotorSO3AttitudeControl::cmdCallback(const QuadrotorSO3AttitudeControl::CmdMsg::ConstPtr &msg)
   {
@@ -114,11 +113,19 @@ namespace mrsl_quadrotor_simulator
 
     for(int i = 0; i < 4; i++)
     {
-      if(w_sq[i] < 0)
-        w_sq[i] = 0;
+      if(cmd->aux.enable_motors)
+      {
+        if(w_sq[i] < 0)
+          w_sq[i] = 0;
 
-      control[i] = sqrtf(w_sq[i]);
+        control[i] = sqrtf(w_sq[i]);
+      }
+      else
+      {
+        control[i] = 0;
+      }
     }
+
     return control;
   }
 
