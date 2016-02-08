@@ -18,6 +18,7 @@ cs_add_executable(change_odom src/change_odom.cpp)
 cs_add_executable(msg_to_tf src/msg_to_tf.cpp)
 cs_add_executable(publish_tf src/publish_tf.cpp)
 cs_add_executable(publish_horizon src/publish_horizon.cpp)
+cs_add_executable(publish_rotate src/publish_rotate.cpp)
  
 cs_install()
  

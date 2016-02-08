@@ -14,7 +14,7 @@
       -x $(arg x)
       -y $(arg y)
       -z $(arg z)
-      -Y -0.7854
+      -Y -0.0
       -model $(arg robot)"
       respawn="false" output="screen"/>
   </group>

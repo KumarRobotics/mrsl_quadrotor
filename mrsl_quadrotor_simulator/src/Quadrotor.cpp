@@ -1,4 +1,5 @@
 #include <mrsl_quadrotor_simulator/Quadrotor.h>
+#include <ros/ros.h>
 
 namespace mrsl_quadrotor_simulator
 {
@@ -6,18 +7,20 @@ namespace mrsl_quadrotor_simulator
   {
     double Ixx = 2.64e-3, Iyy = 2.64e-3, Izz = 4.96e-3;
     prop_radius_ = 0.099;
+    //prop_radius_ = 0.99;
     J_ = Eigen::Vector3d(Ixx, Iyy, Izz).asDiagonal();
 
     kf_ = 5.55e-8;
-    //km_ = 2.5e-9; // from Nate
+    km_ = 2.5e-9; // from Nate
     // km = (Cq/Ct)*Dia*kf
     // Cq/Ct for 8 inch props from UIUC prop db ~ 0.07
-    km_ = 0.07 * ( 2 * prop_radius_) * kf_;
+    // km_ = 0.07 * ( 2 * prop_radius_) * kf_;
 
     arm_length_ = 0.17;
     motor_time_constant_ = 1.0/20;
-    min_rpm_ = 1500;
-    max_rpm_ = 75000;
+    min_rpm_ = 10;
+    //max_rpm_ = 7500;
+    max_rpm_ = 10000;
 
     curr_motor_rpm_ = Quadrotor::MotorState::Zero();
   }
@@ -31,9 +34,15 @@ namespace mrsl_quadrotor_simulator
     for(int i = 0; i < 4; i++)
     {
       if(des_motor_rpm(i) > max_rpm_)
+      {
+        ROS_WARN_THROTTLE(1, "Exceed max rpm!!!! rmp = %f", des_motor_rpm(i));
         des_motor_rpm(i) = max_rpm_;
+      }
       else if(des_motor_rpm(i) < min_rpm_)
+      {
+        ROS_WARN_THROTTLE(1, "Exceed min rpm!!!! rpm = %f", des_motor_rpm(i));
         des_motor_rpm(i) = min_rpm_;
+      }
     }
     Quadrotor::MotorState motor_rpm_dot = (des_motor_rpm - curr_motor_rpm_) / motor_time_constant_;
     curr_motor_rpm_ += dt * motor_rpm_dot;

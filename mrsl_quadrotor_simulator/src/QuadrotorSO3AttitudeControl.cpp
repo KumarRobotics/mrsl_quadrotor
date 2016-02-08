@@ -1,4 +1,5 @@
 #include <mrsl_quadrotor_simulator/QuadrotorSO3AttitudeControl.h>
+#include <stdio.h>
 namespace mrsl_quadrotor_simulator
 {
   void QuadrotorSO3AttitudeControl::init(const Quadrotor &quad, float I[][3])
@@ -34,8 +35,7 @@ namespace mrsl_quadrotor_simulator
     Eigen::AngleAxisd pitchAngle(state.ypr(1), Eigen::Vector3d::UnitY());
     Eigen::AngleAxisd rollAngle(state.ypr(2), Eigen::Vector3d::UnitX());
 
-    Eigen::Quaterniond q = yawAngle * pitchAngle * rollAngle;
-    Eigen::Matrix3d R(q);
+    const Eigen::Matrix3d R = yawAngle * pitchAngle * rollAngle;
 
     const float R11 = R(0,0);
     const float R12 = R(0,1);
@@ -113,11 +113,11 @@ namespace mrsl_quadrotor_simulator
 
     for(int i = 0; i < 4; i++)
     {
-      if(cmd->aux.enable_motors)
+      //if(cmd->aux.enable_motors)
+      if(1)
       {
         if(w_sq[i] < 0)
           w_sq[i] = 0;
-
         control[i] = sqrtf(w_sq[i]);
       }
       else

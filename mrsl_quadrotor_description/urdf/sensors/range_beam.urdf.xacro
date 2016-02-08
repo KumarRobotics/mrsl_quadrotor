@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <xacro:macro name="range_beam_model" params="name parent *origin">
+      <joint name="${name}_joint" type="fixed">
+        <xacro:insert_block name="origin" />
+        <parent link="${parent}"/>
+        <child link="${name}_frame"/>
+      </joint>
+
+      <link name="${name}_frame">
+        <inertial>
+          <mass value="0.000" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <inertia ixx="2.632e-4" ixy="0" ixz="0" iyy="2.632e-4" iyz="0" izz="1.62e-4" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0" />
+          <geometry>
+            <!--<box size="0.058 0.058 0.087" />-->
+            <cylinder radius="0.01" length="0.1"/>
+       </geometry>
+        </visual>
+     </link>
+    </xacro:macro>
+
+    <xacro:macro name="range_beam" params="name parent *origin ros_topic update_rate">
+      <xacro:range_beam_model name="${name}" parent="${parent}">
+        <xacro:insert_block name="origin" />
+      </xacro:range_beam_model>
+      <gazebo reference="${name}_frame">
+        <sensor type="ray" name="${name}">
+          <always_on>true</always_on>
+          <visualize>true</visualize>
+          <update_rate>${update_rate}</update_rate>
+          <pose>0 0 0 0 0 0</pose>
+          <visualize>false</visualize>
+          <ray>
+           <range>
+              <min>0.1</min>
+              <max>30.0</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name="gazebo_ros_${name}_controller" filename="libgazebo_ros_range.so">
+            <gaussianNoise>0.005</gaussianNoise>
+            <radiation>0.005</radiation>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>${update_rate}</updateRate>
+            <topicName>${ros_topic}</topicName>
+            <frameName>${name}</frameName>
+          </plugin>
+        </sensor>
+      </gazebo>
+    </xacro:macro>
+  
+</robot>
+  
