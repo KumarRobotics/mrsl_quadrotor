@@ -35,7 +35,8 @@ namespace mrsl_quadrotor_simulator
     Eigen::AngleAxisd pitchAngle(state.ypr(1), Eigen::Vector3d::UnitY());
     Eigen::AngleAxisd rollAngle(state.ypr(2), Eigen::Vector3d::UnitX());
 
-    const Eigen::Matrix3d R = yawAngle * pitchAngle * rollAngle;
+    const Eigen::Quaterniond q = yawAngle * pitchAngle * rollAngle;
+    const Eigen::Matrix3d R(q);
 
     const float R11 = R(0,0);
     const float R12 = R(0,1);
