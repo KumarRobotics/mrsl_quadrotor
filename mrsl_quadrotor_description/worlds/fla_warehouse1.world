@@ -21,15 +21,15 @@
           <pose>0 0 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://warehouse/warehouse.dae</uri>
+              <uri>model://fla_warehouse1/fla_warehouse1.dae</uri>
             </mesh>
           </geometry>
         </visual>
-        <collision name='warehouse'>
+        <collision name='fla_warehouse1'>
           <pose>0 0 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://warehouse/warehouse.dae</uri>
+              <uri>model://fla_warehouse1/fla_warehouse1.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>

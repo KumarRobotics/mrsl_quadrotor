@@ -6,9 +6,9 @@
   <xacro:macro name="hokuyo_utm30lx" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle">
     <link name="${name}_frame">
       <inertial>
-        <mass value="0.010" />
+        <mass value="0.001" />
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="2.632e-6" ixy="0" ixz="0" iyy="2.632e-6" iyz="0" izz="1.62e-6" />
+        <inertia ixx="2.632e-4" ixy="0" ixz="0" iyy="2.632e-4" iyz="0" izz="1.62e-4" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -32,7 +32,7 @@
         <always_on>true</always_on>
         <update_rate>${update_rate}</update_rate>
         <pose>0 0 0 0 0 0</pose>
-        <visualize>false</visualize>
+        <visualize>true</visualize>
         <ray>
           <scan>
             <horizontal>

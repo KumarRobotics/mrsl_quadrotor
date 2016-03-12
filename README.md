@@ -3,24 +3,25 @@ mrsl_quadrotor
 package of simulation for mrsl UAV
 ### Requirements
 General Requirements
- - `ros` (indigo)
- - `gazebo` (2.2)
- - `gazebo_ros` (2.2)
+ - `ros` (indigo+)
+ - `gazebo` (2.2+)
+ - `gazebo_ros` (2.2+)
 
 ### List
   Robot Type           | Mobile object | Sensor | World    
   :------------------- | :------------ | :----- | :------
   hummingbird          | mobile object | rgbd   | empty    
-  hummingbird_rgbd     |               | laser  | levine   
+  hummingbird_rgbd     | laser_rotate  | laser  | levine   
   pelican_laser_rgbd   |               | stereo | corridor 
-  pelican_laser_stereo |               |        | warehouse
+  pelican_laser_stereo |               |        | fla_warehouse1
+  pelican_laser_rotate |               |        | fla_warehouse2
 
 ### mrsl_quadrotor_launch
 the package for launch demo
 ```           
 $cd ./launch
-$roslaunch gazebo.launch world:=corridor
-$roslaunch spawn.launch robot_type:=pelican_laser_rgbd
+$roslaunch gazebo.launch world:=fla_warehouse2
+$roslaunch spawn.launch robot_type:=pelican_laser_rotate
 ```
  
 ### Samples
@@ -28,8 +29,8 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rgbd
   :---------- | :-------------- | :------------------ | :-----------
   <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
 
-  levine | corridor | warehouse 
+  levine | fla_warehouse1 | fla_warehouse2
   :---------- | :-------------- | :----------- 
-  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/corridor.jpg" width="256"> | <img src="./mrsl_models/samples/warehouse.jpg" width="256">
+  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/fla_warehouse1.jpg" width="256"> | <img src="./mrsl_models/samples/fla_warehouse2.jpg" width="256">
 
 

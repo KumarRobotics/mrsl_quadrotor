@@ -18,12 +18,14 @@ ros::Time ref_t;
 void linkCallback(const gazebo_msgs::LinkStates::ConstPtr& state){
   static tf2_ros::TransformBroadcaster tf_pub;                             
   geometry_msgs::Pose ref_pose, link_pose;
+  geometry_msgs::Twist ref_twist;
   bool has_ref = false;
   bool has_link = false;
   for(unsigned int i = 0; i < state->name.size(); i++){
     if(state->name[i] == ref_name){
       has_ref = true;
       ref_pose = state->pose[i];
+      ref_twist = state->twist[i];
     }
     else if(state->name[i] == link_name){
       has_link = true;
@@ -44,25 +46,31 @@ void linkCallback(const gazebo_msgs::LinkStates::ConstPtr& state){
   tf::poseTFToMsg(ref_to_link, pose);
 
   double roll, pitch, yaw;
-
   tf::Matrix3x3(ref_to_link.getRotation()).getRPY(roll, pitch, yaw);
+  //ROS_INFO_THROTTLE(0.1, "RPY: [%f, %f, %f]", roll, pitch, yaw);
 
+  
   double dt = (ros::Time::now() - ref_t).toSec();
-  if(pitch >= upper && dt > 0.2)
+  if(pitch >= upper && dt > 0.1)
   {
     need_publish = true;
     w = -w_abs;
   }
-  else if(pitch <= lower && dt > 0.2)
+  else if(pitch <= lower && dt > 0.1)
   {
     need_publish = true;
     w = w_abs;
   }
 
+  tf::Vector3 des_w(0, w, 0);
+  des_w = tf::Matrix3x3(link_tf_pose.getRotation()) * des_w;
+
   gazebo_msgs::LinkState msg;
 
   msg.pose = pose;
-  msg.twist.angular.y = w;
+  msg.twist.angular.x = des_w.x() + ref_twist.angular.x;
+  msg.twist.angular.y = des_w.y() + ref_twist.angular.y;
+  msg.twist.angular.z = des_w.z() + ref_twist.angular.z;
   msg.reference_frame = ref_name;
   msg.link_name = link_name;
 

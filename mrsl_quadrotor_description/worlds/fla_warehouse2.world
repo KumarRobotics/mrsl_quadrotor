@@ -21,7 +21,7 @@
           <pose>0 0 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://fla_warehouse/fla_warehouse.dae</uri>
+              <uri>model://fla_warehouse2/fla_warehouse2.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -29,7 +29,7 @@
           <pose>0 0 -0.01 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://fla_warehouse/fla_warehouse.dae</uri>
+              <uri>model://fla_warehouse2/fla_warehouse2.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
