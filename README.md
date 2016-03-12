@@ -31,6 +31,6 @@ $roslaunch spawn.launch robot_type:=pelican_laser_rotate
 
   levine | fla_warehouse1 | fla_warehouse2
   :---------- | :-------------- | :----------- 
-  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/fla_warehouse1.jpg" width="256"> | <img src="./mrsl_models/samples/fla_warehouse2.jpg" width="256">
+  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/fla_warehouse1.png" width="256"> | <img src="./mrsl_models/samples/fla_warehouse2.png" width="256">
 
 
