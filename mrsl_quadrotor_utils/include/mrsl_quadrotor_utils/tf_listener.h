@@ -2,26 +2,20 @@
 #include <ros/time.h>
 #include <geometry_msgs/Pose.h>
 
-class TFListener
-{
- public:
-  TFListener()
-  {
+class TFListener {
+public:
+  TFListener() {
     tfListener = new tf2_ros::TransformListener(tfBuffer);
     tfBuffer.setUsingDedicatedThread(true);
   }
 
-
-  bool getPose(const ros::Time& t,
-               const std::string& frame,
-               const std::string& ref_frame,
-               geometry_msgs::Pose& pose)
-  {  
+  bool getPose(const ros::Time &t, const std::string &frame,
+               const std::string &ref_frame, geometry_msgs::Pose &pose) {
     geometry_msgs::TransformStamped transformStamped;
-    try{
-      transformStamped = tfBuffer.lookupTransform(ref_frame, frame, t, ros::Duration(0.1));
-    }
-    catch (tf2::TransformException &ex){
+    try {
+      transformStamped =
+          tfBuffer.lookupTransform(ref_frame, frame, t, ros::Duration(0.1));
+    } catch (tf2::TransformException &ex) {
       ROS_WARN_THROTTLE(1, "Fail to find transform from [%s] to [%s]",
                         ref_frame.c_str(), frame.c_str());
       return false;
@@ -36,10 +30,9 @@ class TFListener
     pose.orientation.z = transformStamped.transform.rotation.z;
 
     return true;
-  }  
+  }
 
- private:
-    tf2_ros::Buffer tfBuffer;
-    tf2_ros::TransformListener* tfListener;
-
+private:
+  tf2_ros::Buffer tfBuffer;
+  tf2_ros::TransformListener *tfListener;
 };

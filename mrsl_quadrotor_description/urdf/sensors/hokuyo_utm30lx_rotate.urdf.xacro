@@ -4,7 +4,7 @@
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <xacro:macro name="hokuyo_utm30lx" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle">
-    <link name="${name}_frame">
+    <link name="${name}">
       <inertial>
         <mass value="0.001" />
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -21,18 +21,18 @@
     <joint name="${name}_joint" type="continuous">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="${name}_frame"/>
+      <child link="${name}"/>
       <axis xyz="0 1 0" rpy="0 0 0" />
       <limit effort="100" velocity="10"/>
       <joint_properties damping="0.0" friction="0.0"/>
     </joint>
 
-    <gazebo reference="${name}_frame">
+    <gazebo reference="${name}">
       <sensor type="ray" name="${name}">
         <always_on>true</always_on>
         <update_rate>${update_rate}</update_rate>
         <pose>0 0 0 0 0 0</pose>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <ray>
           <scan>
             <horizontal>
@@ -53,7 +53,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>${update_rate}</updateRate>
           <topicName>${ros_topic}</topicName>
-          <frameName>${name}_frame</frameName>
+          <frameName>${name}</frameName>
         </plugin>
       </sensor>
     </gazebo>

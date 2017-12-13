@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="world">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <model name="willow_grove_indoor">
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <pose>0 0 0.01 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://willow_grove_indoor/willow_grove_indoor.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <pose>0 0 -0.01 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://willow_grove_indoor/willow_grove_indoor.stl</uri></mesh>
+          </geometry>
+        </collision> 
+      </link>
+    </model>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>5.0 5.0 50.0 0.0 1.57 1.57</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+    <light type="directional" name="sun1">
+      <cast_shadows>true</cast_shadows>
+      <pose>1 0 3 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.0 0.0 -1.0</direction>
+    </light>
+
+  </world>
+
+
+
+</sdf>
+

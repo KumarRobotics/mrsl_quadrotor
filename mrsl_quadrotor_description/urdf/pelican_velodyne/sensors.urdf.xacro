@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/VLP-16.urdf.xacro" />
+  <xacro:VLP-16 name="velodyne" parent="base_link" topic="velodyne_point_cloud" robot="fla">
+    <origin xyz="0.0 0.0 0.1" rpy="0 0 0"/>
+  </xacro:VLP-16>
+</robot>

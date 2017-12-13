@@ -1,8 +1,8 @@
-#include <ros/ros.h>                                                  
+#include <ros/ros.h>
 #include <gazebo_msgs/LinkState.h>
 #include <gazebo_msgs/LinkStates.h>
-#include <eigen_conversions/eigen_msg.h>   
-#include <tf_conversions/tf_eigen.h>   
+#include <eigen_conversions/eigen_msg.h>
+#include <tf_conversions/tf_eigen.h>
 #include <angles/angles.h>
 #include <tf2_ros/transform_broadcaster.h>
 #include <mrsl_quadrotor_utils/general_util.h>
@@ -15,28 +15,26 @@ bool need_publish = true;
 ros::Publisher pub;
 ros::Time ref_t;
 
-void linkCallback(const gazebo_msgs::LinkStates::ConstPtr& state){
-  static tf2_ros::TransformBroadcaster tf_pub;                             
+void linkCallback(const gazebo_msgs::LinkStates::ConstPtr &state) {
+  static tf2_ros::TransformBroadcaster tf_pub;
   geometry_msgs::Pose ref_pose, link_pose;
   geometry_msgs::Twist ref_twist;
   bool has_ref = false;
   bool has_link = false;
-  for(unsigned int i = 0; i < state->name.size(); i++){
-    if(state->name[i] == ref_name){
+  for (unsigned int i = 0; i < state->name.size(); i++) {
+    if (state->name[i] == ref_name) {
       has_ref = true;
       ref_pose = state->pose[i];
       ref_twist = state->twist[i];
-    }
-    else if(state->name[i] == link_name){
+    } else if (state->name[i] == link_name) {
       has_link = true;
       link_pose = state->pose[i];
     }
   }
 
-  if(!has_ref || !has_link)
+  if (!has_ref || !has_link)
     return;
 
-  
   tf::Pose ref_tf_pose, link_tf_pose;
   tf::poseMsgToTF(ref_pose, ref_tf_pose);
   tf::poseMsgToTF(link_pose, link_tf_pose);
@@ -47,17 +45,13 @@ void linkCallback(const gazebo_msgs::LinkStates::ConstPtr& state){
 
   double roll, pitch, yaw;
   tf::Matrix3x3(ref_to_link.getRotation()).getRPY(roll, pitch, yaw);
-  //ROS_INFO_THROTTLE(0.1, "RPY: [%f, %f, %f]", roll, pitch, yaw);
+  // ROS_INFO_THROTTLE(0.1, "RPY: [%f, %f, %f]", roll, pitch, yaw);
 
-  
   double dt = (ros::Time::now() - ref_t).toSec();
-  if(pitch >= upper && dt > 0.1)
-  {
+  if (pitch >= upper && dt > 0.1) {
     need_publish = true;
     w = -w_abs;
-  }
-  else if(pitch <= lower && dt > 0.1)
-  {
+  } else if (pitch <= lower && dt > 0.1) {
     need_publish = true;
     w = w_abs;
   }
@@ -74,13 +68,11 @@ void linkCallback(const gazebo_msgs::LinkStates::ConstPtr& state){
   msg.reference_frame = ref_name;
   msg.link_name = link_name;
 
-  if(need_publish)
-  {
+  if (need_publish) {
     ref_t = ros::Time::now();
     need_publish = false;
     pub.publish(msg);
   }
-
 
   geometry_msgs::TransformStamped transformStamped;
   transformStamped.header.stamp = ros::Time::now();
@@ -95,14 +87,13 @@ void linkCallback(const gazebo_msgs::LinkStates::ConstPtr& state){
   transformStamped.transform.rotation.y = msg.pose.orientation.y;
   transformStamped.transform.rotation.z = msg.pose.orientation.z;
 
-  tf_pub.sendTransform(transformStamped);   
-  ROS_WARN_ONCE("publish tf from [%s] to [%s]",
+  tf_pub.sendTransform(transformStamped);
+  ROS_WARN_ONCE("ROTATE: publish tf from [%s] to [%s]",
                 transformStamped.header.frame_id.c_str(),
                 transformStamped.child_frame_id.c_str());
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
   ros::init(argc, argv, "publish_rotate");
   ros::NodeHandle nh("~");
   ros::Subscriber sub = nh.subscribe("gazebo/link_states", 10, linkCallback);
@@ -121,12 +112,9 @@ int main(int argc, char** argv)
   link_frame = robot + "/" + link_frame_base;
   ref_frame = robot + "/" + ref_frame_base;
 
-
   w = w_abs;
   ref_t = ros::Time::now();
   ros::spin();
 
   return 0;
 };
-
-

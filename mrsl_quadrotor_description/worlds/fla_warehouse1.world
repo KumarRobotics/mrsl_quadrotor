@@ -59,9 +59,10 @@
       </camera>
     </gui>
 
-     <light name='sun1' type='directional'>
+
+    <light name='sun1' type='point'>
       <cast_shadows>1</cast_shadows>
-      <pose>1 0 3 0 -0 0</pose>
+      <pose>0 1 1 0 0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
@@ -73,7 +74,6 @@
       <direction>-0 0 -1</direction>
     </light>
  
-
     <light name='sun2' type='point'>
       <cast_shadows>1</cast_shadows>
       <pose>20 0 5 0 -0 0</pose>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<robot name="quadrotor" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="mass" value="0.5" />
+  <xacro:property name="ixx" value="0.00264" />
+  <xacro:property name="iyy" value="0.00264" />
+  <xacro:property name="izz" value="0.00496" />
+  <!-- Main quadrotor link -->
+  <xacro:macro name="quadrotor_base_macro">
+    <link name="base_link">
+      <inertial>
+        <mass value="${mass}"/>
+        <origin xyz="0 0 0" />
+        <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 -0.7854" />
+        <geometry>
+          <mesh filename="package://mrsl_models/models/pelican/pelican_without_frame.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.1" length="0.1"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+
+    <!-- Plugins -->
+    <gazebo>
+      <!-- Quad Dynamics Plugin -->
+      <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
+        <command_topic>so3_cmd</command_topic>
+        <odom_topic>ground_truth/odom</odom_topic>
+      </plugin>
+
+      <!-- Quad Ground Truth Plugin -->
+      <plugin name="quadrotor_groundtruth_sim" filename="libgazebo_ros_p3d.so">
+        <updateRate>100.0</updateRate>
+        <bodyName>base_link</bodyName>
+        <topicName>ground_truth/odom</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+      </plugin>
+
+     </gazebo>
+  </xacro:macro>
+
+  <xacro:quadrotor_base_macro/>
+</robot>
+

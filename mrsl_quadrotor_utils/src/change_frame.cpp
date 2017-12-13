@@ -13,13 +13,11 @@ ros::Publisher cloud_pub;
 
 tf2_ros::Buffer tfBuffer;
 
-sensor_msgs::PointCloud transform(const sensor_msgs::PointCloud& cloud, const Eigen::Affine3d& TF)
-{
+sensor_msgs::PointCloud transform(const sensor_msgs::PointCloud &cloud,
+                                  const Eigen::Affine3d &TF) {
   sensor_msgs::PointCloud cloud_out = cloud;
-  for(size_t i = 0; i < cloud.points.size(); i++)
-  {
-    Eigen::Vector3d raw(cloud.points[i].x,
-                        cloud.points[i].y,
+  for (size_t i = 0; i < cloud.points.size(); i++) {
+    Eigen::Vector3d raw(cloud.points[i].x, cloud.points[i].y,
                         cloud.points[i].z);
     raw = TF * raw;
     cloud_out.points[i].x = raw(0);
@@ -29,18 +27,15 @@ sensor_msgs::PointCloud transform(const sensor_msgs::PointCloud& cloud, const Ei
   return cloud_out;
 }
 
-bool getTF(const ros::Time &t, Eigen::Affine3d& TF)
-{                     
+bool getTF(const ros::Time &t, Eigen::Affine3d &TF) {
   geometry_msgs::TransformStamped transformStamped;
-  try{                
-    transformStamped = tfBuffer.lookupTransform(
-      world_frame, robot_frame,
-      t, ros::Duration(0.1));
-  }                   
-  catch (tf2::TransformException &ex) {
-    ROS_WARN_THROTTLE(5, "%s",ex.what());
-    return false;     
-  }                   
+  try {
+    transformStamped = tfBuffer.lookupTransform(world_frame, robot_frame, t,
+                                                ros::Duration(0.1));
+  } catch (tf2::TransformException &ex) {
+    ROS_WARN_THROTTLE(5, "%s", ex.what());
+    return false;
+  }
 
   geometry_msgs::Pose pose;
   pose.position.x = transformStamped.transform.translation.x;
@@ -51,28 +46,23 @@ bool getTF(const ros::Time &t, Eigen::Affine3d& TF)
   pose.orientation.y = transformStamped.transform.rotation.y;
   pose.orientation.z = transformStamped.transform.rotation.z;
 
-  tf::poseMsgToEigen (pose, TF);
-  return true;        
-}                     
+  tf::poseMsgToEigen(pose, TF);
+  return true;
+}
 
-
-void cloudCallback(const sensor_msgs::PointCloud::ConstPtr& msg)
-{
+void cloudCallback(const sensor_msgs::PointCloud::ConstPtr &msg) {
   Eigen::Affine3d TF;
   robot_frame = msg->header.frame_id;
-  if(getTF(msg->header.stamp, TF))
-  {
+  if (getTF(msg->header.stamp, TF)) {
     sensor_msgs::PointCloud cloud_out = transform(*msg, TF);
     cloud_out.header.frame_id = world_frame;
     cloud_pub.publish(cloud_out);
-  }
-  else
-    ROS_WARN_THROTTLE(2, "Fail to get TF from %s to %s",
-                      world_frame.c_str(), robot_frame.c_str());
+  } else
+    ROS_WARN_THROTTLE(2, "Fail to get TF from %s to %s", world_frame.c_str(),
+                      robot_frame.c_str());
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   ros::init(argc, argv, "change_frame");
   ros::NodeHandle nh("~");
   static tf2_ros::TransformListener tfListener(tfBuffer);
@@ -83,5 +73,3 @@ int main(int argc, char **argv)
   ros::spin();
   return 0;
 }
-
-

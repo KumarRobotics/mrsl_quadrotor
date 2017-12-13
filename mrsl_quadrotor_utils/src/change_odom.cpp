@@ -2,14 +2,14 @@
 #include <tf/tf.h>
 #include <nav_msgs/Odometry.h>
 
-//tf::Quaternion init_yaw_q_;
+// tf::Quaternion init_yaw_q_;
 static bool first_msg_ = true;
 ros::Publisher odom_pub;
 nav_msgs::Odometry first_odom_;
 
-nav_msgs::Odometry substractOdom(nav_msgs::Odometry odom1, const nav_msgs::Odometry& odom2)
-{
-  //odom_out = odom1 -odom2
+nav_msgs::Odometry substractOdom(nav_msgs::Odometry odom1,
+                                 const nav_msgs::Odometry &odom2) {
+  // odom_out = odom1 -odom2
   tf::Pose world_pose, initial_pose;
   tf::poseMsgToTF(odom1.pose.pose, world_pose);
   tf::poseMsgToTF(odom2.pose.pose, initial_pose);
@@ -18,10 +18,8 @@ nav_msgs::Odometry substractOdom(nav_msgs::Odometry odom1, const nav_msgs::Odome
   return odom1;
 }
 
-void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
-{
-  if(first_msg_)
-  {
+void odomCallback(const nav_msgs::Odometry::ConstPtr &msg) {
+  if (first_msg_) {
     first_msg_ = false;
     first_odom_ = *msg;
   }
@@ -30,12 +28,12 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
   odom_pub.publish(odom_out);
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   ros::init(argc, argv, "change_odom");
   ros::NodeHandle nh("~");
-  
-  ros::Subscriber odom_sub = nh.subscribe("odom_in", 10, &odomCallback);
+
+  ros::Subscriber odom_sub = nh.subscribe("odom_in", 10, &odomCallback,
+                                          ros::TransportHints().tcpNoDelay());
   odom_pub = nh.advertise<nav_msgs::Odometry>("odom_out", 10);
   ros::spin();
   return 0;

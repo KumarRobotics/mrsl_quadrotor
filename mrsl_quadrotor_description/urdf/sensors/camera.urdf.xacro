@@ -12,13 +12,12 @@
       <inertial>
         <mass value="0.000001" />
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
       </inertial>
       <visual>
         <origin xyz="0.0 0.0 0" rpy="0 0 0" />
         <geometry>
           <box size="0.03 0.03 0.01"/>
-          <!--mesh filename="package://mrsl_models/models/sensors/kinect/kinect.dae"/-->
         </geometry>
       </visual>
    </link>
@@ -48,7 +47,7 @@
         <plugin name="${name}_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
-          <cameraName>camera</cameraName>
+          <cameraName>${name}</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>camera_link</frameName>

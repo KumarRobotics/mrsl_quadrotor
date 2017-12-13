@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="mrsl_quadrotor_utils"
+    name="teleop"
+    type="teleop.py"
+    output="screen">
+    <remap from="~cmd_vel" to="cmd_vel"/>
+  </node>
+
+</launch>

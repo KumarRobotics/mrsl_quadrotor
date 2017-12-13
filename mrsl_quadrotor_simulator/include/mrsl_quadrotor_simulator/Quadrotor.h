@@ -17,7 +17,7 @@ namespace mrsl_quadrotor_simulator
     {
       Eigen::Vector3d ypr;
       Eigen::Vector3d omega;
-      EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
+      EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     };
 
     Quadrotor();
@@ -43,6 +43,8 @@ namespace mrsl_quadrotor_simulator
     //    2
     // with 1 and 2 clockwise and 3 and 4 counter-clockwise (looking from top)
     Wrench update(MotorState des_motor_rpm, double dt);
+
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
    private:
     double kf_;

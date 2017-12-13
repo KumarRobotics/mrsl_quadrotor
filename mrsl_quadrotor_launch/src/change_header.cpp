@@ -22,7 +22,8 @@ int main(int argc, char **argv)
   ros::NodeHandle nh("~");
   nh.param("world_frame", world_frame, std::string("map"));
   nh.param("robot_frame", robot_frame, std::string("romeo"));
-  ros::Subscriber odom_sub = nh.subscribe("odom_in", 10, &odomCallback);
+  ros::Subscriber odom_sub = nh.subscribe("odom_in", 10, &odomCallback,
+                                          ros::TransportHints().tcpNoDelay());
   odom_pub = nh.advertise<nav_msgs::Odometry>("odom_out", 10);
   ros::spin();
   return 0;

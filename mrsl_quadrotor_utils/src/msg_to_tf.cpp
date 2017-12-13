@@ -2,8 +2,7 @@
 #include <tf2_ros/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
 
-void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
-{
+void odomCallback(const nav_msgs::Odometry::ConstPtr &msg) {
   static tf2_ros::TransformBroadcaster odom_br;
   geometry_msgs::TransformStamped transformStamped;
 
@@ -23,15 +22,12 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
                 transformStamped.child_frame_id.c_str());
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
   ros::init(argc, argv, "msg_to_tf");
   ros::NodeHandle nh("~");
-  ros::Subscriber sub = nh.subscribe("odom", 10, odomCallback);
+  ros::Subscriber sub = nh.subscribe("odom", 10, odomCallback,
+                                     ros::TransportHints().tcpNoDelay());
 
   ros::spin();
   return 0;
 };
-
-
-

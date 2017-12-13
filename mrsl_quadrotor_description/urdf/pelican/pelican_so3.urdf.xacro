@@ -23,7 +23,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.1" length="0.2"/>
+          <cylinder radius="0.05" length="0.1"/>
         </geometry>
       </collision>
 
@@ -47,21 +47,7 @@
         <frameName>world</frameName>
       </plugin>
 
-      <!-- Quad Imu Plugin -->
-      <plugin name="quadrotor_imu_sim" filename="libhector_gazebo_ros_imu.so">
-        <updateRate>100.0</updateRate>
-        <bodyName>base_link</bodyName>
-        <topicName>raw_imu</topicName>
-        <rpyOffsets>0 0 0</rpyOffsets> 
-        <gaussianNoise>0</gaussianNoise> 
-        <accelDrift>0.5 0.5 0.5</accelDrift>
-        <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
-        <rateDrift>0.1 0.1 0.1</rateDrift>
-        <rateGaussianNoise>0.05 0.05 0.015</rateGaussianNoise>
-        <headingDrift>0.1</headingDrift>
-        <headingGaussianNoise>0.05</headingGaussianNoise>
-      </plugin>
-    </gazebo>
+     </gazebo>
   </xacro:macro>
 
   <xacro:quadrotor_base_macro/>
