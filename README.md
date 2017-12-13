@@ -20,14 +20,14 @@ Requirements
  - `quadrotor_control` [KumarRobotics](https://github.com/KumarRobotics/quadrotor_control)
 
 ### List of Components
-  Robot Type           | Mobile object | Sensor | World
+  Robot Frame          | Mobile object | Sensor | World
   :------------------- | :------------ | :----- | :------
   Hummingbird          | mobile object | rgbd   | empty
   Pelican              | laser_rotate  | monocular  | levine
   Fla Platform         |               | stereo | skir
-                       |               | hokuyo | wg
-                       |               | velodyne | fla_warehouse
-                       |               |        | fla_forest
+  |                    |               | hokuyo | wg
+  |                    |               | velodyne | fla_warehouse
+  |                    |               |        | fla_forest
 
 ### Test Example 
 Using the example launch file in the repo
