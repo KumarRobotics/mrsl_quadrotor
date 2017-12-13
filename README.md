@@ -42,8 +42,8 @@ $roslaunch spawn.launch robot_type:=pelican
   :---------- | :-------------- | :------------------ | :-----------
   <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
 
-  levine | fla_warehouse1 | fla_warehouse2
+  levine | pillars | iros2017_corridor
   :---------- | :-------------- | :-----------
-  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/fla_warehouse1.png" width="256"> | <img src="./mrsl_models/samples/fla_warehouse2.png" width="256">
+  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/pillars.png" width="256"> | <img src="./mrsl_models/samples/iros2017_corridor.png" width="256">
 
 
