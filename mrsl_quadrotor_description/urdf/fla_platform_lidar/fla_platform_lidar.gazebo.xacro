@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<robot name="pelican" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/fla_platform_lidar/fla_platform_so3.urdf.xacro" />
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/fla_platform_lidar/sensors.urdf.xacro"/>
-</robot>
