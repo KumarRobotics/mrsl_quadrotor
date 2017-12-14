@@ -20,14 +20,14 @@ Requirements
  - `quadrotor_control` [KumarRobotics](https://github.com/KumarRobotics/quadrotor_control)
 
 ### List of Components
-  Robot Frame          | Mobile object | Sensor | World
-  :------------------- | :------------ | :----- | :------
-  Hummingbird          | mobile object | rgbd   | empty
-  Pelican              | laser_rotate  | monocular  | levine
-  Fla Platform         |               | stereo | skir
-  |                    |               | hokuyo | wg
-  |                    |               | velodyne | fla_warehouse
-  |                    |               |        | fla_forest
+  Robot Frame          |  Sensor | World | Platform Examples
+  :------------------- |:-----   | :-----| :------- 
+  Hummingbird          |  rgbd   | empty | pelican
+  Pelican              |  camera | levine| pelican\_laser
+  FLA Platform         |  stereo | skir  | pelican\_laser\_rgbd
+  |                    |  hokuyo | wg    | pelican\_laser\_rotate
+  |                    |velodyne | pillars| pelican\_rgbd
+  |                    | laser\_beam | iros2017\_corridor| pelican\_velodyne
 
 ### Test Example 
 Using the example launch file in the repo
@@ -38,11 +38,11 @@ $roslaunch spawn.launch robot_type:=pelican
 ```
 
 ### Samples
-  hummingbird | hummingbird_rgbd | pelican_laser_rgbd | mobile object
+  hummingbird | hummingbird\_rgbd | pelican\_laser\_rgbd | mobile object
   :---------- | :-------------- | :------------------ | :-----------
   <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
 
-  levine | pillars | iros2017_corridor
+  levine | pillars | iros2017\_corridor
   :---------- | :-------------- | :-----------
   <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/pillars.png" width="256"> | <img src="./mrsl_models/samples/iros2017_corridor.png" width="256">
 
