@@ -16,4 +16,5 @@
   <depend>tf2_ros</depend>
   <depend>eigen_conversions</depend>
   <depend>nodelet</depend>
+  <depend>topic_tools</depend>
 </package>

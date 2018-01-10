@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
- 
-<robot name="mobile_object" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/mobile_object/mobile_object.urdf.xacro" />
-</robot>
-
