@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<robot name="$(arg robot)">
+  <link name="$(arg robot)/base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrsl_models/models/barrel/barrel.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
