@@ -11,11 +11,11 @@ find_package(cmake_modules)
 find_package(Eigen REQUIRED)
 include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS})
  
-#catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES ${PROJECT_NAME}
-#  CATKIN_DEPENDS roscpp 
-#  DEPENDS)
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME}
+  CATKIN_DEPENDS roscpp 
+  DEPENDS)
 
 add_executable(change_header src/change_header.cpp)
 target_link_libraries(change_header ${catkin_LIBRARIES} )
