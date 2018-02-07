@@ -6,7 +6,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wno-deprecated-declara
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 
-#find_package(catkin_simple REQUIRED)
 find_package(catkin REQUIRED COMPONENTS roscpp tf2_ros topic_tools eigen_conversions tf_conversions)
 find_package(cmake_modules)
 find_package(Eigen REQUIRED)
