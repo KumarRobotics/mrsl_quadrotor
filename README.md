@@ -1,6 +1,5 @@
 MRSL Quadrotor Simulator
 =============
-[![wercker status](https://app.wercker.com/status/cc654391edd264a5b37955d054aea410/s/master "wercker status")](https://app.wercker.com/project/byKey/cc654391edd264a5b37955d054aea410)
 Package of Gazebo quadrotor simulator. User can easily set up the simulation environments and the quadrotor platform using sensors provided in this package. 
 
 Stacks include:
