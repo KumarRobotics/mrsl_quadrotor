@@ -8,8 +8,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wno-deprecated-declara
 
 find_package(catkin REQUIRED COMPONENTS roscpp tf2_ros topic_tools eigen_conversions tf_conversions)
 find_package(cmake_modules)
-find_package(Eigen REQUIRED)
-include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS})
+find_package(Eigen3 REQUIRED)
+include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIRS})
  
 catkin_package(
   INCLUDE_DIRS include
