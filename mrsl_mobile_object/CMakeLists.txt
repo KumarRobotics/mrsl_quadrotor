@@ -7,6 +7,7 @@ find_package(Boost REQUIRED)
 
 # Depend on system install of Gazebo
 find_package(gazebo REQUIRED)
+message(STATUS "GAZEBO_INCLUDE_DIRS: ${GAZEBO_INCLUDE_DIRS}")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
