@@ -8,9 +8,9 @@
 
   <group ns="$(arg robot)">
     <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg robot_type)/$(arg robot_type).gazebo.xacro"/>
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)' "/>
-    <node name="spawn_robot" 
-      pkg="gazebo_ros" 
+    <param name="robot_description" command="xacro '$(arg model)' "/>
+    <node name="spawn_robot"
+      pkg="gazebo_ros"
       type="spawn_model"
       respawn="false"
       args="-param robot_description
