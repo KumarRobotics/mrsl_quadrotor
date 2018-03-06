@@ -6,7 +6,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <tf/transform_broadcaster.h>
- 
+
 namespace mrsl_quadrotor_simulator
 {
   class MobileObject : public gazebo::ModelPlugin
@@ -24,7 +24,7 @@ namespace mrsl_quadrotor_simulator
     ~MobileObject()
     {
     }
-    
+
     void Load(gazebo::physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
       ns_ = "";
@@ -44,7 +44,7 @@ namespace mrsl_quadrotor_simulator
 
       node_handle_ = new ros::NodeHandle(ns_);
 
-      if (topic_name_ != "") 
+      if (topic_name_ != "")
         pub_ = node_handle_->advertise<geometry_msgs::PoseStamped>(topic_name_, 1);
 
       if(_sdf->HasElement("vx"))
@@ -57,7 +57,7 @@ namespace mrsl_quadrotor_simulator
         vy_ = 0;
       if (_sdf->HasElement("w"))
         w_ = _sdf->GetElement("w")->Get<double>();
-      else 
+      else
         w_ = 0;
 
 
@@ -123,7 +123,7 @@ namespace mrsl_quadrotor_simulator
         }
       }
     }
- 
+
    private:
     // Pointer to the model
     ignition::math::Pose3d init_pose_;
@@ -141,7 +141,7 @@ namespace mrsl_quadrotor_simulator
     std::string topic_name_;
     double update_rate_;
   };
- 
+
   // Register this plugin with the simulator
   GZ_REGISTER_MODEL_PLUGIN(MobileObject)
 }
