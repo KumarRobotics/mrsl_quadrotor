@@ -42,6 +42,17 @@ public:
 
     gazebo::physics::InertialPtr I = link->GetInertial();
     float Im[3][3];
+#if GAZEBO_MAJOR_VERSION >= 8
+    Im[0][0] = I->IXX();
+    Im[0][1] = I->IXY();
+    Im[1][0] = I->IXY();
+    Im[1][1] = I->IYY();
+    Im[1][2] = I->IYZ();
+    Im[2][1] = I->IYZ();
+    Im[2][2] = I->IZZ();
+    Im[2][0] = I->IXZ();
+    Im[0][2] = I->IXZ();
+#else
     Im[0][0] = I->GetIXX();
     Im[0][1] = I->GetIXY();
     Im[1][0] = I->GetIXY();
@@ -51,6 +62,7 @@ public:
     Im[2][2] = I->GetIZZ();
     Im[2][0] = I->GetIXZ();
     Im[0][2] = I->GetIXZ();
+#endif
 
     quad_attitude_control.init(quad, Im);
 
@@ -86,23 +98,28 @@ public:
     callback_queue_.callAvailable();
 
     Quadrotor::State quad_state;
-    gazebo::math::Pose pose = link->GetWorldPose();
-    gazebo::math::Vector3 angular_velocity = link->GetRelativeAngularVel();
-    quad_state.omega(0) = angular_velocity.x;
-    quad_state.omega(1) = angular_velocity.y;
-    quad_state.omega(2) = angular_velocity.z;
-    quad_state.ypr(0) = pose.rot.GetYaw();
-    quad_state.ypr(1) = pose.rot.GetPitch();
-    quad_state.ypr(2) = pose.rot.GetRoll();
+#if GAZEBO_MAJOR_VERSION >= 8
+    ignition::math::Pose3d pose = link->WorldPose();
+    ignition::math::Vector3d angular_velocity = link->RelativeAngularVel();
+#else
+    ignition::math::Pose3d pose = link->GetWorldPose().Ign();
+    ignition::math::Vector3d angular_velocity = link->GetRelativeAngularVel().Ign();
+#endif
+    quad_state.omega(0) = angular_velocity.X();
+    quad_state.omega(1) = angular_velocity.Y();
+    quad_state.omega(2) = angular_velocity.Z();
+    quad_state.ypr(0) = pose.Rot().Yaw();
+    quad_state.ypr(1) = pose.Rot().Pitch();
+    quad_state.ypr(2) = pose.Rot().Roll();
 
     Quadrotor::MotorState des_rpm =
         quad_attitude_control.getControl(quad_state);
     Quadrotor::Wrench wrench = quad.update(des_rpm, dt);
 
-    link->AddRelativeForce(gazebo::math::Vector3(0, 0, wrench(0)));
+    link->AddRelativeForce(ignition::math::Vector3d(0, 0, wrench(0)));
 
     link->AddRelativeTorque(
-        gazebo::math::Vector3(wrench(1), wrench(2), wrench(3)));
+        ignition::math::Vector3d(wrench(1), wrench(2), wrench(3)));
   }
 
 private:
