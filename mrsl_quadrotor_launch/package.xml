@@ -10,11 +10,7 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>roscpp</depend>
-  <depend>cmake_modules</depend>
-  <depend>tf2_ros</depend>
-  <depend>eigen_conversions</depend>
-
-
+  <exec_depend>mrsl_models</exec_depend>
+  <exec_depend>mrsl_quadrotor_description</exec_depend>
 
 </package>
