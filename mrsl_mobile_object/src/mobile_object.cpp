@@ -71,23 +71,26 @@ namespace mrsl_quadrotor_simulator
 
     void OnUpdate(const gazebo::common::UpdateInfo &_info)
     {
-      gazebo::math::Pose pose = link->GetWorldPose();
-
+#if GAZEBO_MAJOR_VERSION >= 8
+      ignition::math::Pose3d pose = link->WorldPose();
+#else
+      ignition::math::Pose3d pose = link->GetWorldPose().Ign();
+#endif
       if(!initialzed_){
         initialzed_ = true;
         init_pose_ = pose;
       }
 
-      if((fabs(pose.pos.x - (init_pose_.pos.x  + lower_bound_)) < 1e-1 && vx_ < 0)
-         || (fabs(pose.pos.x - (init_pose_.pos.x + upper_bound_)) < 1e-1 && vx_ > 0))
+      if((fabs(pose.Pos().X() - (init_pose_.Pos().X()  + lower_bound_)) < 1e-1 && vx_ < 0)
+         || (fabs(pose.Pos().X() - (init_pose_.Pos().X() + upper_bound_)) < 1e-1 && vx_ > 0))
         vx_ = -vx_;
 
-      if((fabs(pose.pos.y - (init_pose_.pos.y  + lower_bound_)) < 1e-1 && vy_ < 0)
-         || (fabs(pose.pos.y - (init_pose_.pos.y + upper_bound_)) < 1e-1 && vy_ > 0))
+      if((fabs(pose.Pos().Y() - (init_pose_.Pos().Y()  + lower_bound_)) < 1e-1 && vy_ < 0)
+         || (fabs(pose.Pos().Y() - (init_pose_.Pos().Y() + upper_bound_)) < 1e-1 && vy_ > 0))
         vy_ = -vy_;
 
-      link->SetLinearVel(gazebo::math::Vector3(vx_, vy_, 0));
-      link->SetAngularVel(gazebo::math::Vector3(0, 0, w_));
+      link->SetLinearVel(ignition::math::Vector3d(vx_, vy_, 0));
+      link->SetAngularVel(ignition::math::Vector3d(0, 0, w_));
 
       //if (pub_.getNumSubscribers() > 0 && topic_name_ != "" && update_rate_ > 0)
       if (topic_name_ != "" && update_rate_ > 0)
@@ -99,13 +102,13 @@ namespace mrsl_quadrotor_simulator
           geometry_msgs::PoseStamped msg;
           msg.header.stamp = ros::Time::now();
           msg.header.frame_id = "map";
-          msg.pose.position.x = pose.pos.x;
-          msg.pose.position.y = pose.pos.y;
-          msg.pose.position.z = pose.pos.z;
-          msg.pose.orientation.w = pose.rot.w;
-          msg.pose.orientation.x = pose.rot.x;
-          msg.pose.orientation.y = pose.rot.y;
-          msg.pose.orientation.z = pose.rot.z;
+          msg.pose.position.x = pose.Pos().X();
+          msg.pose.position.y = pose.Pos().Y();
+          msg.pose.position.z = pose.Pos().Z();
+          msg.pose.orientation.w = pose.Rot().W();
+          msg.pose.orientation.x = pose.Rot().X();
+          msg.pose.orientation.y = pose.Rot().Y();
+          msg.pose.orientation.z = pose.Rot().Z();
 
           pub_.publish(msg);
 
@@ -123,7 +126,7 @@ namespace mrsl_quadrotor_simulator
  
    private:
     // Pointer to the model
-    gazebo::math::Pose init_pose_;
+    ignition::math::Pose3d init_pose_;
     gazebo::event::ConnectionPtr updateConnection;
     gazebo::physics::LinkPtr link; // Link for robot
     bool initialzed_;
