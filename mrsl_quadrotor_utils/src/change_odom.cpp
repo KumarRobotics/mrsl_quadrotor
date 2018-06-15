@@ -18,6 +18,11 @@ nav_msgs::Odometry substractOdom(nav_msgs::Odometry odom1,
   tf::poseMsgToTF(odom2.pose.pose, initial_pose);
   tf::Transform local_tf = initial_pose.inverse() * world_pose;
   tf::poseTFToMsg(local_tf, odom1.pose.pose);
+  double yaw = std::atan2(odom2.pose.pose.orientation.z, odom2.pose.pose.orientation.w) * 2;
+  double vx_w = odom1.twist.twist.linear.x;
+  double vy_w = odom1.twist.twist.linear.y;
+  odom1.twist.twist.linear.x = cos(yaw) * vx_w + sin(yaw) * vy_w;
+  odom1.twist.twist.linear.y = -sin(yaw) * vx_w + cos(yaw) * vy_w;
   return odom1;
 }
 
