@@ -19,7 +19,7 @@
           <geometry>
             <mesh><uri>model://skir/skir.stl</uri></mesh>
           </geometry>
-        </collision> 
+        </collision>
       </link>
     </model>
     <gui fullscreen='0'>
@@ -28,38 +28,6 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-
-    <light type="directional" name="sun1">
-      <cast_shadows>true</cast_shadows>
-      <pose>1 0 3 0 0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>20</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0.0 0.0 -1.0</direction>
-    </light>
-
-    <light type="point" name="sun2">
-      <cast_shadows>true</cast_shadows>
-      <pose>0 0 5 0 0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>10</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0.0 0.0 -1.0</direction>
-    </light>
-
   </world>
-
-
-
 </sdf>
 
