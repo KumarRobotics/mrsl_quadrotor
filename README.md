@@ -1,6 +1,7 @@
 MRSL Quadrotor Simulator
 =============
-Package of Gazebo quadrotor simulator. User can easily set up the simulation environments and the quadrotor platform using sensors provided in this package.
+Package of Gazebo quadrotor simulator. Latest version works for Gazebo > 7.0.
+User can easily set up the simulation environments and the quadrotor platform using sensors provided in this package.
 
 Stacks include:
   - `mrsl_models`: all the CAD models
@@ -27,7 +28,7 @@ Requirements
   FLA Platform         |  stereo | skir  | pelican\_laser\_rgbd
   |                    |  hokuyo | wg    | pelican\_laser\_rotate
   |                    |velodyne | pillars| pelican\_rgbd
-  |                    | laser\_beam | iros2017\_corridor| pelican\_velodyne
+  |                    | laser\_beam | D60| pelican\_velodyne
 
 ### Test Example
 Using the example launch file in the repo
@@ -42,8 +43,8 @@ $roslaunch spawn.launch robot_type:=pelican
   :---------- | :-------------- | :------------------ | :-----------
   <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
 
-  levine | pillars | iros2017\_corridor
+  levine | pillars | D60
   :---------- | :-------------- | :-----------
-  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/pillars.png" width="256"> | <img src="./mrsl_models/samples/iros2017_corridor.png" width="256">
+  <img src="./mrsl_models/samples/levine.jpg" width="256"> | <img src="./mrsl_models/samples/pillars.png" width="256"> | <img src="./mrsl_models/samples/D60.png" width="256">
 
 
