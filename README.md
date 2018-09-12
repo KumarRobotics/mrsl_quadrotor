@@ -1,17 +1,17 @@
 MRSL Quadrotor Simulator
 =============
-Package of Gazebo quadrotor simulator. User can easily set up the simulation environments and the quadrotor platform using sensors provided in this package. 
+Package of Gazebo quadrotor simulator. User can easily set up the simulation environments and the quadrotor platform using sensors provided in this package.
 
 Stacks include:
   - `mrsl_models`: all the CAD models
-  - `mrsl_quadrotor_description`: all the `urdf` and world config files 
+  - `mrsl_quadrotor_description`: all the `urdf` and world config files
   - `mrsl_quadrotor_launch`: example launch files
   - `mrsl_quadrotor_simulator`: quadrotor dynamics simulator
   - `mrsl_quadrotor_utils`: ros utils
   - `mrsl_mobile_object`: gazebo mobile obtacle plugin
   - `velodyne_simulator`: gazebo velodyne plugin
 Check each package for more details.
-  
+
 ### Requirements
 Requirements
  - `ros` (indigo+)
@@ -21,7 +21,7 @@ Requirements
 
 ### List of Components
   Robot Frame          |  Sensor | World | Platform Examples
-  :------------------- |:-----   | :-----| :------- 
+  :------------------- |:-----   | :-----| :-------
   Hummingbird          |  rgbd   | empty | pelican
   Pelican              |  camera | levine| pelican\_laser
   FLA Platform         |  stereo | skir  | pelican\_laser\_rgbd
@@ -29,7 +29,7 @@ Requirements
   |                    |velodyne | pillars| pelican\_rgbd
   |                    | laser\_beam | iros2017\_corridor| pelican\_velodyne
 
-### Test Example 
+### Test Example
 Using the example launch file in the repo
 ```
 $cd ./mrsl_quadrotor_launch/launch
