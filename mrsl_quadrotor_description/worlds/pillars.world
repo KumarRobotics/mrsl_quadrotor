@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <sdf version='1.4'>
   <world name='world'>
     <model name='ground_plane'>
@@ -77,33 +78,7 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    <light name='sun1' type='directional'>
-      <cast_shadows>1</cast_shadows>
-      <pose>1 0 3 0 -0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>20</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0 0 -1</direction>
-    </light>
-    <light name='sun2' type='point'>
-      <cast_shadows>1</cast_shadows>
-      <pose>20 0 5 0 -0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>100</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0 0 -1</direction>
-    </light>
-    <physics type='ode'>
+   <physics type='ode'>
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>1000</real_time_update_rate>
@@ -121,19 +96,5 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <state world_name='world'>
-      <sim_time>1598 348000000</sim_time>
-      <real_time>133 532436494</real_time>
-      <wall_time>1447884550 574810860</wall_time>
-     <model name='ground_plane'>
-        <pose>0 0 0 0 -0 0</pose>
-        <link name='link'>
-          <pose>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-    </state>
-  </world>
+ </world>
 </sdf>
