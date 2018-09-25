@@ -44,35 +44,9 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    <light name='sun1' type='directional'>
-      <cast_shadows>1</cast_shadows>
-      <pose>1 0 3 0 -0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>20</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0 0 -1</direction>
-    </light>
-    <light name='sun2' type='point'>
-      <cast_shadows>1</cast_shadows>
-      <pose>20 0 5 0 -0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>100</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0 0 -1</direction>
-    </light>
     <physics type='ode'>
-      <max_step_size>0.001</max_step_size>
-      <real_time_factor>1</real_time_factor>
+    <max_step_size>0.001</max_step_size>
+    <real_time_factor>1</real_time_factor>
       <real_time_update_rate>1000</real_time_update_rate>
       <gravity>0 0 -9.8</gravity>
     </physics>
