@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/camera.urdf.xacro" />
+  <xacro:monocular_camera name="dfc_camera" parent="dfc">
+    <origin xyz="0.0 0.0 0.0" rpy="${M_PI} ${M_PI/2} -${M_PI/2}"/>
+  </xacro:monocular_camera>
+
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/stereo_camera.urdf.xacro" />
+  <xacro:stereo_camera name="stereo" parent="left_stereo">
+    <origin xyz="0.0 0.0 0.0" rpy="0 -${M_PI/2} ${M_PI/2}"/>
+  </xacro:stereo_camera>
+</robot>
