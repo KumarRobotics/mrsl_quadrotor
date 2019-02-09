@@ -10,4 +10,9 @@
   <xacro:stereo_camera name="stereo" parent="left_stereo">
     <origin xyz="0.0 0.0 0.0" rpy="0 -${M_PI/2} ${M_PI/2}"/>
   </xacro:stereo_camera>
+
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/rgbd_camera.urdf.xacro" />
+  <xacro:rgbd_camera name="rgbd" parent="base_link">
+    <origin xyz="0.1 0.0 0.0" rpy="0 0 0"/>
+  </xacro:rgbd_camera>
 </robot>
