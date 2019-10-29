@@ -7,7 +7,7 @@
   <xacro:property name="hfov" value="${M_PI/2}" />
   <xacro:property name="frame_id" value="camera" />
   <xacro:property name="focal_length" value="320" />
-  <xacro:property name="hack_baseline" value="0.10" />
+  <xacro:property name="hack_baseline" value="0.08" />
   <xacro:property name="frame_rate" value="15" />
 
   <xacro:macro name="stereo_camera" params="name parent *origin">
@@ -36,7 +36,7 @@
       <sensor type="multicamera" name="gazebo_${name}_camera">
         <update_rate>${frame_rate}</update_rate>
         <camera name="left">
-          <pose>0 ${hack_baseline} 0 0 0 0</pose>
+          <pose>0 0 0 0 0 0</pose>
           <horizontal_fov>${hfov}</horizontal_fov>
           <image>
             <width>${image_width} </width>
@@ -68,7 +68,7 @@
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>${frame_id}</frameName>
-          <hackBaseline>${2 * hack_baseline}</hackBaseline>
+          <hackBaseline>${hack_baseline}</hackBaseline>
           <CxPrime>${(image_width+1)/2}</CxPrime>
           <Cx>${(image_width+1)/2}</Cx>
           <Cy>${(image_height+1)/2}</Cy>

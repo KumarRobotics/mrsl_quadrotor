@@ -21,9 +21,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 -0.05" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.15" length="0.1"/>
+          <cylinder radius="0.15" length="0.15"/>
         </geometry>
       </collision>
     </link>
@@ -179,9 +179,9 @@
       <topic>__default_topic__</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
         <topicName>imu</topicName>
-        <bodyName>imu</bodyName>
+        <bodyName>imu_joint</bodyName>
         <updateRateHZ>100.0</updateRateHZ>
-        <gaussianNoise>0.0</gaussianNoise>
+        <gaussianNoise>0.000</gaussianNoise>
         <xyzOffset>0 0 0</xyzOffset>
         <rpyOffset>0 0 0</rpyOffset>
         <frameName>imu</frameName>
