@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<robot name="quadrotor" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="mass" value="1.5" />
+  <xacro:property name="ixx" value="0.00264" />
+  <xacro:property name="iyy" value="0.00264" />
+  <xacro:property name="izz" value="0.00496" />
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <!-- Main quadrotor link -->
+  <xacro:macro name="quadrotor_base_macro">
+    <link name="base_link">
+      <inertial>
+        <mass value="${mass}"/>
+        <origin xyz="0 0 0" />
+        <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0.05" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://mrsl_models/models/Falcon4/Falcon4.dae"/>
+          <!--cylinder radius="0.05" length="0.01"/-->	  
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.01"/>
+        </geometry>
+      </collision>
+    </link>
+ 
+    <!-- OVC3 Right Side Cam -->
+    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OVC3_ExtCam.urdf.xacro" />
+    <xacro:stereo_camera name="OVC3_SideCam_R" parent="base_link">
+    <origin xyz="0.084 0.02 0.08" rpy="0 0 0"/>
+    </xacro:stereo_camera>
+    <!-- OVC3 Left Side Cam -->
+    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OVC3_ExtCam.urdf.xacro" />    
+    <xacro:stereo_camera name="OVC3_SideCam_L" parent="base_link">
+    <origin xyz="-0.08 0.02 0.08" rpy="0 0 ${M_PI}"/>
+    </xacro:stereo_camera>
+    <!-- OVC3 -->
+    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OVC3.urdf.xacro" />    
+    <xacro:stereo_camera name="OVC3" parent="base_link">
+    <origin xyz="0.0 0.1 0.065" rpy="0 0 ${M_PI/2}"/>
+    </xacro:stereo_camera>
+    <!-- Downward facing Lidar -->
+    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/LidarLite.urdf.xacro" />    
+    <xacro:range_beam_model name="DownFa_Lidar" parent="base_link">
+    <origin xyz="0.06 -0.02 0.05" rpy="0 0 0"/>
+    </xacro:range_beam_model>
+    <!--Ouster-->
+    <xacro:include filename="$(find ouster_description)/urdf/OS1-64.urdf.xacro"/>
+    <OS1-64 parent="base_link" name="os1_sensor" hz="10" samples="220">
+    <origin xyz="0.005 0.01 0.24" rpy="0 0 0" />
+    </OS1-64>
+  
+    <!-- Plugins -->
+    <gazebo>
+      <!-- Quad Dynamics Plugin -->
+      <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
+        <command_topic>so3_cmd</command_topic>
+        <odom_topic>ground_truth/odom</odom_topic>
+      </plugin>
+
+      <!-- Quad Ground Truth Plugin -->
+      <plugin name="quadrotor_groundtruth_sim" filename="libgazebo_ros_p3d.so">
+        <updateRate>100.0</updateRate>
+        <bodyName>base_link</bodyName>
+        <topicName>ground_truth/odom</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+      </plugin>
+
+     </gazebo>
+  </xacro:macro>
+
+  <xacro:quadrotor_base_macro/>
+</robot>
+
