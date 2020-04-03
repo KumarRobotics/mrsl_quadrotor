@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<robot name="Falcon4_OS1" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/Falcon4_OS1/Falcon4_OS1.urdf.xacro" />
-</robot>

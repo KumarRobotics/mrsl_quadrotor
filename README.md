@@ -38,29 +38,10 @@ $roslaunch gazebo.launch world:=levine
 $roslaunch spawn.launch robot_type:=pelican
 ```
 
-For the Falcon4:
-
- a. Sensor: OVC3, Two OVC3 side Cams, downward facing Lidar
-```
-$cd ./mrsl_quadrotor_launch/launch
-$roslaunch gazebo.launch world:=levine
-$roslaunch mrsl_quadrotor_launch Falcon4_spawn.launch
-```
- b. Sensor: Ouster OS1 64 beam, OVC3, Two OVC3 side Cams, downward facing Lidar
-```
-$cd ./mrsl_quadrotor_launch/launch
-$roslaunch gazebo.launch world:=levine
-$roslaunch mrsl_quadrotor_launch Falcon4_spawn_OS1.launch
-oslaunch mav_manager example_control.launch model:=Falcon4_OS1 odom_topic:=ground_truth/odom mass:=1.88
-rosrun rqt_mav_manager rqt_mav_manager
-```
-Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_example code](https://github.com/wilselby/ouster_example) 
-
-
 ### Samples
-  hummingbird | hummingbird\_rgbd | pelican\_laser\_rgbd | Falcon4\_OS1 | mobile object
-  :---------- | :-------------- | :------------------ | :----------- | :-----------
-  <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/Falcon4.jpg" width="128"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
+  hummingbird | hummingbird\_rgbd | pelican\_laser\_rgbd | mobile object
+  :---------- | :-------------- | :------------------ | :-----------
+  <img src="./mrsl_models/samples/hummingbird.jpg" width="96"> | <img src="./mrsl_models/samples/hummingbird_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/pelican_laser_rgbd.jpg" width="96"> | <img src="./mrsl_models/samples/mobile_object.jpg" width="128">
 
   levine | pillars | D60
   :---------- | :-------------- | :-----------
