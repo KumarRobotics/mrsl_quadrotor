@@ -1,7 +1,5 @@
 <launch>
   
-  <remap from="os1_lidar" to="Falcon4_OS1/os1_lidar"/>
- 
   <arg name="robot" default="Falcon4_OS1"/>
   <arg name="robot_type" default="Falcon4_OS1"/>
   <arg name="x" default="0.0"/>
