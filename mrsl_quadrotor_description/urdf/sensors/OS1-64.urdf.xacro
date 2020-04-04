@@ -25,7 +25,7 @@
       <visual name="base_visual">
          <origin xyz="0 0 0.0" rpy="0 0 1.5707" />
          <geometry>
-	         <mesh filename="package://ouster_description/meshes/os1_64.dae" /> 
+	         <mesh filename="package://mrsl_models/models/sensors/OS1-64/os1_64.dae" /> 
            <!-- <cylinder length="0.073" radius="0.04" /> -->
          </geometry>
       </visual>

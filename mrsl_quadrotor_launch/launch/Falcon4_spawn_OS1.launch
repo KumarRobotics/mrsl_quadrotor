@@ -1,4 +1,4 @@
-<launch>
+<launch>  
   
   <arg name="robot" default="Falcon4_OS1"/>
   <arg name="robot_type" default="Falcon4_OS1"/>
@@ -9,6 +9,7 @@
 
   <group ns=
 "$(arg robot)">
+    <remap from="os1_cloud_node/points" to="$(arg robot_type)/os1_cloud_node/points" />
     <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg robot_type)/$(arg robot_type).gazebo.xacro"/>
     <param name="robot_description" command="xacro '$(arg model)' "/>
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">

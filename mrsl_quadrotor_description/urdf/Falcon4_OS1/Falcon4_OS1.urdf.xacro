@@ -49,7 +49,7 @@
     <xacro:range_beam_model name="DownFa_Lidar" parent="base_link">
     <origin xyz="0.06 -0.02 0.05" rpy="0 0 0"/>
     </xacro:range_beam_model>
-    <!--Ouster-->
+    <!--Ouster-OS1-->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OS1-64.urdf.xacro"/>
     <OS1-64 parent="base_link" name="os1_sensor" hz="10" samples="220">
     <origin xyz="0.005 0.01 0.24" rpy="0 0 0" />
