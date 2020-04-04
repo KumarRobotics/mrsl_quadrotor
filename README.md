@@ -38,20 +38,18 @@ $roslaunch gazebo.launch world:=levine
 $roslaunch spawn.launch robot_type:=pelican
 ```
 
-For the Falcon4:
+### Falcon4:
 
  a. Sensor: OVC3, Two OVC3 side Cams, downward facing Lidar
 ```
-$cd ./mrsl_quadrotor_launch/launch
-$roslaunch gazebo.launch world:=levine
+$roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest_Large
 $roslaunch mrsl_quadrotor_launch Falcon4_spawn.launch
 ```
  b. Sensor: Ouster OS1 64 beam, OVC3, Two OVC3 side Cams, downward facing Lidar
 ```
-$cd ./mrsl_quadrotor_launch/launch
-$roslaunch gazebo.launch world:=levine
+$roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest_Large
 $roslaunch mrsl_quadrotor_launch Falcon4_spawn_OS1.launch
-oslaunch mav_manager example_control.launch model:=Falcon4_OS1 odom_topic:=ground_truth/odom mass:=1.88
+$roslaunch mav_manager example_control.launch model:=Falcon4_OS1 odom_topic:=ground_truth/odom mass:=1.88
 rosrun rqt_mav_manager rqt_mav_manager
 ```
 Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_example code](https://github.com/wilselby/ouster_example) 
