@@ -62,6 +62,6 @@ Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_exa
 
   levine | pillars | D60 | forest
   :---------- | :-------------- | :----------- | :-----------
-  <img src="./mrsl_models/samples/levine.jpg" width="210"> | <img src="./mrsl_models/samples/pillars.png" width="210"> | <img src="./mrsl_models/samples/D60.png" width="210"><img src="./mrsl_models/samples/Forest.jpg" width="210">
+  <img src="./mrsl_models/samples/levine.jpg" width="180"> | <img src="./mrsl_models/samples/pillars.png" width="180"> | <img src="./mrsl_models/samples/D60.png" width="180"><img src="./mrsl_models/samples/Forest.jpg" width="180">
 
 
