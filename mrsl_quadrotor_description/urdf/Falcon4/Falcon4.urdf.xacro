@@ -21,9 +21,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.13" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.05" length="0.01"/>
+          <cylinder radius="0.52" length="0.2"/>
         </geometry>
       </collision>
     </link>
@@ -67,7 +67,21 @@
         <gaussianNoise>0.0</gaussianNoise>
         <frameName>world</frameName>
       </plugin>
+     </gazebo>
 
+     <!-- GPS Sensor -->
+     <gazebo>
+        <plugin name="novatel_gps_sim" filename="libhector_gazebo_ros_gps.so">
+        <alwaysOn>1</alwaysOn>
+          <updateRate>10.0</updateRate>
+          <bodyName>base_link</bodyName>
+          <topicName>GPS_Fix</topicName>
+          <velocityTopicName>fix_velocity</velocityTopicName>
+          <drift>5.0 5.0 5.0</drift>
+          <gaussianNoise>0.1 0.1 0.1</gaussianNoise>
+          <velocityDrift>0 0 0</velocityDrift>
+          <velocityGaussianNoise>0.1 0.1 0.1</velocityGaussianNoise>
+      </plugin>
      </gazebo>
   </xacro:macro>
 

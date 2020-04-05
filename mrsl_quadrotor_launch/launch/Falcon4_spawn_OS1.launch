@@ -7,11 +7,9 @@
   <arg name="z" default="0.1"/>
   <arg name="Y" default="-0.785"/>
 
-  <group ns=
-"$(arg robot)">
-    <remap from="os1_cloud_node/points" to="$(arg robot_type)/os1_cloud_node/points" />
+  <group ns="$(arg robot)">  	
     <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg robot_type)/$(arg robot_type).gazebo.xacro"/>
-    <param name="robot_description" command="xacro '$(arg model)' "/>
+    <param name="robot_description" command="xacro '$(arg model)' prefix:=$(arg robot_type)"/>
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
       <param name="publish_frequency" type="double" value="30.0" />
     </node>
@@ -28,11 +26,5 @@
       -model $(arg robot)"
       output="screen"/>
   </group>
-
-  <!--
-  <include file="$(find mrsl_quadrotor_launch)/launch/controller.launch">
-    <arg name="robot" value="$(arg robot)"/>
-  </include>
---> 
-
+  
 </launch>

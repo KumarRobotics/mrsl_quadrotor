@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="OS1-64">
   <xacro:property name="M_PI" value="3.1415926535897931" />
-  <xacro:macro name="OS1-64" params="*origin parent:=base_link name:=os1_sensor topic_points:=/os1_cloud_node/points topic_imu:=/os1_cloud_node/imu hz:=10 lasers:=64 samples:=512 min_range:=0.9 max_range:=75.0 noise:=0.008 min_angle:=-${M_PI} max_angle:=${M_PI} lidar_link:=os1_lidar imu_link:=os1_imu vfov_min:=-.26 vfov_max:=.26">
+  <xacro:macro name="OS1-64" params="*origin parent:=base_link name:=os1_sensor topic_points:=os1_cloud_node/points topic_imu:=os1_cloud_node/imu hz:=10 lasers:=64 samples:=512 min_range:=0.9 max_range:=75.0 noise:=0.008 min_angle:=-${M_PI} max_angle:=${M_PI} lidar_link:=os1_lidar imu_link:=os1_imu vfov_min:=-.26 vfov_max:=.26">
 
     <joint name="${name}_mount_joint" type="fixed">
       <xacro:insert_block name="origin" /> 
@@ -89,20 +89,20 @@
     </gazebo>
 
     <!-- IMU -->
-  <gazebo>
-    <plugin name="imu_controller" filename="libhector_gazebo_ros_imu.so">
-      <robotNamespace>/</robotNamespace>
-      <updateRate>100.0</updateRate> 
-      <bodyName>${imu_link}</bodyName>
-      <topicName>${topic_imu}</topicName>
-      <accelDrift>0.005 0.005 0.005</accelDrift>
-      <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
-      <rateDrift>0.005 0.005 0.005 </rateDrift>
-      <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>
-      <headingDrift>0.005</headingDrift>
-      <headingGaussianNoise>0.005</headingGaussianNoise>
-    </plugin>
-  </gazebo>
+    <gazebo>
+      <plugin name="imu_controller" filename="libhector_gazebo_ros_imu.so">
+        <robotNamespace>/</robotNamespace>
+        <updateRate>100.0</updateRate> 
+        <bodyName>${imu_link}</bodyName>
+        <topicName>${topic_imu}</topicName>
+        <accelDrift>0.005 0.005 0.005</accelDrift>
+        <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
+        <rateDrift>0.005 0.005 0.005 </rateDrift>
+        <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>
+        <headingDrift>0.005</headingDrift>
+        <headingGaussianNoise>0.005</headingGaussianNoise>
+      </plugin>
+    </gazebo>
 
   </xacro:macro>
 </robot>

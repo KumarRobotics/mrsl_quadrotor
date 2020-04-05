@@ -55,7 +55,7 @@
          <gaussianNoise>0.005</gaussianNoise>
          <alwaysOn>true</alwaysOn>
          <updateRate>50</updateRate>
-         <topicName>/GroundDist</topicName>
+         <topicName>GroundDist</topicName>
          <frameName>"base_link"</frameName>
          <visualize>true</visualize>
          <radiation>infrared</radiation>
