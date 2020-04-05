@@ -49,8 +49,8 @@ $roslaunch mrsl_quadrotor_launch Falcon4_spawn.launch
 ```
 $roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest_Large
 $roslaunch mrsl_quadrotor_launch Falcon4_spawn_OS1.launch
-$roslaunch mav_manager example_control.launch model:=Falcon4_OS1 odom_topic:=ground_truth/odom mass:=1.88
-rosrun rqt_mav_manager rqt_mav_manager
+$roslaunch mrsl_quadrotor Falcon4_control.launch model:=Falcon4_OS1 odom_topic:=ground_truth/odom mass:=1.83
+$rosrun rqt_mav_manager rqt_mav_manager
 ```
 Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_example code](https://github.com/wilselby/ouster_example) 
 

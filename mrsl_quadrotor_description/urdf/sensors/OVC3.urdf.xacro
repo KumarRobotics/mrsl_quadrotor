@@ -109,7 +109,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
           <cameraName>${name}</cameraName>
-          <imageTopicName>OVC3_RGB</imageTopicName>
+          <imageTopicName>rgb</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>camera_link</frameName>
           <hackBaseline>0.07</hackBaseline>

@@ -31,17 +31,17 @@
  
     <!-- OVC3 Right Side Cam -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OVC3_ExtCam.urdf.xacro" />
-    <xacro:stereo_camera name="OVC3_SideCam_R" parent="base_link">
+    <xacro:stereo_camera name="bonus_right" parent="base_link">
     <origin xyz="0.084 0.02 0.08" rpy="0 0 0"/>
     </xacro:stereo_camera>
     <!-- OVC3 Left Side Cam -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OVC3_ExtCam.urdf.xacro" />    
-    <xacro:stereo_camera name="OVC3_SideCam_L" parent="base_link">
+    <xacro:stereo_camera name="bonus_left" parent="base_link">
     <origin xyz="-0.08 0.02 0.08" rpy="0 0 ${M_PI}"/>
     </xacro:stereo_camera>
     <!-- OVC3 -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/OVC3.urdf.xacro" />    
-    <xacro:stereo_camera name="OVC3" parent="base_link">
+    <xacro:stereo_camera name="/" parent="base_link">
     <origin xyz="0.0 0.1 0.065" rpy="0 0 ${M_PI/2}"/>
     </xacro:stereo_camera>
     <!-- Downward facing Lidar -->
