@@ -2,8 +2,8 @@
 
 <robot name="quadrotor" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="mass" value="1.5" />
-  <xacro:property name="ixx" value="0.00264" />
-  <xacro:property name="iyy" value="0.00264" />
+  <xacro:property name="ixx" value="0.004" />
+  <xacro:property name="iyy" value="0.004" />
   <xacro:property name="izz" value="0.00496" />
   <!-- Main quadrotor link -->
   <xacro:macro name="quadrotor_base_macro">

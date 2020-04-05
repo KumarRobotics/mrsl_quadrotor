@@ -24,12 +24,6 @@
       -Y $(arg Y)
       -model $(arg robot)"
       output="screen"/>
-  </group>
-
-  <!--
-  <include file="$(find mrsl_quadrotor_launch)/launch/controller.launch">
-    <arg name="robot" value="$(arg robot)"/>
-  </include>
---> 
+  </group>  
 
 </launch>
