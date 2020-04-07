@@ -19,7 +19,6 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0" />
           <geometry>
-            <!--<box size="0.058 0.058 0.087" />-->
             <cylinder radius="0.01" length="0.1"/>
        </geometry>
         </visual>
