@@ -19,3 +19,9 @@ add_library(mrsl_quadrotor_propulsion SHARED src/quadrotor_propulsion.cpp
   src/QuadrotorSO3AttitudeControl.cpp)
 target_link_libraries(mrsl_quadrotor_propulsion ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(mrsl_quadrotor_propulsion ${catkin_EXPORTED_TARGETS})
+
+add_library(mrsl_quadrotor_propulsion_trpy SHARED src/quadrotor_propulsion_trpy.cpp
+  src/Quadrotor.cpp
+  src/QuadrotorTRPYControl.cpp)
+target_link_libraries(mrsl_quadrotor_propulsion_trpy ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_dependencies(mrsl_quadrotor_propulsion_trpy ${catkin_EXPORTED_TARGETS})
