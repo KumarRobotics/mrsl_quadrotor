@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<robot name="dragon_ddk" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/dragon_ddk_so3.urdf.xacro" />
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/sensors.urdf.xacro"/>
+</robot>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/camera.urdf.xacro" />
+  <xacro:monocular_camera name="dfc_camera" parent="dfc">
+    <origin xyz="0.0 0.0 0.0" rpy="${M_PI} -${M_PI/2} -${M_PI/2}"/>
+  </xacro:monocular_camera>
+
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/stereo_camera.urdf.xacro" />
+  <xacro:stereo_camera name="stereo" parent="left_stereo">
+    <origin xyz="0.0 0.0 0.0" rpy="0 -${M_PI/2} ${M_PI/2}"/>
+  </xacro:stereo_camera>
+
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/dragon_ddk/rgbd_camera.urdf.xacro" />
+  <xacro:rgbd_camera name="rgbd" parent="base_link">
+    <origin xyz="0.1 0.0 0.0" rpy="0 0 0"/>
+  </xacro:rgbd_camera>
+
+  <gazebo reference="imu">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_joint</bodyName>
+        <updateRateHZ>100.0</updateRateHZ>
+        <gaussianNoise>0.000</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu</frameName>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  
+</robot>

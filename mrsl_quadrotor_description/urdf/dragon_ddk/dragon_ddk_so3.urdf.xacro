@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+
+<robot name="quadrotor" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="mass" value="0.25" />
+  <xacro:property name="ixx" value="0.00264" />
+  <xacro:property name="iyy" value="0.00264" />
+  <xacro:property name="izz" value="0.00496" />
+  <!-- Main quadrotor link -->
+  <xacro:macro name="quadrotor_base_macro">
+    <link name="base_link">
+      <inertial>
+        <mass value="${mass}"/>
+        <origin xyz="0 0 0" />
+        <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
+      </inertial>
+
+      <visual>
+        <origin rpy="1.57079632679 0 -1.57079632679" xyz="0 0 -0.004"/>
+        <geometry>
+          <mesh filename="package://qflight_descriptions/meshes/ddk_tray.stl"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 -0.05" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.15" length="0.15"/>
+        </geometry>
+      </collision>
+    </link>
+
+   <!--From board_mounts.yaml in qflights_description -->
+   <joint name="flight_board_center_joint" type="fixed">
+      <origin xyz="0.02103 0.0 -0.03031" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="flight_board_center_link"/>
+    </joint>
+
+    <link name="flight_board_center_link">
+      <inertial>
+        <mass value="0.000001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+      </inertial>
+      <visual>
+        <origin xyz="0.0 -0.0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.000001 0.000001 0.000001"/>
+        </geometry>
+      </visual>
+    </link>
+
+   <!--From board_mounts.yaml in qflights_description -->
+   <joint name="imu_joint" type="fixed">
+      <origin xyz="0.03779 0.017 -0.00460" rpy="3.1415926535 0 0"/>
+      <parent link="flight_board_center_link"/>
+      <child link="imu"/>
+    </joint>
+
+   <!--From sdf_tray.urdf in qflights_description -->
+    <link name="imu">
+      <visual>
+        <geometry>
+          <mesh filename="package://qflight_descriptions/meshes/sdf_tray.stl"/>
+        </geometry>
+        <origin xyz="-.026 .017 -.0046" rpy="-1.57079632679 0 1.57079632679"/>
+        <material name="blue">
+          <color rgba="0.25 0.25 0.25 1"/>
+        </material>
+      </visual>
+      <inertial>
+        <mass value="0.000001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+      </inertial>
+    </link>
+
+    <joint name="imu_to_dfc" type="fixed">
+      <parent link="imu"/>
+      <child link="dfc"/>
+      <origin xyz="-0.00011 0.017 0.00780" rpy="0 0 1.57079632679"/>
+    </joint>
+    <!--<link name="dfc"/> -->
+    <link name="dfc">
+      <inertial>
+        <mass value="0.000001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+      </inertial>
+      <visual>
+        <origin xyz="0.0 -0.0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.000001 0.000001 0.000001"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="imu_to_hires" type="fixed">
+      <parent link="imu"/>
+      <child link="hires"/>
+      <origin xyz="0.01563 0.017 -0.00293" rpy="1.343903524 0 1.57079632679"/>
+    </joint>
+    <link name="hires">
+      <inertial>
+        <mass value="0.000001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+      </inertial>
+      <visual>
+        <origin xyz="0.0 -0.0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.000001 0.000001 0.000001"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="imu_to_left_stereo" type="fixed">
+      <parent link="imu"/>
+      <child link="left_stereo"/>
+      <origin xyz="0.01341 -0.023 0.0022" rpy="1.343903524 0 1.57079632679"/>
+    </joint>
+    <link name="left_stereo">
+      <inertial>
+        <mass value="0.000001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+      </inertial>
+      <visual>
+        <origin xyz="0.0 -0.0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.000001 0.000001 0.000001"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="left_to_right_stereo" type="fixed">
+      <parent link="left_stereo"/>
+      <child link="right_stereo"/>
+      <origin xyz="0.08 0.0 0.0" rpy="0 0 0"/>
+    </joint>
+    <link name="right_stereo">
+      <inertial>
+        <mass value="0.000001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+      </inertial>
+      <visual>
+        <origin xyz="0.0 -0.0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.000001 0.000001 0.000001"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- Plugins -->
+    <gazebo>
+      <!-- Quad Dynamics Plugin -->
+      <plugin name="quadrotor_propulsion" filename="libmrsl_quadrotor_propulsion.so">
+        <command_topic>so3_cmd</command_topic>
+        <odom_topic>ground_truth/odom</odom_topic>
+      </plugin>
+
+      <!-- Quad Ground Truth Plugin -->
+      <plugin name="quadrotor_groundtruth_sim" filename="libgazebo_ros_p3d.so">
+        <updateRate>100.0</updateRate>
+        <bodyName>base_link</bodyName>
+        <topicName>ground_truth/odom</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+      </plugin>
+
+     </gazebo>
+<!--IMU Plugin-->
+
+  </xacro:macro>
+
+  <xacro:quadrotor_base_macro/>
+</robot>
+
