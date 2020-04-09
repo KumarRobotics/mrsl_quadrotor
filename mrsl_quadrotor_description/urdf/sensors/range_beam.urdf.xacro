@@ -19,7 +19,7 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0" />
           <geometry>
-            <cylinder radius="0.01" length="0.1"/>
+            <cylinder radius="0.01" length="0.01"/>
        </geometry>
         </visual>
      </link>
