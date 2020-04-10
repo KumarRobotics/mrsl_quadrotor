@@ -41,12 +41,12 @@
     </xacro:stereo_camera>
     <!-- OVC3 -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/ovc3.urdf.xacro" />    
-    <xacro:stereo_camera name="/" parent="base_link">
+    <xacro:stereo_camera name="/ovc3" parent="base_link">
     <origin xyz="0.1 0 0.065" rpy="0 0 0"/>
     </xacro:stereo_camera>
     <!-- Downward facing Lidar -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/range_beam.urdf.xacro" />
-    <xacro:range_beam name="downward_range_beam" parent="base_link" ros_topic="range" update_rate="10">
+    <xacro:range_beam name="downward_range_beam_frame" parent="base_link" ros_topic="range" update_rate="10">
       <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0"/>
     </xacro:range_beam> 
 

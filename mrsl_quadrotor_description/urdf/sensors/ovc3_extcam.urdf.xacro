@@ -31,6 +31,22 @@
       </visual>
     </link>
 
+    <joint name="${name}_depth_joint" type="fixed">
+        <origin xyz="0.002 0.06 -0.004" rpy="0 0 0" />
+        <parent link="${name}_link" />
+        <child link="${name}_depth_frame"/>
+      </joint>
+
+      <link name="${name}_depth_frame"/>
+
+      <joint name="${name}_depth_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="${-M_PI/2} 0.0 ${-M_PI/2}" />
+        <parent link="${name}_depth_frame" />
+        <child link="${name}_depth_optical_frame"/>
+      </joint>
+
+      <link name="${name}_depth_optical_frame"/>
+
     <!-- camera -->
     <gazebo reference="${name}_link">
       <sensor type="multicamera" name="gazebo_${name}_camera">
