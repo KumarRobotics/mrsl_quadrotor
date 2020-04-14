@@ -5,7 +5,7 @@
   <xacro:property name="image_width" value="1280" />
   <xacro:property name="image_format" value="L8" />
   <xacro:property name="hfov" value="${M_PI/2}" />
-  <xacro:property name="frame_id" value="camera" />
+  <xacro:property name="frame_id" value="ovc_camera_link_optical" />
   <xacro:property name="focal_length" value="320" />
   <xacro:property name="hack_baseline" value="0.06" />
   <xacro:property name="frame_rate" value="30" />
@@ -26,26 +26,26 @@
       <visual>
         <origin xyz="0.0 -0.105 -0.02" rpy="${M_PI/2} 0 ${M_PI/2}" />
         <geometry>
-          <mesh filename="package://mrsl_models/models/sensors/ovc3/ovc3_external_camera.dae"/>          
+          <mesh filename="package://mrsl_models/models/sensors/ovc3/ovc3_external_camera.dae"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${name}_depth_joint" type="fixed">
+    <joint name="${name}_camera_joint" type="fixed">
         <origin xyz="0.002 0.06 -0.004" rpy="0 0 0" />
         <parent link="${name}_link" />
-        <child link="${name}_depth_frame"/>
+        <child link="${name}_camera_frame"/>
       </joint>
 
-      <link name="${name}_depth_frame"/>
+      <link name="${name}_camera_frame"/>
 
-      <joint name="${name}_depth_optical_joint" type="fixed">
+      <joint name="${name}_camera_optical_joint" type="fixed">
         <origin xyz="0 0 0" rpy="${-M_PI/2} 0.0 ${-M_PI/2}" />
-        <parent link="${name}_depth_frame" />
-        <child link="${name}_depth_optical_frame"/>
+        <parent link="${name}_camera_frame" />
+        <child link="${name}_camera_optical_frame"/>
       </joint>
 
-      <link name="${name}_depth_optical_frame"/>
+      <link name="${name}_camera_optical_frame"/>
 
     <!-- camera -->
     <gazebo reference="${name}_link">
@@ -76,7 +76,7 @@
             <near>0.1</near>
             <far>20</far>
           </clip>
-        </camera>	
+        </camera>
         <plugin name="${name}_controller" filename="libgazebo_ros_multicamera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>${frame_rate}</updateRate>
@@ -97,7 +97,7 @@
           <distortionT2>0.0</distortionT2>
         </plugin>
       </sensor>
-    </gazebo>    
+    </gazebo>
 
   </xacro:macro>
 </robot>
