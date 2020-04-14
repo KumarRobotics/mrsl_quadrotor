@@ -7,10 +7,10 @@
       <joint name="${name}_joint" type="fixed">
         <xacro:insert_block name="origin" />
         <parent link="${parent}"/>
-        <child link="${name}_frame"/>
+        <child link="${name}"/>
       </joint>
 
-      <link name="${name}_frame">
+      <link name="${name}">
         <inertial>
           <mass value="0.000" />
           <origin xyz="0 0 0" rpy="0 0 0" />
@@ -29,7 +29,7 @@
       <xacro:range_beam_model name="${name}" parent="${parent}">
         <xacro:insert_block name="origin" />
       </xacro:range_beam_model>
-      <gazebo reference="${name}_frame">
+      <gazebo reference="${name}">
         <sensor type="ray" name="${name}">
           <always_on>true</always_on>
           <visualize>true</visualize>
