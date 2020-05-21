@@ -40,7 +40,10 @@ roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=pelican mav_name:=juliett
 
 ### Dragon DDK:
 
- a. Sensors: Downward facing camera, stereo, rgbd, imu.
+Sensors: Downward facing camera, stereo, rgbd, imu.
+
+Dependency: Clone and compile `https://github.com/ATLFlight/qflight_descriptions`
+
 ```
 roslaunch mrsl_quadrotor_launch gazebo.launch world:=empty
 roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=dragon_ddk mav_name:=ddk
