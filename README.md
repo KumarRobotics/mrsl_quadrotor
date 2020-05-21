@@ -23,8 +23,9 @@ Requirements
 ### List of Components
   Robot Frame          |  Sensor | World | Platform Examples
   :------------------- |:-----   | :-----| :-------
-  Hummingbird          |  rgbd   | empty | pelican
-  Pelican              |  camera | levine| pelican\_laser
+  Hummingbird          |  empty  | empty | hummingbird
+  Pelican              |  empty  | empty | pelican
+  |                    |  hokuyo | levine| pelican\_laser
   FLA Platform         |  stereo | skir  | pelican\_laser\_rgbd
   |                    |  hokuyo | wg    | pelican\_laser\_rotate
   |                    |velodyne | pillars| pelican\_rgbd
@@ -33,33 +34,31 @@ Requirements
 ### Test Example
 Using the example launch file in the repo
 ```
-$cd ./mrsl_quadrotor_launch/launch
-$roslaunch gazebo.launch world:=levine
-$roslaunch spawn.launch robot_type:=pelican
+roslaunch mrsl_quadrotor_launch gazebo.launch world:=levine
+roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=pelican mav_name:=juliett
 ```
 
 ### Falcon4:
 
+Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_example code](https://github.com/wilselby/ouster_example)
+and installing the hector gazebo plugins
+```
+sudo apt install ros-melodic-hector-gazebo-plugins
+```
  a. Sensor: OVC3, Two OVC3 side Cams, downward facing Lidar
 ```
-$roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest2
-$roslaunch mrsl_quadrotor_launch falcon4_spawn.launch
-$roslaunch mrsl_quadrotor_launch falcon4_control.launch model:=falcon4 odom_topic:=ground_truth/odom
-$rosrun rqt_mav_manager rqt_mav_manager
+roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest2
+roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=falcon4 mav_name:=falcon4
+roslaunch mrsl_quadrotor_launch falcon4_control.launch mav_type:=falcon4 mav_name:=falcon4 odom_topic:=ground_truth/odom
+rosrun rqt_mav_manager rqt_mav_manager
 ```
  b. Sensor: Ouster OS1 64 beam, OVC3, Two OVC3 side Cams, downward facing Lidar
 ```
-$roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest2
-$roslaunch mrsl_quadrotor_launch falcon4_spawn_os1.launch
-$roslaunch mrsl_quadrotor_launch falcon4_os1_control.launch model:=falcon4_os1 odom_topic:=ground_truth/odom
-$rosrun rqt_mav_manager rqt_mav_manager
+roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest2
+roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=falcon4_os1 mav_name:=falcon4_os1
+roslaunch mrsl_quadrotor_launch falcon4_os1_control.launch mav_type:=falcon4_os1 mav_name:=falcon4_os1 odom_topic:=ground_truth/odom
+rosrun rqt_mav_manager rqt_mav_manager
 ```
-Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_example code](https://github.com/wilselby/ouster_example) 
-and installing the hector gazebo plugins
-```
-$sudo apt install ros-melodic-hector-gazebo-plugins
-```
-
 
 ### Samples
   hummingbird | hummingbird\_rgbd | pelican\_laser\_rgbd | Falcon4\_OS1 | mobile object
