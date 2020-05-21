@@ -38,6 +38,16 @@ roslaunch mrsl_quadrotor_launch gazebo.launch world:=levine
 roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=pelican mav_name:=juliett
 ```
 
+### Dragon DDK:
+
+ a. Sensors: Downward facing camera, stereo, rgbd, imu.
+```
+roslaunch mrsl_quadrotor_launch gazebo.launch world:=empty
+roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=dragon_ddk mav_name:=ddk
+roslaunch mrsl_quadrotor_launch controller.launch mav_type:=dragon_ddk mav_name:=ddk mass:=0.25 odom_topic:=ground_truth/odom
+rosrun rqt_mav_manager rqt_mav_manager
+```
+
 ### Falcon4:
 
 Simulating the Ouster OS1 64 beam lidar requires using a [fork of the ouster_example code](https://github.com/wilselby/ouster_example)
