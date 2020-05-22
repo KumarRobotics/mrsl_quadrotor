@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(mrsl_mobile_object)
 
-find_package(catkin REQUIRED COMPONENTS roscpp gazebo_ros quadrotor_msgs gazebo_dev)
+find_package(catkin REQUIRED COMPONENTS roscpp gazebo_ros kr_mav_msgs gazebo_dev)
 
 find_package(Boost REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 
-catkin_package(CATKIN_DEPENDS roscpp gazebo_ros quadrotor_msgs)
+catkin_package(CATKIN_DEPENDS roscpp gazebo_ros kr_mav_msgs)
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIRS})
 

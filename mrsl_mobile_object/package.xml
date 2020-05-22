@@ -13,6 +13,6 @@
   <depend>gazebo</depend>
   <depend>gazebo_ros</depend>
   <depend>cmake_modules</depend>
-  <depend>quadrotor_msgs</depend>
+  <depend>kr_mav_msgs</depend>
 
 </package>
