@@ -43,7 +43,7 @@ roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=pelican mav_name:=juliett
 Sensors: Downward facing camera, stereo, rgbd, imu.
 
 Dependency: Clone and compile `https://github.com/ATLFlight/qflight_descriptions`
-Note: The controller launch file depend on `quadrotor_control` package which will be soon released (currently closed source)
+Note: The controller launch file depends on `quadrotor_control` package which will be soon released (currently closed source)
 - `quadrotor_control` [KumarRobotics](https://github.com/KumarRobotics/quadrotor_control)
 ```
 roslaunch mrsl_quadrotor_launch gazebo.launch world:=empty

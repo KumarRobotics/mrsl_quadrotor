@@ -3,12 +3,12 @@
 
 #include <boost/optional.hpp>
 #include <mrsl_quadrotor_simulator/Quadrotor.h>
-#include <quadrotor_msgs/SO3Command.h>
+#include <kr_mav_msgs/SO3Command.h>
 
 namespace mrsl_quadrotor_simulator {
 class QuadrotorSO3AttitudeControl {
 public:
-  typedef quadrotor_msgs::SO3Command CmdMsg;
+  typedef kr_mav_msgs::SO3Command CmdMsg;
   void init(const Quadrotor &quad, float I[][3]);
   Quadrotor::MotorState getControl(const Quadrotor::State &state);
   void cmdCallback(const CmdMsg::ConstPtr &msg);

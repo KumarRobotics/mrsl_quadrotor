@@ -3,12 +3,12 @@
 
 #include <boost/optional.hpp>
 #include <mrsl_quadrotor_simulator/Quadrotor.h>
-#include <quadrotor_msgs/TRPYCommand.h>
+#include <kr_mav_msgs/TRPYCommand.h>
 
 namespace mrsl_quadrotor_simulator {
 class QuadrotorTRPYControl {
 public:
-  typedef quadrotor_msgs::TRPYCommand TRPYCmdMsg;
+  typedef kr_mav_msgs::TRPYCommand TRPYCmdMsg;
   void init(const Quadrotor &quad, float I[][3]);
   Quadrotor::MotorState getControl(const Quadrotor::State &state);
   void cmdCallback(const TRPYCmdMsg::ConstPtr &msg);

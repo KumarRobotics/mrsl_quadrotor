@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(mrsl_quadrotor_simulator)
 
-find_package(catkin REQUIRED COMPONENTS roscpp gazebo_ros gazebo_dev quadrotor_msgs)
+find_package(catkin REQUIRED COMPONENTS roscpp gazebo_ros gazebo_dev kr_mav_msgs)
 
 find_package(Boost REQUIRED)
 
@@ -12,7 +12,7 @@ include_directories(${EIGEN3_INCLUDE_DIRS})
 
 include_directories(include)
 
-catkin_package(CATKIN_DEPENDS roscpp gazebo_ros quadrotor_msgs)
+catkin_package(CATKIN_DEPENDS roscpp gazebo_ros kr_mav_msgs)
 
 add_library(mrsl_quadrotor_propulsion SHARED src/quadrotor_propulsion.cpp
   src/Quadrotor.cpp
