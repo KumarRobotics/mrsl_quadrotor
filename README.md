@@ -66,14 +66,21 @@ roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=falcon4 mav_name:=falcon4
 roslaunch mrsl_quadrotor_launch falcon4_control.launch mav_type:=falcon4 mav_name:=falcon4 odom_topic:=ground_truth/odom
 rosrun rqt_mav_manager rqt_mav_manager
 ```
- b. Sensor: Ouster OS1 64 beam, OVC3, Two OVC3 side Cams, downward facing Lidar
+ b. Sensor: Ouster OS1 64 x 512, OVC3, Two OVC3 side Cams, downward facing Lidar
 ```
 roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest2
-roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=falcon4_os1 mav_name:=falcon4_os1
-roslaunch mrsl_quadrotor_launch falcon4_os1_control.launch mav_type:=falcon4_os1 mav_name:=falcon4_os1 odom_topic:=ground_truth/odom
+roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=falcon4_os1_64_512 mav_name:=falcon4_os1
+roslaunch mrsl_quadrotor_launch falcon4_os1_control.launch mav_type:=falcon4_os1_64_512 mav_name:=falcon4_os1 odom_topic:=ground_truth/odom
 rosrun rqt_mav_manager rqt_mav_manager
 ```
 
+ c. Sensor: Ouster OS1 16 x 256, OVC3, Two OVC3 side Cams, downward facing Lidar
+```
+roslaunch mrsl_quadrotor_launch gazebo.launch world:=forest2
+roslaunch mrsl_quadrotor_launch spawn.launch mav_type:=falcon4_os1_16_256 mav_name:=falcon4_os1
+roslaunch mrsl_quadrotor_launch falcon4_os1_control.launch mav_type:=falcon4_os1_16_256 mav_name:=falcon4_os1 odom_topic:=ground_truth/odom
+rosrun rqt_mav_manager rqt_mav_manager
+```
 ### Samples
   hummingbird | hummingbird\_rgbd | pelican\_laser\_rgbd | Falcon4\_OS1 | mobile object
   :---------- | :-------------- | :------------------ | :----------- | :-----------
