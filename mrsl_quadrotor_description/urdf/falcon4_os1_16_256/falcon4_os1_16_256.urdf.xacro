@@ -52,9 +52,9 @@
     <xacro:range_beam name="downward_range_beam_frame" parent="base_link" ros_topic="range" update_rate="10">
       <origin xyz="0 0 -0.02" rpy="0 ${M_PI/2} 0"/>
     </xacro:range_beam>    
-    <!--Ouster-OS1-->
+    <!--Ouster-OS1, hz is frequency, lasers are vertical resolution, samples are horizontal resolution-->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/os1-64.urdf.xacro"/>
-    <xacro:OS1-64 parent="base_link" name="os1_sensor" hz="10" samples="220" robot_ns="$(arg robot_ns)" >
+    <xacro:OS1-64 parent="base_link" name="os1_sensor" hz="5" lasers="16" samples="256" robot_ns="$(arg robot_ns)" >
       <origin xyz="0.01 -0.005 0.24" rpy="0 0 0" />
     </xacro:OS1-64>
 
@@ -94,4 +94,3 @@
 
   <xacro:quadrotor_base_macro/>
 </robot>
-
