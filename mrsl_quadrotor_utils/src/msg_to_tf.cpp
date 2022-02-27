@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
   ros::NodeHandle nh("~");
 
   nh.param("child_frame_id", child_frame_id, std::string("null_frame"));
-
+ROS_ERROR("child_frame_id %s", child_frame_id.c_str() );
   ros::Subscriber sub = nh.subscribe("msg", 10, msgCallback,
                                      ros::TransportHints().tcpNoDelay());
 

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot name="fla" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/fla_platform_laser_rgbd/fla_platform_so3.urdf.xacro" />
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/fla_platform_laser_rgbd/sensors.urdf.xacro"/>
+  <xacro:arg name="frame_prefix" default="" />
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/fla_platform_visual/fla_platform_so3.urdf.xacro" />
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/fla_platform_laser_rgbd/sensors.urdf.xacro" frame_prefix="$(arg frame_prefix)"/>
 </robot>

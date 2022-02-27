@@ -6,8 +6,11 @@
   <xacro:property name="iyy" value="0.004" />
   <xacro:property name="izz" value="0.00496" />
   <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <xacro:arg name="frame_prefix" default="" />
+
   <!-- Main quadrotor link -->
-  <xacro:macro name="quadrotor_base_macro">
+  <xacro:macro name="quadrotor_base_macro" params="frame_prefix">
     <link name="base_link">
       <inertial>
         <mass value="${mass}"/>
@@ -31,22 +34,22 @@
  
     <!-- OVC3 Right Side Cam -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/ovc3_extcam.urdf.xacro" />
-    <xacro:stereo_camera name="bonus_right" parent="base_link">
+    <xacro:stereo_camera name="bonus_right" parent="base_link" frame_prefix="${frame_prefix}">
     <origin xyz="0.02 -0.084 0.08" rpy="0 0 -${M_PI/2}"/>
     </xacro:stereo_camera>
     <!-- OVC3 Left Side Cam -->
-    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/ovc3_extcam.urdf.xacro" />    
-    <xacro:stereo_camera name="bonus_left" parent="base_link">
+    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/ovc3_extcam.urdf.xacro" />
+    <xacro:stereo_camera name="bonus_left" parent="base_link" frame_prefix="${frame_prefix}">
     <origin xyz="0.02 0.08 0.08" rpy="0 0 ${M_PI/2}"/>
     </xacro:stereo_camera>
     <!-- OVC3 -->
-    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/ovc3.urdf.xacro" />    
-    <xacro:stereo_camera name="/ovc3" parent="base_link">
+    <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/ovc3.urdf.xacro" />
+    <xacro:stereo_camera name="/ovc3" parent="base_link" frame_prefix="${frame_prefix}">
     <origin xyz="0.1 0 0.065" rpy="0 0 0"/>
     </xacro:stereo_camera>
     <!-- Downward facing Lidar -->
     <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/range_beam.urdf.xacro" />
-    <xacro:range_beam name="downward_range_beam_frame" parent="base_link" ros_topic="range" update_rate="10">
+    <xacro:range_beam name="downward_range_beam_frame" parent="base_link" ros_topic="range" update_rate="10" frame_prefix="${frame_prefix}">
       <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0"/>
     </xacro:range_beam> 
 
@@ -85,6 +88,6 @@
      </gazebo>
   </xacro:macro>
 
-  <xacro:quadrotor_base_macro/>
+  <xacro:quadrotor_base_macro frame_prefix="$(arg frame_prefix)"/>
 </robot>
 

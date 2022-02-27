@@ -10,7 +10,7 @@
   <xacro:property name="hack_baseline" value="0.08" />
   <xacro:property name="frame_rate" value="15" />
 
-  <xacro:macro name="stereo_camera" params="name parent *origin">
+  <xacro:macro name="stereo_camera" params="name parent frame_prefix *origin">
     <joint name="${name}_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
@@ -67,7 +67,7 @@
           <cameraName>${name}</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-          <frameName>${frame_id}</frameName>
+          <frameName>${frame_prefix}${frame_id}</frameName>
           <hackBaseline>${hack_baseline}</hackBaseline>
           <CxPrime>${(image_width+1)/2}</CxPrime>
           <Cx>${(image_width+1)/2}</Cx>

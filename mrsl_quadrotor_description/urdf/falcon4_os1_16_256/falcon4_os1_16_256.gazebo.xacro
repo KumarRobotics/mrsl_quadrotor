@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <robot name="falcon4_os1" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/falcon4_os1_16_256/falcon4_os1_16_256.urdf.xacro" />
+  <xacro:arg name="frame_prefix" default="" />
+  <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/falcon4_os1_16_256/falcon4_os1_16_256.urdf.xacro" frame_prefix="$(arg frame_prefix)"/>
 </robot>

@@ -31,7 +31,9 @@ add_executable(publish_horizon src/publish_horizon.cpp)
 target_link_libraries(publish_horizon ${catkin_LIBRARIES})
 add_executable(publish_rotate src/publish_rotate.cpp)
 target_link_libraries(publish_rotate ${catkin_LIBRARIES})
- 
+add_executable(tf_pub src/tf_pub.cpp)
+target_link_libraries(tf_pub ${catkin_LIBRARIES})
+
 #cs_install()
  
 #cs_export()

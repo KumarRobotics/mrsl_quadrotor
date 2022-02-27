@@ -25,7 +25,7 @@
      </link>
     </xacro:macro>
 
-    <xacro:macro name="range_beam" params="name parent *origin ros_topic update_rate">
+    <xacro:macro name="range_beam" params="name parent *origin ros_topic update_rate frame_prefix">
       <xacro:range_beam_model name="${name}" parent="${parent}">
         <xacro:insert_block name="origin" />
       </xacro:range_beam_model>
@@ -49,7 +49,7 @@
             <alwaysOn>true</alwaysOn>
             <updateRate>${update_rate}</updateRate>
             <topicName>${ros_topic}</topicName>
-            <frameName>${name}</frameName>
+            <frameName>${frame_prefix}${name}</frameName>
           </plugin>
         </sensor>
       </gazebo>

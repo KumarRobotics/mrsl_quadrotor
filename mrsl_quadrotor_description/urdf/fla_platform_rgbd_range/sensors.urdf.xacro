@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg name="frame_prefix" default="" />
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/asus_camera.urdf.xacro" />
   <xacro:asus_camera name="camera" parent="base_link">
     <origin xyz="0.1 0.0 0.2" rpy="${M_PI} 0 0"/>
   </xacro:asus_camera>
 
   <xacro:include filename="$(find mrsl_quadrotor_description)/urdf/sensors/range_beam.urdf.xacro" />
-  <xacro:range_beam name="downward_range_beam" parent="base_link" ros_topic="range" update_rate="10">
+  <xacro:range_beam name="downward_range_beam" parent="base_link" ros_topic="range" update_rate="10" frame_prefix="$(arg frame_prefix)">
     <origin xyz="-0.1 0 -0.05" rpy="0 ${M_PI/2} 0"/>
   </xacro:range_beam>
 
