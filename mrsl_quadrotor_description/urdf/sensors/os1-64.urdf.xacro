@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="os1-64">
   <xacro:property name="M_PI" value="3.1415926535897931" />
-  <xacro:macro name="OS1-64" params="*origin parent:=base_link name:=os1_sensor topic_points:=os1_cloud_node/points topic_imu:=os1_cloud_node/imu hz:=10 lasers:=64 samples:=512 min_range:=0.9 max_range:=75.0 noise:=0.008 min_angle:=-${M_PI} max_angle:=${M_PI} lidar_link:=os1_lidar imu_link:=os1_imu vfov_min:=-.26 vfov_max:=.26 robot_ns:=falcon4">
+  <xacro:macro name="OS1-64" params="*origin parent:=base_link name:=os1_sensor topic_points:=os1_cloud_node/points topic_imu:=os1_cloud_node/imu hz:=10 lasers:=64 samples:=512 min_range:=0.9 max_range:=75.0 noise:=0.008 min_angle:=-${M_PI} max_angle:=${M_PI} lidar_link:=os1_lidar imu_link:=os1_imu vfov_min:=-.26 vfov_max:=.26 robot_ns:=falcon4 frame_prefix">
 
     <joint name="${name}_mount_joint" type="fixed">
       <xacro:insert_block name="origin" />
@@ -80,7 +80,7 @@
           <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_ouster_laser.so">
             <topicName>${robot_ns}/${topic_points}</topicName>
             <robotNamespace>/</robotNamespace>
-            <frameName>${lidar_link}</frameName>
+            <frameName>${frame_prefix}${lidar_link}</frameName>
             <min_range>${min_range}</min_range>
             <max_range>${max_range}</max_range>
             <gaussianNoise>${noise}</gaussianNoise>

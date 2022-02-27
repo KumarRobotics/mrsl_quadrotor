@@ -3,7 +3,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
-  <xacro:macro name="hokuyo_utm30lx" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle">
+  <xacro:macro name="hokuyo_utm30lx" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle frame_prefix">
     <link name="${name}">
       <inertial>
         <mass value="0.001" />
@@ -53,7 +53,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>${update_rate}</updateRate>
           <topicName>${ros_topic}</topicName>
-          <frameName>${name}</frameName>
+          <frameName>${frame_prefix}${name}</frameName>
         </plugin>
       </sensor>
     </gazebo>

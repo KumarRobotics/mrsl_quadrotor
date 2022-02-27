@@ -34,7 +34,7 @@
 
     </xacro:macro>
 
-    <xacro:macro name="hokuyo_utm30lx" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle">
+    <xacro:macro name="hokuyo_utm30lx" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle frame_prefix">
       <xacro:hokuyo_utm30lx_model name="${name}" parent="${parent}">
         <xacro:insert_block name="origin" />
       </xacro:hokuyo_utm30lx_model>
@@ -65,13 +65,13 @@
             <alwaysOn>true</alwaysOn>
             <updateRate>${update_rate}</updateRate>
             <topicName>${ros_topic}</topicName>
-            <frameName>${name}</frameName>
+            <frameName>${frame_prefix}${name}</frameName>
           </plugin>
         </sensor>
       </gazebo>
     </xacro:macro>
   
-    <xacro:macro name="hokuyo_utm30lx_gpu" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle">
+    <xacro:macro name="hokuyo_utm30lx_gpu" params="name parent *origin ros_topic update_rate ray_count min_angle max_angle frame_prefix">
       <xacro:hokuyo_utm30lx_model name="${name}" parent="${parent}">
         <xacro:insert_block name="origin" />
       </xacro:hokuyo_utm30lx_model>
@@ -102,7 +102,7 @@
             <alwaysOn>true</alwaysOn>
             <updateRate>${update_rate}</updateRate>
             <topicName>${ros_topic}</topicName>
-            <frameName>${name}_frame</frameName>
+            <frameName>${frame_prefix}${name}_frame</frameName>
           </plugin>
         </sensor>
       </gazebo>

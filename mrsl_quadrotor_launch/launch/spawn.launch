@@ -6,9 +6,13 @@
   <arg name="z" default="0.1"/>
   <arg name="Y" default="-0.785"/>
 
+  <arg name="use_frame_prefix" default="false"/>
+  <arg name="frame_prefix" default="" unless="$(arg use_frame_prefix)"/>
+  <arg name="frame_prefix" default="$(arg mav_name)/" if="$(arg use_frame_prefix)"/>
+
   <group ns="$(arg mav_name)">
     <arg name="model" default="$(find mrsl_quadrotor_description)/urdf/$(arg mav_type)/$(arg mav_type).gazebo.xacro"/>
-    <param name="robot_description" command="xacro '$(arg model)' "/>
+    <param name="robot_description" command="xacro '$(arg model)' frame_prefix:=$(arg frame_prefix) "/>
     <node name="spawn_robot"
       pkg="gazebo_ros"
       type="spawn_model"

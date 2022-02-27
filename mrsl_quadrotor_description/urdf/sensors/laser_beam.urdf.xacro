@@ -3,7 +3,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:property name="M_PI" value="3.1415926535897931" />
 
-    <xacro:macro name="laser_beam_model" params="name parent *origin">
+    <xacro:macro name="laser_beam_model" params="name parent frame_prefix *origin">
       <joint name="${name}_joint" type="fixed">
         <xacro:insert_block name="origin" />
         <parent link="${parent}"/>
@@ -59,7 +59,7 @@
             <alwaysOn>true</alwaysOn>
             <updateRate>${update_rate}</updateRate>
             <topicName>${ros_topic}</topicName>
-            <frameName>${name}_frame</frameName>
+            <frameName>${frame_prefix}${name}_frame</frameName>
           </plugin>
         </sensor>
       </gazebo>
