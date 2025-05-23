@@ -1,0 +1,75 @@
+# Full set of configurations
+- gz_topic_name: "/world/levine/pose/info"
+  ros_type_name: "geometry_msgs/msg/PoseArray"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS
+
+
+# bridge_config.yaml
+
+# Use a YAML array of maps, one entry per bridged topic :contentReference[oaicite:0]{index=0}
+
+- topic_name: "/GPS_Fix"
+  ros_type_name: "sensor_msgs/msg/NavSatFix"
+  gz_type_name:  "gz.msgs.NavSat"
+  direction: GZ_TO_ROS
+  
+
+- topic_name: "/falcon4/os1_cloud_node/imu"
+  ros_type_name: "sensor_msgs/msg/Imu"
+  gz_type_name:  "gz.msgs.IMU"
+  direction: GZ_TO_ROS
+
+- gz_topic_name: "/falcon4/os1_cloud_node/points/points"
+  ros_topic_name: "/falcon4/os1_cloud_node/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name:  "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+- topic_name: "/gazebo_ovc3_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name:  "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- topic_name: "/gazebo_ovc3_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name:  "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- topic_name: "/gazebo_bonus_left_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name:  "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- topic_name: "/gazebo_bonus_left_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name:  "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- topic_name: "/gazebo_bonus_right_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name:  "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- topic_name: "/gazebo_bonus_right_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name:  "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- topic_name: "/falcon4/ground_truth/odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name:  "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+- topic_name: "/ovc3/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name:  "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+- topic_name: "/ovc3/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name:  "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+
+

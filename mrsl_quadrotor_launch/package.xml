@@ -5,12 +5,16 @@
   <description>The mrsl_quadrotor_launch package</description>
 
   <maintainer email="sikang@todo.todo">sikang</maintainer>
+  <maintainer email="jiuzl@todo.todo">jiuzl</maintainer>
 
   <license>TODO</license>
 
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
   <exec_depend>mrsl_models</exec_depend>
   <exec_depend>mrsl_quadrotor_description</exec_depend>
-
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

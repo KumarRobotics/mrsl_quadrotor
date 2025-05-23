@@ -1,0 +1,45 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="mav_name" default="juliett"/>
+  <arg name="mav_type" default="pelican_laser_rgbd"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.1"/>
+  <arg name="Y" default="-0.785"/>
+  <arg name="use_frame_prefix" default="true"/>
+  <arg name="frame_prefix" default="$(var mav_name)/" if="$(var use_frame_prefix)"/>
+  <arg name="frame_prefix" default="" unless="$(var use_frame_prefix)"/>
+  <arg name="world" default="empty"/>
+  <!-- Grouping in namespace -->
+  <group>
+    <push-ros-namespace namespace="$(var mav_name)"/>
+
+    <!-- Set the robot_description parameter from xacro -->
+    <arg name="xacro_gazebo_file" default="$(find-pkg-share mrsl_quadrotor_description)/urdf/$(var mav_type)/$(var mav_type).gazebo.xacro"/>
+    <arg name="xacro_urdf_file" default="$(find-pkg-share mrsl_quadrotor_description)/urdf/$(var mav_type)/$(var mav_type).urdf.xacro"/>
+    <arg name="urdf_file" default="$(find-pkg-share mrsl_quadrotor_description)/urdf/$(var mav_type)/$(var mav_type).urdf"/>
+    <!-- <param name="robot_description" value="$(var urdf_file)"/> -->
+
+    <!-- joint_state_publisher as a node, passing URDF path as an argument -->
+     <executable cmd="ros2 run joint_state_publisher joint_state_publisher $(var urdf_file)" cwd="/home" launch-prefix="" output="screen"/>
+
+    <!-- robot_state_publisher with robot_description and optional prefix -->
+    <node pkg="robot_state_publisher" exec="robot_state_publisher" args="$(var urdf_file)"
+          name="robot_state_publisher" output="screen">
+      <param name="frame_prefix"       value="$(var frame_prefix)"/>
+    </node>
+
+    
+    <!-- Spawn the robot model -->
+    <node pkg="ros_gz_sim" exec="create">
+      <param name="world" value="$(var world)"/>
+      <param name="file" value="$(var urdf_file)"/>
+      <param name="name" value="$(var mav_name)"/>
+      <param name="x" value="$(var x)"/>
+      <param name="y" value="$(var y)"/>
+      <param name="z" value="$(var z)"/>
+      <param name="Y" value="$(var Y)"/>
+    </node>    
+  </group>
+
+</launch>

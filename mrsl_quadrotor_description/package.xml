@@ -8,6 +8,7 @@
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
   <maintainer email="sikang@todo.todo">sikang</maintainer>
+  <maintainer email="jiuzl@todo.todo">jiuzl</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
@@ -39,14 +40,16 @@
   <!--   <run_depend>message_runtime</run_depend> -->
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
-  <buildtool_depend>catkin</buildtool_depend>
+  <!-- <buildtool_depend>catkin</buildtool_depend> -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <!-- <run_depend>gazebo_ros</run_depend>
+  <run_depend>gazebo_plugins</run_depend> -->
 
-  <run_depend>gazebo_ros</run_depend>
-  <run_depend>gazebo_plugins</run_depend>
 
-
-  <export>
+  <!-- <export>
     <gazebo_ros gazebo_model_path="${prefix}"/>
+  </export> -->
+  <export>
+    <build_type>ament_cmake</build_type>
   </export>
-
 </package>

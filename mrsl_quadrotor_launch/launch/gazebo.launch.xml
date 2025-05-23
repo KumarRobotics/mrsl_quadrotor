@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Set environment variable -->
+  <set_env name="GZ_SIM_RESOURCE_PATH" value="$(find-pkg-share mrsl_models)/models:$(env GZ_SIM_RESOURCE_PATH)"/>
+
+  <!-- Declare arguments -->
+  <arg name="world" default="empty"/>
+  <arg name="gui" default="true"/>
+
+  <!-- Include Gazebo empty world launch file -->
+  <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+    <arg name="gz_args" value="$(find-pkg-share mrsl_quadrotor_description)/worlds/$(var world).world"/>
+  </include>
+</launch>

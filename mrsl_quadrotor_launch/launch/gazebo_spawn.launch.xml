@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Set environment variable -->
+  <set_env name="GZ_SIM_RESOURCE_PATH" value="$(find-pkg-share mrsl_models)/models:$(env GZ_SIM_RESOURCE_PATH)"/>
+
+  <!-- Declare arguments -->
+  <arg name="world" default="empty"/>
+  <arg name="mav_name" default="falcon4"/>
+  <arg name="mav_type" default="falcon4_os1_16_256"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.1"/>
+  <arg name="Y" default="-0.785"/>
+  <arg name="use_frame_prefix" default="true"/>
+
+  <!-- Include Gazebo empty world launch file -->
+  <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+    <arg name="gz_args" value="$(find-pkg-share mrsl_quadrotor_description)/worlds/$(var world).world"/>
+  </include>
+
+  <!-- Include Gazebo quadrotor spawn launch file -->
+  <include file="$(find-pkg-share mrsl_quadrotor_launch)/launch/spawn.launch.xml">
+    <arg name="mav_name" value="$(var mav_name)"/>
+    <arg name="mav_type" value="$(var mav_type)"/>
+    <arg name="x" value="$(var x)"/>
+    <arg name="y" value="$(var y)"/>
+    <arg name="z" value="$(var z)"/>
+    <arg name="Y" value="$(var Y)"/>
+    <arg name="use_frame_prefix" value="$(var use_frame_prefix)"/>
+    <arg name="world" value="$(var world)"/>
+  </include>
+
+  <!-- include the ros-gz_bridge launch file -->
+  <include file="$(find-pkg-share ros_gz_bridge)/launch/ros_gz_bridge.launch.py">
+    <arg name="bridge_name" value="ros_gz_bridge"/>
+    <arg name="config_file" value="$(find-pkg-share mrsl_quadrotor_launch)/config/ros_gz_bridge.yaml"/>
+  </include>
+</launch>
