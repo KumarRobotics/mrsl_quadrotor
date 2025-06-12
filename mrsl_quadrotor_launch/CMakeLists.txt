@@ -1,15 +1,14 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10)
 project(mrsl_quadrotor_launch)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
-#find_package(cmake_modules)
-#find_package(Eigen REQUIRED)
-#include_directories(${EIGEN_INCLUDE_DIRS})
+set(CMAKE_CXX_STANDARD 17)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY launch/
+  DESTINATION share/${PROJECT_NAME}/launch)
+install(DIRECTORY config/
+  DESTINATION share/${PROJECT_NAME}/config)
+ament_package()
 
-catkin_package()
  
 

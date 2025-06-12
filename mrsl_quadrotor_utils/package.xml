@@ -3,16 +3,26 @@
   <name>mrsl_quadrotor_utils</name>
   <version>0.0.0</version>
   <description>The msg_utils package</description>
+
   <maintainer email="sikang@todo.todo">sikang</maintainer>
+  <maintainer email="jiuzl@todo.todo">jiuzhou</maintainer>
   <license>TODO</license>
 
+  <!-- ament build tool -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>roscpp</depend>
-  <depend>cmake_modules</depend>
-  <depend>tf</depend>
-  <depend>tf_conversions</depend>
+  <!-- runtime / build dependencies -->
+  <depend>rclcpp</depend>
   <depend>tf2_ros</depend>
-  <depend>eigen_conversions</depend>
-  <depend>topic_tools</depend>
+  <depend>tf2_eigen</depend>
+  <depend>tf2_eigen_kdl</depend>
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <!-- <depend>topic_tools</depend> -->
+  <!-- if you later add msg generation or service definitions -->
+  <!-- <depend>rosidl_default_generators</depend> -->
+  <export>
+   <build_type>ament_cmake</build_type>
+ </export>
 </package>

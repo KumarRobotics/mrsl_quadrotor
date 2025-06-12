@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<sdf version="1.4">
-  <world name="default">
-    <include>
+<sdf version="1.12">
+  <world name="forest0">
+    <!-- <include>
       <uri>model://ground_plane</uri>
     </include>
     <include>
       <uri>model://sun</uri>
-    </include>
+    </include> -->
     <scene>
       <shadows>0</shadows>
     </scene>
